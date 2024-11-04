@@ -1,0 +1,230 @@
+diff --git a/runtime/Makefile b/runtime/Makefile
+index 50069332a4..6c05d5c6f3 100644
+--- a/runtime/Makefile
++++ b/runtime/Makefile
+@@ -182,6 +182,7 @@ clean:
+ 	rm -f primitives primitives.new prims.c $(BUILT_HEADERS)
+ 	rm -f domain_state*.inc
+ 	rm -rf $(DEPDIR)
++	$(MAKE) -C verified_gc clean
+ 
+ .PHONY: distclean
+ distclean: clean
+@@ -268,8 +269,15 @@ build_config.h: $(ROOTDIR)/Makefile.config sak$(EXE)
+ 
+ # Libraries and programs
+ 
+-ocamlrun$(EXE): prims.$(O) libcamlrun.$(A)
+-	$(MKEXE) -o $@ $^ $(LIBS) -lgc
++libvergc.a:
++	$(MAKE) -C verified_gc
++	cp verified_gc/libvergc.a .
++
++librust_allocator.a: libvergc.a
++	cp verified_gc/librust_allocator.a .
++
++ocamlrun$(EXE): prims.$(O) libcamlrun.$(A) libvergc.a librust_allocator.a
++	$(MKEXE) -o $@ $^ $(LIBS)
+ 
+ ocamlruns$(EXE): prims.$(O) libcamlrun_non_shared.$(A)
+ 	$(call MKEXE_USING_COMPILER,$@,$^ $(LIBS))
+@@ -280,13 +288,13 @@ libcamlrun.$(A): $(libcamlrun_OBJECTS)
+ libcamlrun_non_shared.$(A): $(libcamlrun_non_shared_OBJECTS)
+ 	$(call MKLIB,$@, $^)
+ 
+-ocamlrund$(EXE): prims.$(O) libcamlrund.$(A)
+-	$(MKEXE) $(MKEXEDEBUGFLAG) -o $@ $^ $(LIBS) -lgc
++ocamlrund$(EXE): prims.$(O) libcamlrund.$(A) libvergc.a librust_allocator.a
++	$(MKEXE) $(MKEXEDEBUGFLAG) -o $@ $^ $(LIBS)
+ 
+ libcamlrund.$(A): $(libcamlrund_OBJECTS)
+ 	$(call MKLIB,$@, $^)
+ 
+-ocamlruni$(EXE): prims.$(O) libcamlruni.$(A)
++ocamlruni$(EXE): prims.$(O) libcamlruni.$(A) libvergc.a librust_allocator.a
+ 	$(MKEXE) -o $@ $^ $(INSTRUMENTED_RUNTIME_LIBS) $(LIBS)
+ 
+ libcamlruni.$(A): $(libcamlruni_OBJECTS)
+diff --git a/runtime/caml/domain_state.tbl b/runtime/caml/domain_state.tbl
+index 4429f24b64..8b8d7049c0 100644
+--- a/runtime/caml/domain_state.tbl
++++ b/runtime/caml/domain_state.tbl
+@@ -14,6 +14,7 @@
+ /*                                                                        */
+ /**************************************************************************/
+ 
++DOMAIN_STATE(value, temp)
+ DOMAIN_STATE(value*, young_limit)
+ DOMAIN_STATE(value*, young_ptr)
+ /* Minor heap limit. See minor_gc.c. */
+diff --git a/runtime/caml/memory.h b/runtime/caml/memory.h
+index 82843c3778..c14232423c 100644
+--- a/runtime/caml/memory.h
++++ b/runtime/caml/memory.h
+@@ -30,12 +30,6 @@
+ #include "misc.h"
+ #include "mlvalues.h"
+ #include "domain.h"
+-#include <gc/gc.h>
+-
+-#define malloc(n) GC_malloc(n)
+-#define calloc(m,n) GC_malloc((m)*(n))
+-#define free(p) GC_free(p)
+-#define realloc(p,n) GC_realloc(p,n)
+ 
+ #ifdef __cplusplus
+ extern "C" {
+@@ -219,6 +213,8 @@ enum caml_alloc_small_flags {
+   CAML_FROM_C = 0,     CAML_FROM_CAML = 2
+ };
+ 
++void* verified_allocate(mlsize_t wosize);
++
+ extern void caml_alloc_small_dispatch (intnat wosize, int flags,
+                                        int nallocs, unsigned char* alloc_lens);
+ // Do not call asynchronous callbacks from allocation functions
+@@ -227,7 +223,10 @@ extern void caml_alloc_small_dispatch (intnat wosize, int flags,
+   CAMLassert ((wosize) >= 1);                                          \
+   CAMLassert ((tag_t) (tag) < 256);                                    \
+   CAMLassert ((wosize) <= Max_young_wosize);                           \
+-  (result) = (value)malloc(Bhsize_wosize (wosize));                    \
++  Setup_for_gc;                                                        \
++  Caml_state_field(temp) = (value)verified_allocate((wosize));         \
++  Restore_after_gc;                                                    \
++  (result) = Caml_state_field(temp);                                   \
+   Hd_hp (result) =                                                     \
+     Make_header_with_profinfo ((wosize), (tag), 0, profinfo);          \
+   (result) = Val_hp (result);                                          \
+diff --git a/runtime/gen_primitives.sh b/runtime/gen_primitives.sh
+index a727d5c25c..b346e4d8cb 100755
+--- a/runtime/gen_primitives.sh
++++ b/runtime/gen_primitives.sh
+@@ -25,7 +25,7 @@ export LC_ALL=C
+       alloc array compare extern floats gc_ctrl hash intern interp ints io \
+       lexing md5 meta memprof obj parsing signals str sys callback weak \
+       finalise stacks dynlink backtrace_byt backtrace afl \
+-      bigarray eventlog
++      bigarray eventlog verified_gc/alloc
+   do
+       sed -n -e 's/^CAMLprim value \([a-z0-9_][a-z0-9_]*\).*/\1/p' "$prim.c"
+   done
+diff --git a/runtime/interp.c b/runtime/interp.c
+index 9b18f3c5ec..5abdf3ef5f 100644
+--- a/runtime/interp.c
++++ b/runtime/interp.c
+@@ -551,6 +551,7 @@ value caml_interprete(code_t prog, asize_t prog_size)
+     Instruct(CLOSURE): {
+       int nvars = *pc++;
+       int i;
++      value block;
+       if (nvars > 0) *--sp = accu;
+       if (nvars <= Max_young_wosize - 2) {
+         /* nvars + 2 <= Max_young_wosize, can allocate in minor heap */
+@@ -560,7 +561,10 @@ value caml_interprete(code_t prog, asize_t prog_size)
+         /* PR#6385: must allocate in major heap */
+         /* caml_alloc_shr and caml_initialize never trigger a GC,
+            so no need to Setup_for_gc */
+-        accu = caml_alloc_shr(2 + nvars, Closure_tag);
++        Setup_for_gc;
++        block = caml_alloc_shr(2 + nvars, Closure_tag);
++        Restore_after_gc;
++        accu = block;
+         for (i = 0; i < nvars; i++) caml_initialize(&Field(accu, i + 2), sp[i]);
+       }
+       /* The code pointer is not in the heap, so no need to go through
+@@ -579,6 +583,7 @@ value caml_interprete(code_t prog, asize_t prog_size)
+       mlsize_t blksize = envofs + nvars;
+       int i;
+       value * p;
++      value block;
+       if (nvars > 0) *--sp = accu;
+       if (blksize <= Max_young_wosize) {
+         Alloc_small(accu, blksize, Closure_tag);
+@@ -588,7 +593,10 @@ value caml_interprete(code_t prog, asize_t prog_size)
+         /* PR#6385: must allocate in major heap */
+         /* caml_alloc_shr and caml_initialize never trigger a GC,
+            so no need to Setup_for_gc */
+-        accu = caml_alloc_shr(blksize, Closure_tag);
++        Setup_for_gc;
++        block = caml_alloc_shr(blksize, Closure_tag);
++        Restore_after_gc;
++        accu = block;
+         p = &Field(accu, envofs);
+         for (i = 0; i < nvars; i++, p++) caml_initialize(p, sp[i]);
+       }
+@@ -600,7 +608,7 @@ value caml_interprete(code_t prog, asize_t prog_size)
+       *p++ = (value) (pc + pc[0]);
+       *p++ = Make_closinfo(0, envofs);
+       for (i = 1; i < nfuncs; i++) {
+-        *p++ = Make_header(i * 3, Infix_tag, Caml_white); /* color irrelevant */
++        *p++ = Make_header(i * 3, Infix_tag, Caml_black); /* color irrelevant */
+         *--sp = (value) p;
+         *p++ = (value) (pc + pc[i]);
+         envofs -= 3;
+@@ -680,7 +688,9 @@ value caml_interprete(code_t prog, asize_t prog_size)
+         Field(block, 0) = accu;
+         for (i = 1; i < wosize; i++) Field(block, i) = *sp++;
+       } else {
++        Setup_for_gc;
+         block = caml_alloc_shr(wosize, tag);
++        Restore_after_gc;
+         caml_initialize(&Field(block, 0), accu);
+         for (i = 1; i < wosize; i++) caml_initialize(&Field(block, i), *sp++);
+       }
+@@ -723,7 +733,9 @@ value caml_interprete(code_t prog, asize_t prog_size)
+       if (size <= Max_young_wosize / Double_wosize) {
+         Alloc_small(block, size * Double_wosize, Double_array_tag);
+       } else {
++        Setup_for_gc;
+         block = caml_alloc_shr(size * Double_wosize, Double_array_tag);
++        Restore_after_gc;
+       }
+       Store_double_flat_field(block, 0, Double_val(accu));
+       for (i = 1; i < size; i++){
+diff --git a/runtime/memory.c b/runtime/memory.c
+index 32226f5446..58705609b9 100644
+--- a/runtime/memory.c
++++ b/runtime/memory.c
+@@ -464,9 +464,9 @@ Caml_inline value caml_alloc_shr_aux (mlsize_t wosize, tag_t tag, int track,
+                                       uintnat profinfo)
+ {
+   header_t *hp;
+-  hp = (header_t*) malloc (Bhsize_wosize (wosize));
++  hp = (header_t*) verified_allocate (wosize);
+   Hd_hp (hp) =
+-    Make_header_with_profinfo (wosize, tag, Caml_black, profinfo);
++    Make_header_with_profinfo (wosize, tag, Caml_white, profinfo);
+ #ifdef DEBUG
+   {
+     uintnat i;
+diff --git a/runtime/minor_gc.c b/runtime/minor_gc.c
+index 18cfe3e517..d8df926eb2 100644
+--- a/runtime/minor_gc.c
++++ b/runtime/minor_gc.c
+@@ -570,11 +570,14 @@ CAMLexport void caml_minor_collection (void)
+ 
+ CAMLexport value caml_check_urgent_gc (value extra_root)
+ {
++  /* XXX KC: Disable native GC from triggering */
++  /*
+   if (Caml_state->requested_major_slice || Caml_state->requested_minor_gc){
+     CAMLparam1 (extra_root);
+     caml_gc_dispatch();
+     CAMLdrop;
+   }
++  */
+   return extra_root;
+ }
+ 
+diff --git a/runtime/startup_byt.c b/runtime/startup_byt.c
+index 9469a07b04..de7549748a 100644
+--- a/runtime/startup_byt.c
++++ b/runtime/startup_byt.c
+@@ -466,7 +466,6 @@ CAMLexport void caml_main(char_os **argv)
+ 
+   /* Initialize the domain */
+   caml_init_domain();
+-  GC_INIT();
+ 
+   /* Determine options */
+ #ifdef DEBUG

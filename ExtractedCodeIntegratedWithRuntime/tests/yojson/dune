@@ -1,0 +1,12 @@
+;; Adapted from OCamlPro's ocamlbench-repo
+;; See https://github.com/OCamlPro/ocamlbench-repo
+
+(executable
+ (name ydump)
+ (modes byte)
+ (ocamlc_flags (-use-runtime %{env:HACKED_GC_PATH=}/runtime/ocamlrun))
+ (link_flags (-custom -cclib -L%{env:HACKED_GC_PATH=}/runtime/verified_gc -cclib -lvergc -cclib -lrust_allocator))
+ (libraries yojson camlp-streams)
+ )
+
+(alias (name byteprog) (deps ydump.bc sample.json))

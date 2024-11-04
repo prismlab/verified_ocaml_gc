@@ -1,0 +1,920 @@
+.TH "Misc" 3 2024-11-04 OCamldoc "OCaml library"
+.SH NAME
+Misc \- Miscellaneous useful types and functions
+.SH Module
+Module   Misc
+.SH Documentation
+.sp
+Module
+.BI "Misc"
+ : 
+.B sig end
+
+.sp
+Miscellaneous useful types and functions
+.sp
+Warning: this module is unstable and part of
+.ft B
+Compiler_libs
+.ft R
+\&.
+
+.sp
+
+.sp
+.sp
+
+.I val fatal_error 
+: 
+.B string -> 'a
+.sp
+
+.sp
+
+.I val fatal_errorf 
+: 
+.B ('a, Format.formatter, unit, 'b) format4 -> 'a
+.sp
+
+.sp
+
+.I exception Fatal_error 
+
+.sp
+
+.sp
+
+.I val try_finally 
+: 
+.B ?always:(unit -> unit) -> ?exceptionally:(unit -> unit) -> (unit -> 'a) -> 'a
+.sp
+
+.ft B
+try_finally work ~always ~exceptionally
+.ft R
+is designed to run code
+in 
+.ft B
+work
+.ft R
+that may fail with an exception, and has two kind of
+cleanup routines: 
+.ft B
+always
+.ft R
+, that must be run after any execution
+of the function (typically, freeing system resources), and
+.ft B
+exceptionally
+.ft R
+, that should be run only if 
+.ft B
+work
+.ft R
+or 
+.ft B
+always
+.ft R
+failed with an exception (typically, undoing user\-visible state
+changes that would only make sense if the function completes
+correctly)\&. For example:
+.sp
+
+.EX
+.ft B
+.br
+\&      let objfile = outputprefix ^ "\&.cmo" in
+.br
+\&      let oc = open_out_bin objfile in
+.br
+\&      Misc\&.try_finally
+.br
+\&        (fun () \->
+.br
+\&           bytecode
+.br
+\&           ++ Timings\&.(accumulate_time (Generate sourcefile))
+.br
+\&               (Emitcode\&.to_file oc modulename objfile);
+.br
+\&           Warnings\&.check_fatal ())
+.br
+\&        ~always:(fun () \-> close_out oc)
+.br
+\&        ~exceptionally:(fun _exn \-> remove_file objfile);
+.br
+\&    
+.ft R
+.EE
+.sp
+If 
+.ft B
+exceptionally
+.ft R
+fail with an exception, it is propagated as
+usual\&.
+.sp
+If 
+.ft B
+always
+.ft R
+or 
+.ft B
+exceptionally
+.ft R
+use exceptions internally for
+control\-flow but do not raise, then 
+.ft B
+try_finally
+.ft R
+is careful to
+preserve any exception backtrace coming from 
+.ft B
+work
+.ft R
+or 
+.ft B
+always
+.ft R
+for easier debugging\&.
+
+.sp
+
+.I val reraise_preserving_backtrace 
+: 
+.B exn -> (unit -> unit) -> 'a
+.sp
+
+.ft B
+reraise_preserving_backtrace e f
+.ft R
+is (f (); raise e) except that the
+current backtrace is preserved, even if 
+.ft B
+f
+.ft R
+uses exceptions internally\&.
+
+.sp
+
+.I val map_end 
+: 
+.B ('a -> 'b) -> 'a list -> 'b list -> 'b list
+.sp
+
+.sp
+
+.I val map_left_right 
+: 
+.B ('a -> 'b) -> 'a list -> 'b list
+.sp
+
+.sp
+
+.I val for_all2 
+: 
+.B ('a -> 'b -> bool) -> 'a list -> 'b list -> bool
+.sp
+
+.sp
+
+.I val replicate_list 
+: 
+.B 'a -> int -> 'a list
+.sp
+
+.sp
+
+.I val list_remove 
+: 
+.B 'a -> 'a list -> 'a list
+.sp
+
+.sp
+
+.I val split_last 
+: 
+.B 'a list -> 'a list * 'a
+.sp
+
+.sp
+.I type ref_and_value 
+=
+ | R
+.B : 
+.B 'a ref * 'a
+.B -> 
+.B ref_and_value
+ 
+.sp
+
+.sp
+
+.I val protect_refs 
+: 
+.B ref_and_value list -> (unit -> 'a) -> 'a
+.sp
+
+.ft B
+protect_refs l f
+.ft R
+temporarily sets 
+.ft B
+r
+.ft R
+to 
+.ft B
+v
+.ft R
+for each 
+.ft B
+R (r, v)
+.ft R
+in 
+.ft B
+l
+.ft R
+while executing 
+.ft B
+f
+.ft R
+\&. The previous contents of the references is restored
+even if 
+.ft B
+f
+.ft R
+raises an exception, without altering the exception backtrace\&.
+
+.sp
+.I module Stdlib : 
+.B sig end
+
+.sp
+
+.sp
+
+.I val find_in_path 
+: 
+.B string list -> string -> string
+.sp
+
+.sp
+
+.I val find_in_path_rel 
+: 
+.B string list -> string -> string
+.sp
+
+.sp
+
+.I val find_in_path_uncap 
+: 
+.B string list -> string -> string
+.sp
+
+.sp
+
+.I val remove_file 
+: 
+.B string -> unit
+.sp
+
+.sp
+
+.I val expand_directory 
+: 
+.B string -> string -> string
+.sp
+
+.sp
+
+.I val split_path_contents 
+: 
+.B ?sep:char -> string -> string list
+.sp
+
+.sp
+
+.I val create_hashtable 
+: 
+.B int -> ('a * 'b) list -> ('a, 'b) Hashtbl.t
+.sp
+
+.sp
+
+.I val copy_file 
+: 
+.B in_channel -> out_channel -> unit
+.sp
+
+.sp
+
+.I val copy_file_chunk 
+: 
+.B in_channel -> out_channel -> int -> unit
+.sp
+
+.sp
+
+.I val string_of_file 
+: 
+.B in_channel -> string
+.sp
+
+.sp
+
+.I val output_to_file_via_temporary 
+: 
+.B ?mode:open_flag list ->
+.B   string -> (string -> out_channel -> 'a) -> 'a
+.sp
+
+.sp
+
+.I val protect_writing_to_file 
+: 
+.B filename:string -> f:(out_channel -> 'a) -> 'a
+.sp
+Open the given 
+.ft B
+filename
+.ft R
+for writing (in binary mode), pass the
+.ft B
+out_channel
+.ft R
+to the given function, then close the channel\&. If the function
+raises an exception then 
+.ft B
+filename
+.ft R
+will be removed\&.
+
+.sp
+
+.I val log2 
+: 
+.B int -> int
+.sp
+
+.sp
+
+.I val align 
+: 
+.B int -> int -> int
+.sp
+
+.sp
+
+.I val no_overflow_add 
+: 
+.B int -> int -> bool
+.sp
+
+.sp
+
+.I val no_overflow_sub 
+: 
+.B int -> int -> bool
+.sp
+
+.sp
+
+.I val no_overflow_mul 
+: 
+.B int -> int -> bool
+.sp
+
+.sp
+
+.I val no_overflow_lsl 
+: 
+.B int -> int -> bool
+.sp
+
+.sp
+.I module Int_literal_converter : 
+.B sig end
+
+.sp
+
+.sp
+
+.I val chop_extensions 
+: 
+.B string -> string
+.sp
+
+.sp
+
+.I val search_substring 
+: 
+.B string -> string -> int -> int
+.sp
+
+.sp
+
+.I val replace_substring 
+: 
+.B before:string -> after:string -> string -> string
+.sp
+
+.sp
+
+.I val rev_split_words 
+: 
+.B string -> string list
+.sp
+
+.sp
+
+.I val get_ref 
+: 
+.B 'a list ref -> 'a list
+.sp
+
+.sp
+
+.I val set_or_ignore 
+: 
+.B ('a -> 'b option) -> 'b option ref -> 'a -> unit
+.sp
+
+.sp
+
+.I val fst3 
+: 
+.B 'a * 'b * 'c -> 'a
+.sp
+
+.sp
+
+.I val snd3 
+: 
+.B 'a * 'b * 'c -> 'b
+.sp
+
+.sp
+
+.I val thd3 
+: 
+.B 'a * 'b * 'c -> 'c
+.sp
+
+.sp
+
+.I val fst4 
+: 
+.B 'a * 'b * 'c * 'd -> 'a
+.sp
+
+.sp
+
+.I val snd4 
+: 
+.B 'a * 'b * 'c * 'd -> 'b
+.sp
+
+.sp
+
+.I val thd4 
+: 
+.B 'a * 'b * 'c * 'd -> 'c
+.sp
+
+.sp
+
+.I val for4 
+: 
+.B 'a * 'b * 'c * 'd -> 'd
+.sp
+
+.sp
+.I module LongString : 
+.B sig end
+
+.sp
+
+.sp
+
+.I val edit_distance 
+: 
+.B string -> string -> int -> int option
+.sp
+
+.ft B
+edit_distance a b cutoff
+.ft R
+computes the edit distance between
+strings 
+.ft B
+a
+.ft R
+and 
+.ft B
+b
+.ft R
+\&. To help efficiency, it uses a cutoff: if the
+distance 
+.ft B
+d
+.ft R
+is smaller than 
+.ft B
+cutoff
+.ft R
+, it returns 
+.ft B
+Some d
+.ft R
+, else
+.ft B
+None
+.ft R
+\&.
+.sp
+The distance algorithm currently used is Damerau\-Levenshtein: it
+computes the number of insertion, deletion, substitution of
+letters, or swapping of adjacent letters to go from one word to the
+other\&. The particular algorithm may change in the future\&.
+
+.sp
+
+.I val spellcheck 
+: 
+.B string list -> string -> string list
+.sp
+
+.ft B
+spellcheck env name
+.ft R
+takes a list of names 
+.ft B
+env
+.ft R
+that exist in
+the current environment and an erroneous 
+.ft B
+name
+.ft R
+, and returns a
+list of suggestions taken from 
+.ft B
+env
+.ft R
+, that are close enough to
+.ft B
+name
+.ft R
+that it may be a typo for one of them\&.
+
+.sp
+
+.I val did_you_mean 
+: 
+.B Format.formatter -> (unit -> string list) -> unit
+.sp
+
+.ft B
+did_you_mean ppf get_choices
+.ft R
+hints that the user may have meant
+one of the option returned by calling 
+.ft B
+get_choices
+.ft R
+\&. It does nothing
+if the returned list is empty\&.
+.sp
+The 
+.ft B
+unit \-> \&.\&.\&.
+.ft R
+thunking is meant to delay any potentially\-slow
+computation (typically computing edit\-distance with many things
+from the current environment) to when the hint message is to be
+printed\&. You should print an understandable error message before
+calling 
+.ft B
+did_you_mean
+.ft R
+, so that users get a clear notification of
+the failure even if producing the hint is slow\&.
+
+.sp
+
+.I val cut_at 
+: 
+.B string -> char -> string * string
+.sp
+
+.ft B
+String\&.cut_at s c
+.ft R
+returns a pair containing the sub\-string before
+the first occurrence of 
+.ft B
+c
+.ft R
+in 
+.ft B
+s
+.ft R
+, and the sub\-string after the
+first occurrence of 
+.ft B
+c
+.ft R
+in 
+.ft B
+s
+.ft R
+\&.
+.ft B
+let (before, after) = String\&.cut_at s c in
+.br
+\&    before ^ String\&.make 1 c ^ after
+.ft R
+is the identity if 
+.ft B
+s
+.ft R
+contains 
+.ft B
+c
+.ft R
+\&.
+.sp
+Raise 
+.ft B
+Not_found
+.ft R
+if the character does not appear in the string
+
+.sp
+.B "Since"
+4.01
+
+.sp
+
+.I val ordinal_suffix 
+: 
+.B int -> string
+.sp
+
+.ft B
+ordinal_suffix n
+.ft R
+is the appropriate suffix to append to the numeral 
+.ft B
+n
+.ft R
+as
+an ordinal number: 
+.ft B
+1
+.ft R
+\-> 
+.ft B
+"st"
+.ft R
+, 
+.ft B
+2
+.ft R
+\-> 
+.ft B
+"nd"
+.ft R
+, 
+.ft B
+3
+.ft R
+\-> 
+.ft B
+"rd"
+.ft R
+,
+.ft B
+4
+.ft R
+\-> 
+.ft B
+"th"
+.ft R
+, and so on\&.  Handles larger numbers (e\&.g\&., 
+.ft B
+42
+.ft R
+\-> 
+.ft B
+"nd"
+.ft R
+) and
+the numbers 11\-\-13 (which all get 
+.ft B
+"th"
+.ft R
+) correctly\&.
+
+.sp
+.I module Color : 
+.B sig end
+
+.sp
+
+.sp
+.I module Error_style : 
+.B sig end
+
+.sp
+
+.sp
+
+.I val normalise_eol 
+: 
+.B string -> string
+.sp
+
+.ft B
+normalise_eol s
+.ft R
+returns a fresh copy of 
+.ft B
+s
+.ft R
+with any \&'\(rsr\&' characters
+removed\&. Intended for pre\-processing text which will subsequently be printed
+on a channel which performs EOL transformations (i\&.e\&. Windows)
+
+.sp
+
+.I val delete_eol_spaces 
+: 
+.B string -> string
+.sp
+
+.ft B
+delete_eol_spaces s
+.ft R
+returns a fresh copy of 
+.ft B
+s
+.ft R
+with any end of
+line spaces removed\&. Intended to normalize the output of the
+toplevel for tests\&.
+
+.sp
+
+.I val pp_two_columns 
+: 
+.B ?sep:string ->
+.B   ?max_lines:int -> Format.formatter -> (string * string) list -> unit
+.sp
+
+.ft B
+pp_two_columns ?sep ?max_lines ppf l
+.ft R
+prints the lines in 
+.ft B
+l
+.ft R
+as two
+columns separated by 
+.ft B
+sep
+.ft R
+("|" by default)\&. 
+.ft B
+max_lines
+.ft R
+can be used to
+indicate a maximum number of lines to print \-\- an ellipsis gets inserted at
+the middle if the input has too many lines\&.
+.sp
+Example:
+.sp
+pp_two_columns ~max_lines:3 Format\&.std_formatter [
+"abc", "hello";
+"def", "zzz";
+"a"  , "bllbl";
+"bb" , "dddddd";
+]
+.sp
+prints
+.sp
+abc | hello
+\&.\&.\&.
+bb  | dddddd
+
+
+.sp
+
+.I val show_config_and_exit 
+: 
+.B unit -> unit
+.sp
+configuration variables
+
+.sp
+
+.I val show_config_variable_and_exit 
+: 
+.B string -> unit
+.sp
+
+.sp
+
+.I val get_build_path_prefix_map 
+: 
+.B unit -> Build_path_prefix_map.map option
+.sp
+Returns the map encoded in the 
+.ft B
+BUILD_PATH_PREFIX_MAP
+.ft R
+environment
+variable\&.
+
+.sp
+
+.I val debug_prefix_map_flags 
+: 
+.B unit -> string list
+.sp
+Returns the list of 
+.ft B
+\-\-debug\-prefix\-map
+.ft R
+flags to be passed to the
+assembler, built from the 
+.ft B
+BUILD_PATH_PREFIX_MAP
+.ft R
+environment variable\&.
+
+.sp
+
+.I val print_if 
+: 
+.B Format.formatter ->
+.B   bool ref -> (Format.formatter -> 'a -> unit) -> 'a -> 'a
+.sp
+
+.ft B
+print_if ppf flag fmt x
+.ft R
+prints 
+.ft B
+x
+.ft R
+with 
+.ft B
+fmt
+.ft R
+on 
+.ft B
+ppf
+.ft R
+if 
+.ft B
+b
+.ft R
+is true\&.
+
+.sp
+.I type filepath 
+= 
+.B string
+
+.sp
+
+.sp
+.I type modname 
+= 
+.B string
+
+.sp
+
+.sp
+.I type crcs 
+= 
+.B (modname * Digest.t option) list
+
+.sp
+
+.sp
+.I type alerts 
+= 
+.B string Stdlib.String.Map.t
+
+.sp
+
+.sp
+.I module Magic_number : 
+.B sig end
+
+.sp
+
+.sp

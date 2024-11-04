@@ -1,0 +1,306 @@
+.TH "ThreadUnix" 3 2024-11-04 OCamldoc "OCaml library"
+.SH NAME
+ThreadUnix \- Thread-compatible system calls.
+.SH Module
+Module   ThreadUnix
+.SH Documentation
+.sp
+Module
+.BI "ThreadUnix"
+ : 
+.B sig end
+
+.sp
+.B "Deprecated."
+The functionality of this module has been merged back into
+the 
+.ft B
+Unix
+.ft R
+module\&.  Threaded programs can now call the functions
+from module 
+.ft B
+Unix
+.ft R
+directly, and still get the correct behavior
+(block the calling thread, if required, but do not block all threads
+in the process)\&.
+
+.sp
+Thread\-compatible system calls\&.
+
+.sp
+
+.sp
+.sp
+
+.PP
+.SS Process handling
+
+.PP
+
+.I val execv 
+: 
+.B string -> string array -> unit
+.sp
+
+.sp
+
+.I val execve 
+: 
+.B string -> string array -> string array -> unit
+.sp
+
+.sp
+
+.I val execvp 
+: 
+.B string -> string array -> unit
+.sp
+
+.sp
+
+.I val wait 
+: 
+.B unit -> int * Unix.process_status
+.sp
+
+.sp
+
+.I val waitpid 
+: 
+.B Unix.wait_flag list -> int -> int * Unix.process_status
+.sp
+
+.sp
+
+.I val system 
+: 
+.B string -> Unix.process_status
+.sp
+
+.sp
+
+.PP
+.SS Basic input/output
+
+.PP
+
+.I val read 
+: 
+.B Unix.file_descr -> bytes -> int -> int -> int
+.sp
+
+.sp
+
+.I val write 
+: 
+.B Unix.file_descr -> bytes -> int -> int -> int
+.sp
+
+.sp
+
+.I val write_substring 
+: 
+.B Unix.file_descr -> string -> int -> int -> int
+.sp
+
+.sp
+
+.PP
+.SS Input/output with timeout
+
+.PP
+
+.I val timed_read 
+: 
+.B Unix.file_descr -> bytes -> int -> int -> float -> int
+.sp
+See 
+.ft B
+ThreadUnix\&.timed_write
+.ft R
+\&.
+
+.sp
+
+.I val timed_write 
+: 
+.B Unix.file_descr -> bytes -> int -> int -> float -> int
+.sp
+Behave as 
+.ft B
+ThreadUnix\&.read
+.ft R
+and 
+.ft B
+ThreadUnix\&.write
+.ft R
+, except that
+.ft B
+Unix_error(ETIMEDOUT,_,_)
+.ft R
+is raised if no data is
+available for reading or ready for writing after 
+.ft B
+d
+.ft R
+seconds\&.
+The delay 
+.ft B
+d
+.ft R
+is given in the fifth argument, in seconds\&.
+
+.sp
+
+.I val timed_write_substring 
+: 
+.B Unix.file_descr -> string -> int -> int -> float -> int
+.sp
+See 
+.ft B
+ThreadUnix\&.timed_write
+.ft R
+\&.
+
+.sp
+
+.PP
+.SS Polling
+
+.PP
+
+.I val select 
+: 
+.B Unix.file_descr list ->
+.B   Unix.file_descr list ->
+.B   Unix.file_descr list ->
+.B   float -> Unix.file_descr list * Unix.file_descr list * Unix.file_descr list
+.sp
+
+.sp
+
+.PP
+.SS Pipes and redirections
+
+.PP
+
+.I val pipe 
+: 
+.B ?cloexec:bool -> unit -> Unix.file_descr * Unix.file_descr
+.sp
+
+.sp
+
+.I val open_process_in 
+: 
+.B string -> in_channel
+.sp
+
+.sp
+
+.I val open_process_out 
+: 
+.B string -> out_channel
+.sp
+
+.sp
+
+.I val open_process 
+: 
+.B string -> in_channel * out_channel
+.sp
+
+.sp
+
+.PP
+.SS Time
+
+.PP
+
+.I val sleep 
+: 
+.B int -> unit
+.sp
+
+.sp
+
+.PP
+.SS Sockets
+
+.PP
+
+.I val socket 
+: 
+.B ?cloexec:bool ->
+.B   Unix.socket_domain -> Unix.socket_type -> int -> Unix.file_descr
+.sp
+
+.sp
+
+.I val accept 
+: 
+.B ?cloexec:bool -> Unix.file_descr -> Unix.file_descr * Unix.sockaddr
+.sp
+
+.sp
+
+.I val connect 
+: 
+.B Unix.file_descr -> Unix.sockaddr -> unit
+.sp
+
+.sp
+
+.I val recv 
+: 
+.B Unix.file_descr -> bytes -> int -> int -> Unix.msg_flag list -> int
+.sp
+
+.sp
+
+.I val recvfrom 
+: 
+.B Unix.file_descr ->
+.B   bytes -> int -> int -> Unix.msg_flag list -> int * Unix.sockaddr
+.sp
+
+.sp
+
+.I val send 
+: 
+.B Unix.file_descr -> bytes -> int -> int -> Unix.msg_flag list -> int
+.sp
+
+.sp
+
+.I val send_substring 
+: 
+.B Unix.file_descr -> string -> int -> int -> Unix.msg_flag list -> int
+.sp
+
+.sp
+
+.I val sendto 
+: 
+.B Unix.file_descr ->
+.B   bytes -> int -> int -> Unix.msg_flag list -> Unix.sockaddr -> int
+.sp
+
+.sp
+
+.I val sendto_substring 
+: 
+.B Unix.file_descr ->
+.B   string -> int -> int -> Unix.msg_flag list -> Unix.sockaddr -> int
+.sp
+
+.sp
+
+.I val open_connection 
+: 
+.B Unix.sockaddr -> in_channel * out_channel
+.sp
+
+.sp

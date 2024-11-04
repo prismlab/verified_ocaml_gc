@@ -1,0 +1,265 @@
+.TH "Stream" 3 2024-11-04 OCamldoc "OCaml library"
+.SH NAME
+Stream \- Streams and parsers.
+.SH Module
+Module   Stream
+.SH Documentation
+.sp
+Module
+.BI "Stream"
+ : 
+.B sig end
+
+.sp
+Streams and parsers\&.
+
+.sp
+
+.sp
+.sp
+.I type 
+.B 'a
+.I t 
+
+.sp
+The type of streams holding values of type 
+.ft B
+\&'a
+.ft R
+\&.
+
+.sp
+
+.I exception Failure 
+
+.sp
+Raised by parsers when none of the first components of the stream
+patterns is accepted\&.
+
+.sp
+
+.I exception Error 
+.B of 
+.B string
+
+.sp
+Raised by parsers when the first component of a stream pattern is
+accepted, but one of the following components is rejected\&.
+
+.sp
+
+.PP
+.SS Stream builders
+
+.PP
+
+.I val from 
+: 
+.B (int -> 'a option) -> 'a t
+.sp
+
+.ft B
+Stream\&.from f
+.ft R
+returns a stream built from the function 
+.ft B
+f
+.ft R
+\&.
+To create a new stream element, the function 
+.ft B
+f
+.ft R
+is called with
+the current stream count\&. The user function 
+.ft B
+f
+.ft R
+must return either
+.ft B
+Some <value>
+.ft R
+for a value or 
+.ft B
+None
+.ft R
+to specify the end of the
+stream\&.
+.sp
+Do note that the indices passed to 
+.ft B
+f
+.ft R
+may not start at 
+.ft B
+0
+.ft R
+in the
+general case\&. For example, 
+.ft B
+[< \&'0; \&'1; Stream\&.from f >]
+.ft R
+would call
+.ft B
+f
+.ft R
+the first time with count 
+.ft B
+2
+.ft R
+\&.
+
+.sp
+
+.I val of_list 
+: 
+.B 'a list -> 'a t
+.sp
+Return the stream holding the elements of the list in the same
+order\&.
+
+.sp
+
+.I val of_string 
+: 
+.B string -> char t
+.sp
+Return the stream of the characters of the string parameter\&.
+
+.sp
+
+.I val of_bytes 
+: 
+.B bytes -> char t
+.sp
+Return the stream of the characters of the bytes parameter\&.
+
+.sp
+.B "Since"
+4.02.0
+
+.sp
+
+.I val of_channel 
+: 
+.B in_channel -> char t
+.sp
+Return the stream of the characters read from the input channel\&.
+
+.sp
+
+.PP
+.SS Stream iterator
+
+.PP
+
+.I val iter 
+: 
+.B ('a -> unit) -> 'a t -> unit
+.sp
+
+.ft B
+Stream\&.iter f s
+.ft R
+scans the whole stream s, applying function 
+.ft B
+f
+.ft R
+in turn to each stream element encountered\&.
+
+.sp
+
+.PP
+.SS Predefined parsers
+
+.PP
+
+.I val next 
+: 
+.B 'a t -> 'a
+.sp
+Return the first element of the stream and remove it from the
+stream\&.
+
+.sp
+.B "Raises Stream.Failure"
+if the stream is empty\&.
+
+.sp
+
+.I val empty 
+: 
+.B 'a t -> unit
+.sp
+Return 
+.ft B
+()
+.ft R
+if the stream is empty, else raise 
+.ft B
+Stream\&.Failure
+.ft R
+\&.
+
+.sp
+
+.PP
+.SS Useful functions
+
+.PP
+
+.I val peek 
+: 
+.B 'a t -> 'a option
+.sp
+Return 
+.ft B
+Some
+.ft R
+of "the first element" of the stream, or 
+.ft B
+None
+.ft R
+if
+the stream is empty\&.
+
+.sp
+
+.I val junk 
+: 
+.B 'a t -> unit
+.sp
+Remove the first element of the stream, possibly unfreezing
+it before\&.
+
+.sp
+
+.I val count 
+: 
+.B 'a t -> int
+.sp
+Return the current count of the stream elements, i\&.e\&. the number
+of the stream elements discarded\&.
+
+.sp
+
+.I val npeek 
+: 
+.B int -> 'a t -> 'a list
+.sp
+
+.ft B
+npeek n
+.ft R
+returns the list of the 
+.ft B
+n
+.ft R
+first elements of
+the stream, or all its remaining elements if less than 
+.ft B
+n
+.ft R
+elements are available\&.
+
+.sp
