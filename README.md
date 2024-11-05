@@ -1,13 +1,12 @@
 # Verified OCaml GC
 
-This is an artifact submitted along with the paper "A Mechanically Verified Garbage Collector for OCaml". This document explains the installation of tools required for verifying and integrating the F*/Low* GC with the OCaml runtime and then running the benchmarks.
+This is an artifact submitted along with the paper "A Mechanically Verified Garbage Collector for OCaml". This document explains the installation of tools required for verifying and integrating the F\*/Low\* GC with the OCaml runtime and then running the benchmarks.
 
 ## Tools required
 
 - Git
 - [Opam](https://opam.ocaml.org/doc/Install.html) for F\*/Low\*
-- [Dune](https://dune.build/install)
-- [Rust toolchain(to compile the allocator)](https://www.rust-lang.org/tools/install)
+- [Rust toolchain](https://www.rust-lang.org/tools/install)
 - [Hyperfine](https://github.com/sharkdp/hyperfine) for running benchmarks
 - [difftastic](https://github.com/Wilfred/difftastic) to see diffs clearly
 - Have a global installation of a stable version of
