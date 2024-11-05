@@ -1,0 +1,5 @@
+{ "fstar_exe":"fstar.exe",
+  "options":["--cache_checked_modules", "--cache_dir", "cache.boot",
+             "--hint_dir", "hints", "--use_hints", "--use_hint_hashes", 
+             "--record_hints"] }
+
