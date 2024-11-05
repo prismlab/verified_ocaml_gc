@@ -19,15 +19,13 @@ This is an artifact submitted along with the paper "A Mechanically Verified Garb
 
 ## Setup FStar
 
-For `karamel`, **python2.7 installation is needed.**
-
 ``` sh
 $ opam switch create fstar-fresh 4.14.0
 $ eval $(opam env --switch=fstar-fresh)
 $ opam pin add fstar --dev-repo
 ```
 
-`karamel` requires GNU make. If you are on macOS, you can install it using
+For `karamel`, **python2.7 installation is needed.** `karamel` requires GNU make. If you are on macOS, you can install it using
 `brew`. The following steps are only for macOS. If you are on Linux, skip to the
 `karamel` installation step.
 
