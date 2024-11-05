@@ -1,0 +1,1495 @@
+[
+  "\u000f_\"ü^²w¹ÎN\rÒ¸CÜß",
+  [
+    [
+      "Spec.Graph3.no_duplicates",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "binder_x_619830b3ffd7ca6ff83f4cde372ef428_0",
+        "equation_Prims.eqtype", "equation_Prims.nat",
+        "equation_Spec.Graph3.vertex_id", "int_inversion", "int_typing",
+        "lemma_FStar.Seq.Base.lemma_len_slice",
+        "primitive_Prims.op_Equality", "primitive_Prims.op_LessThanOrEqual",
+        "primitive_Prims.op_Subtraction",
+        "projection_inverse_BoxBool_proj_0",
+        "projection_inverse_BoxInt_proj_0",
+        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
+        "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
+        "refinement_interpretation_Tm_refine_67ed4bffe7010df8a146c8d48be5f799",
+        "refinement_interpretation_Tm_refine_81407705a0828c2c1b1976675443f647",
+        "typing_FStar.Seq.Base.length", "typing_FStar.UInt64.t",
+        "well-founded-ordering-on-nat"
+      ],
+      0,
+      "d3b8fc036e0021eb6fdcacba96f0b802"
+    ],
+    [
+      "Spec.Graph3.no_duplicates'",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "binder_x_619830b3ffd7ca6ff83f4cde372ef428_0",
+        "equation_FStar.Seq.Properties.tail", "equation_Prims.eqtype",
+        "equation_Prims.nat", "equation_Spec.Graph3.vertex_id",
+        "int_inversion", "int_typing",
+        "lemma_FStar.Seq.Base.lemma_len_slice",
+        "primitive_Prims.op_Equality", "primitive_Prims.op_LessThanOrEqual",
+        "primitive_Prims.op_Subtraction",
+        "projection_inverse_BoxBool_proj_0",
+        "projection_inverse_BoxInt_proj_0",
+        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
+        "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
+        "refinement_interpretation_Tm_refine_81407705a0828c2c1b1976675443f647",
+        "typing_FStar.Seq.Base.length", "typing_FStar.UInt64.t",
+        "well-founded-ordering-on-nat"
+      ],
+      0,
+      "11ba0fffda6759ba9aac8e35208153ba"
+    ],
+    [
+      "Spec.Graph3.is_vertex_set_lemma",
+      1,
+      2,
+      1,
+      [ "@query" ],
+      0,
+      "cfaa02bb35784d34979cc6660d040e23"
+    ],
+    [
+      "Spec.Graph3.is_vertex_set_lemma3",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query", "bool_inversion",
+        "equation_Prims.eqtype", "equation_Prims.nat",
+        "equation_Spec.Graph3.vertex_id", "equation_Spec.Graph3.vertex_list",
+        "int_inversion", "primitive_Prims.op_LessThanOrEqual",
+        "primitive_Prims.op_Subtraction",
+        "projection_inverse_BoxBool_proj_0",
+        "projection_inverse_BoxInt_proj_0",
+        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
+        "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
+        "typing_FStar.Seq.Base.length", "typing_FStar.UInt64.t",
+        "typing_Spec.Graph3.is_vertex_set"
+      ],
+      0,
+      "78622e1b9fbd27d2dd5aa0dbd6d042fc"
+    ],
+    [
+      "Spec.Graph3.is_vertex_set_lemma4",
+      1,
+      2,
+      1,
+      [ "@query" ],
+      0,
+      "2b78262fdf4bde1ff9086eac5f37ea25"
+    ],
+    [
+      "Spec.Graph3.is_vertex_set_lemma5",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query", "bool_inversion",
+        "equation_Prims.eqtype", "equation_Prims.nat",
+        "equation_Spec.Graph3.vertex_id", "equation_Spec.Graph3.vertex_list",
+        "int_inversion", "primitive_Prims.op_LessThanOrEqual",
+        "primitive_Prims.op_Subtraction",
+        "projection_inverse_BoxBool_proj_0",
+        "projection_inverse_BoxInt_proj_0",
+        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
+        "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
+        "refinement_interpretation_Tm_refine_8bd1da98b525041f5b935746fc977af1",
+        "typing_FStar.Seq.Base.length", "typing_FStar.UInt64.t",
+        "typing_Spec.Graph3.is_vertex_set"
+      ],
+      0,
+      "807f401debbfa4418b2b4122b9e4bade"
+    ],
+    [
+      "Spec.Graph3.is_vertex_set_lemma6",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query", "b2t_def",
+        "equation_FStar.UInt.fits", "equation_FStar.UInt.min_int",
+        "equation_FStar.UInt.size", "equation_FStar.UInt.uint_t",
+        "int_inversion", "primitive_Prims.op_Addition",
+        "primitive_Prims.op_AmpAmp", "primitive_Prims.op_LessThanOrEqual",
+        "projection_inverse_BoxBool_proj_0",
+        "projection_inverse_BoxInt_proj_0",
+        "refinement_interpretation_Tm_refine_f13070840248fced9d9d60d77bdae3ec",
+        "typing_FStar.UInt32.v"
+      ],
+      0,
+      "a8d5a40919a7c90b01ff13d49e7f6a32"
+    ],
+    [
+      "Spec.Graph3.is_vertex_set_lemma7",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query", "b2t_def",
+        "equation_FStar.UInt.fits", "equation_FStar.UInt.min_int",
+        "equation_FStar.UInt.size", "equation_FStar.UInt.uint_t",
+        "int_inversion", "primitive_Prims.op_Addition",
+        "primitive_Prims.op_AmpAmp", "primitive_Prims.op_LessThanOrEqual",
+        "projection_inverse_BoxBool_proj_0",
+        "projection_inverse_BoxInt_proj_0",
+        "refinement_interpretation_Tm_refine_f13070840248fced9d9d60d77bdae3ec",
+        "typing_FStar.UInt32.v"
+      ],
+      0,
+      "6a21a8c85370e6feef09be99fbe3b7f5"
+    ],
+    [
+      "Spec.Graph3.is_edge_set_lemma",
+      1,
+      2,
+      1,
+      [ "@query" ],
+      0,
+      "e732e74e77f12c2dc0178612be51027a"
+    ],
+    [
+      "Spec.Graph3.is_edge_set_lemma3",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query", "bool_inversion",
+        "primitive_Prims.op_LessThanOrEqual",
+        "primitive_Prims.op_Subtraction",
+        "projection_inverse_BoxBool_proj_0",
+        "projection_inverse_BoxInt_proj_0", "typing_Spec.Graph3.is_edge_set"
+      ],
+      0,
+      "8bea11d4b9af9da901abb0d6f0adddb5"
+    ],
+    [
+      "Spec.Graph3.is_edge_set_lemma4",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "assumption_FStar.Pervasives.Native.tuple2__uu___haseq",
+        "equation_Prims.eqtype", "equation_Spec.Graph3.edge",
+        "equation_Spec.Graph3.vertex_id",
+        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
+        "typing_FStar.UInt64.t"
+      ],
+      0,
+      "5ce9a3bfa7c321f0eadfad88b1af904f"
+    ],
+    [
+      "Spec.Graph3.mem_index_count",
+      1,
+      2,
+      1,
+      [
+        "@MaxFuel_assumption", "@MaxIFuel_assumption",
+        "@fuel_correspondence_FStar.Seq.Properties.count.fuel_instrumented",
+        "@fuel_irrelevance_FStar.Seq.Properties.count.fuel_instrumented",
+        "@query", "Prims_pretyping_ae567c2fb75be05905677af440075565",
+        "binder_x_0f213a493b460394312187ae1ccaa1bb_2",
+        "binder_x_157b99e815dc43d99415725267e9c452_1",
+        "binder_x_9cd1733a5204f989dbb2f01d5984df93_0",
+        "equation_FStar.Seq.Properties.head",
+        "equation_FStar.Seq.Properties.tail", "equation_Prims.eqtype",
+        "equation_Prims.nat",
+        "equation_with_fuel_FStar.Seq.Properties.count.fuel_instrumented",
+        "function_token_typing_Prims.__cache_version_number__",
+        "int_inversion", "int_typing",
+        "lemma_FStar.Seq.Base.lemma_index_slice",
+        "lemma_FStar.Seq.Base.lemma_len_slice",
+        "primitive_Prims.op_Addition", "primitive_Prims.op_Equality",
+        "primitive_Prims.op_LessThanOrEqual",
+        "primitive_Prims.op_Subtraction",
+        "projection_inverse_BoxBool_proj_0",
+        "projection_inverse_BoxInt_proj_0",
+        "refinement_interpretation_Tm_refine_2024f3d60f1e162e9f0d26c9d17144c9",
+        "refinement_interpretation_Tm_refine_35a0739c434508f48d0bb1d5cd5df9e8",
+        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
+        "refinement_interpretation_Tm_refine_45eadf33ba18c65afb51aeb4ef24fd23",
+        "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
+        "refinement_interpretation_Tm_refine_81407705a0828c2c1b1976675443f647",
+        "refinement_interpretation_Tm_refine_d3d07693cd71377864ef84dc97d10ec1",
+        "typing_FStar.Seq.Base.length", "typing_FStar.Seq.Properties.count",
+        "well-founded-ordering-on-nat"
+      ],
+      0,
+      "73995ba45898f7371f08e88c157fe941"
+    ],
+    [
+      "Spec.Graph3.edge_mem",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "assumption_FStar.Pervasives.Native.tuple2__uu___haseq",
+        "equation_Prims.eqtype", "equation_Spec.Graph3.edge",
+        "equation_Spec.Graph3.vertex_id",
+        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
+        "typing_FStar.UInt64.t"
+      ],
+      0,
+      "b60c486c0c43b7a0f3198d3a57d27b11"
+    ],
+    [
+      "Spec.Graph3.mem_graph_vertex",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query", "bool_inversion",
+        "projection_inverse_BoxBool_proj_0"
+      ],
+      0,
+      "16b095ea32a78ac0dabdab1237cf026c"
+    ],
+    [
+      "Spec.Graph3.mem_graph_edge",
+      1,
+      2,
+      1,
+      [
+        "@query", "primitive_Prims.op_AmpAmp",
+        "projection_inverse_BoxBool_proj_0"
+      ],
+      0,
+      "31783f8f1dad1b369064dcd62fdffe23"
+    ],
+    [
+      "Spec.Graph3.reach",
+      1,
+      2,
+      1,
+      [ "@query" ],
+      0,
+      "4e5a33d03f91c4d2bb1031334719f3be"
+    ],
+    [
+      "Spec.Graph3.__proj__ReachRefl__item__a",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "refinement_interpretation_Tm_refine_d3f01931406243174ab22b51491f0ed5"
+      ],
+      0,
+      "f6dcc902ef8aee416f13c380a343af71"
+    ],
+    [
+      "Spec.Graph3.__proj__ReachRefl__item__b",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "refinement_interpretation_Tm_refine_d3f01931406243174ab22b51491f0ed5"
+      ],
+      0,
+      "d57015636bd5c544b9839528fea4ea8b"
+    ],
+    [
+      "Spec.Graph3.__proj__ReachRefl__item__g",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query", "data_elim_Spec.Graph3.ReachRefl",
+        "fuel_guarded_inversion_Spec.Graph3.graph_state",
+        "refinement_interpretation_Tm_refine_d3f01931406243174ab22b51491f0ed5"
+      ],
+      0,
+      "02fe4136a2aae1f58b35533378957cfb"
+    ],
+    [
+      "Spec.Graph3.__proj__ReachRefl__item__x",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query", "data_elim_Spec.Graph3.ReachRefl",
+        "fuel_guarded_inversion_Spec.Graph3.graph_state",
+        "refinement_interpretation_Tm_refine_d3f01931406243174ab22b51491f0ed5"
+      ],
+      0,
+      "b90e5ff2bf4b68a8d3e2e3cb9acea939"
+    ],
+    [
+      "Spec.Graph3.__proj__ReachTrans__item__a",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "refinement_interpretation_Tm_refine_a59d7b29a5808a1572d98dcc51a6d311"
+      ],
+      0,
+      "fd2155689100acd72a09feb662dbe741"
+    ],
+    [
+      "Spec.Graph3.__proj__ReachTrans__item__b",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "refinement_interpretation_Tm_refine_a59d7b29a5808a1572d98dcc51a6d311"
+      ],
+      0,
+      "73370e953bd5e66bc74a3ef3c4f1eb54"
+    ],
+    [
+      "Spec.Graph3.__proj__ReachTrans__item__g",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query", "data_elim_Spec.Graph3.ReachTrans",
+        "fuel_guarded_inversion_Spec.Graph3.graph_state",
+        "refinement_interpretation_Tm_refine_a59d7b29a5808a1572d98dcc51a6d311"
+      ],
+      0,
+      "31c3622283f9e3b5bb127a608d43b0c6"
+    ],
+    [
+      "Spec.Graph3.__proj__ReachTrans__item__x",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query", "data_elim_Spec.Graph3.ReachTrans",
+        "fuel_guarded_inversion_Spec.Graph3.graph_state",
+        "refinement_interpretation_Tm_refine_a59d7b29a5808a1572d98dcc51a6d311"
+      ],
+      0,
+      "b300b4849662f25f35cc78c7be88c111"
+    ],
+    [
+      "Spec.Graph3.__proj__ReachTrans__item__y",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query", "data_elim_Spec.Graph3.ReachTrans",
+        "fuel_guarded_inversion_Spec.Graph3.graph_state",
+        "refinement_interpretation_Tm_refine_a59d7b29a5808a1572d98dcc51a6d311"
+      ],
+      0,
+      "063d7f8aa9725945b2f9373b031af744"
+    ],
+    [
+      "Spec.Graph3.__proj__ReachTrans__item__z",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query", "data_elim_Spec.Graph3.ReachTrans",
+        "fuel_guarded_inversion_Spec.Graph3.graph_state",
+        "refinement_interpretation_Tm_refine_a59d7b29a5808a1572d98dcc51a6d311"
+      ],
+      0,
+      "81b8ed9c636d2d53423849c892cf148e"
+    ],
+    [
+      "Spec.Graph3.__proj__ReachTrans__item___6",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query", "data_elim_Spec.Graph3.ReachTrans",
+        "fuel_guarded_inversion_Spec.Graph3.graph_state",
+        "refinement_interpretation_Tm_refine_a59d7b29a5808a1572d98dcc51a6d311"
+      ],
+      0,
+      "096f44689d739b37eb4926ef122a2a00"
+    ],
+    [
+      "Spec.Graph3.slice_membership_lemma_reach_x_2",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query", "bool_inversion",
+        "equation_FStar.Seq.Properties.mem",
+        "equation_Spec.Graph3.mem_graph_vertex",
+        "equation_Spec.Graph3.vertex_id", "equation_Spec.Graph3.vertex_list",
+        "fuel_guarded_inversion_Spec.Graph3.graph_state",
+        "proj_equation_Spec.Graph3.Mkgraph_state_vertices",
+        "refinement_interpretation_Tm_refine_12bf0227bbed199c90958814277a7b55",
+        "refinement_interpretation_Tm_refine_563815391c6ea9e3e29d5cc824051642",
+        "refinement_interpretation_Tm_refine_60b02c59968d189b29580148f61f2ec0",
+        "refinement_interpretation_Tm_refine_7a02212cd682f262270a21f693a9a7c2",
+        "refinement_interpretation_Tm_refine_99fdbcce0d2dc4a9c1cba88e399c50cd",
+        "typing_FStar.Seq.Properties.mem", "typing_FStar.UInt64.t",
+        "typing_Spec.Graph3.__proj__Mkgraph_state__item__vertices",
+        "typing_Spec.Graph3.vertex_mem"
+      ],
+      0,
+      "e95e9622aca0b8b5db3716060a1b09b8"
+    ],
+    [
+      "Spec.Graph3.vertices_in_sub_path_lemma",
+      1,
+      2,
+      1,
+      [ "@query" ],
+      0,
+      "de88684c2e60043b52726f44127f63c8"
+    ],
+    [
+      "Spec.Graph3.edge_reach_constructor",
+      1,
+      2,
+      1,
+      [ "@query" ],
+      0,
+      "5af916ae842c453c4818f6edde0b8c18"
+    ],
+    [
+      "Spec.Graph3.reflex_lemma_list",
+      1,
+      2,
+      1,
+      [ "@query" ],
+      0,
+      "38675f1dee77ea74d7547f13d6a0bef9"
+    ],
+    [
+      "Spec.Graph3.reachability_lemma",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query", "equation_Prims.eqtype",
+        "equation_Spec.Graph3.vertex_id",
+        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
+        "typing_FStar.UInt64.t"
+      ],
+      0,
+      "15b541478f1882b9349e1873153ed727"
+    ],
+    [
+      "Spec.Graph3.snoc_unique_lemma_edge",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "assumption_FStar.Pervasives.Native.tuple2__uu___haseq",
+        "equation_Prims.eqtype", "equation_Spec.Graph3.edge",
+        "equation_Spec.Graph3.vertex_id",
+        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
+        "typing_FStar.UInt64.t"
+      ],
+      0,
+      "ffb2d69a2a4efce4e07da38ba5ac999f"
+    ],
+    [
+      "Spec.Graph3.successors_successors_fn2_connect_lemma",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "fuel_guarded_inversion_Spec.Graph3.graph_state",
+        "refinement_interpretation_Tm_refine_12bf0227bbed199c90958814277a7b55",
+        "refinement_interpretation_Tm_refine_3b3bcfd56b53b83c73f2c173fdfa9fc3",
+        "refinement_interpretation_Tm_refine_86f5c8b47d0c7fa7da59e9f4de3d74dc",
+        "typing_Spec.Graph3.__proj__Mkgraph_state__item__edge_set",
+        "typing_Spec.Graph3.successors_fn2"
+      ],
+      0,
+      "1f17d1310b6f486331285bada1b875b7"
+    ],
+    [
+      "Spec.Graph3.pick_second",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "binder_x_cb0d5b101296b55af8213245b0c1fe61_0",
+        "equation_FStar.Seq.Properties.head",
+        "equation_FStar.Seq.Properties.tail", "equation_Prims.nat",
+        "equation_Spec.Graph3.edge",
+        "function_token_typing_Spec.Graph3.edge", "int_inversion",
+        "int_typing", "lemma_FStar.Seq.Base.lemma_len_slice",
+        "primitive_Prims.op_Equality", "primitive_Prims.op_LessThanOrEqual",
+        "primitive_Prims.op_Subtraction",
+        "projection_inverse_BoxBool_proj_0",
+        "projection_inverse_BoxInt_proj_0",
+        "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
+        "refinement_interpretation_Tm_refine_81407705a0828c2c1b1976675443f647",
+        "typing_FStar.Seq.Base.length", "well-founded-ordering-on-nat"
+      ],
+      0,
+      "41e20714e34c501f70bb40696c679e55"
+    ],
+    [
+      "Spec.Graph3.pick_second_lemma",
+      1,
+      2,
+      1,
+      [
+        "@MaxFuel_assumption", "@MaxIFuel_assumption",
+        "@fuel_correspondence_Spec.Graph3.pick_second.fuel_instrumented",
+        "@fuel_irrelevance_Spec.Graph3.pick_second.fuel_instrumented",
+        "@query", "Prims_pretyping_ae567c2fb75be05905677af440075565",
+        "b2t_def", "equation_FStar.Seq.Properties.tail",
+        "equation_Prims.squash", "equation_Spec.Graph3.edge",
+        "equation_with_fuel_Spec.Graph3.pick_second.fuel_instrumented",
+        "function_token_typing_Prims.__cache_version_number__",
+        "primitive_Prims.op_Equality", "primitive_Prims.op_GreaterThan",
+        "projection_inverse_BoxBool_proj_0",
+        "refinement_interpretation_Tm_refine_2de20c066034c13bf76e9c0b94f4806c"
+      ],
+      0,
+      "a631877b76cc951ac65e74f8c651fd82"
+    ],
+    [
+      "Spec.Graph3.pick_second_length_lemma",
+      1,
+      2,
+      1,
+      [
+        "@MaxFuel_assumption", "@MaxIFuel_assumption",
+        "@fuel_correspondence_Spec.Graph3.pick_second.fuel_instrumented",
+        "@fuel_irrelevance_Spec.Graph3.pick_second.fuel_instrumented",
+        "@query", "Prims_pretyping_ae567c2fb75be05905677af440075565",
+        "binder_x_cb0d5b101296b55af8213245b0c1fe61_0",
+        "equation_FStar.Pervasives.Native.snd",
+        "equation_FStar.Seq.Base.cons", "equation_FStar.Seq.Properties.head",
+        "equation_FStar.Seq.Properties.tail", "equation_Prims.eqtype",
+        "equation_Prims.nat", "equation_Spec.Graph3.edge",
+        "equation_Spec.Graph3.vertex_id",
+        "equation_with_fuel_Spec.Graph3.pick_second.fuel_instrumented",
+        "fuel_guarded_inversion_FStar.Pervasives.Native.tuple2",
+        "function_token_typing_Prims.__cache_version_number__",
+        "function_token_typing_Spec.Graph3.edge", "int_inversion",
+        "int_typing", "lemma_FStar.Seq.Base.lemma_create_len",
+        "lemma_FStar.Seq.Base.lemma_len_append",
+        "lemma_FStar.Seq.Base.lemma_len_slice",
+        "primitive_Prims.op_Addition", "primitive_Prims.op_Equality",
+        "primitive_Prims.op_LessThanOrEqual",
+        "primitive_Prims.op_Subtraction",
+        "projection_inverse_BoxBool_proj_0",
+        "projection_inverse_BoxInt_proj_0",
+        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
+        "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
+        "refinement_interpretation_Tm_refine_81407705a0828c2c1b1976675443f647",
+        "refinement_interpretation_Tm_refine_b913a3f691ca99086652e0a655e72f17",
+        "typing_FStar.Pervasives.Native.__proj__Mktuple2__item___2",
+        "typing_FStar.Seq.Base.create", "typing_FStar.Seq.Base.empty",
+        "typing_FStar.Seq.Base.length", "typing_FStar.UInt64.t",
+        "typing_Spec.Graph3.pick_second", "well-founded-ordering-on-nat"
+      ],
+      0,
+      "be97a692e34096846ebe8204305516e4"
+    ],
+    [
+      "Spec.Graph3.pick_second_mem_lemma",
+      1,
+      2,
+      1,
+      [
+        "@MaxFuel_assumption", "@MaxIFuel_assumption",
+        "@fuel_correspondence_FStar.Seq.Properties.count.fuel_instrumented",
+        "@fuel_correspondence_Spec.Graph3.pick_second.fuel_instrumented",
+        "@fuel_irrelevance_FStar.Seq.Properties.count.fuel_instrumented",
+        "@fuel_irrelevance_Spec.Graph3.pick_second.fuel_instrumented",
+        "@query", "Prims_pretyping_ae567c2fb75be05905677af440075565",
+        "assumption_FStar.Pervasives.Native.tuple2__uu___haseq",
+        "binder_x_0e7ca0616d776efd48db94ebbb4614e0_3",
+        "binder_x_9cd1733a5204f989dbb2f01d5984df93_0",
+        "binder_x_9cd1733a5204f989dbb2f01d5984df93_1",
+        "binder_x_dd5f263dffca7ab4db77a2c5272d7dbe_2", "bool_inversion",
+        "equation_FStar.Pervasives.Native.snd",
+        "equation_FStar.Seq.Base.cons", "equation_FStar.Seq.Properties.head",
+        "equation_FStar.Seq.Properties.mem",
+        "equation_FStar.Seq.Properties.tail", "equation_Prims.eqtype",
+        "equation_Prims.nat", "equation_Spec.Graph3.edge",
+        "equation_Spec.Graph3.mem_graph_vertex",
+        "equation_Spec.Graph3.vertex_id",
+        "equation_with_fuel_FStar.Seq.Properties.count.fuel_instrumented",
+        "equation_with_fuel_Spec.Graph3.pick_second.fuel_instrumented",
+        "fuel_guarded_inversion_FStar.Pervasives.Native.tuple2",
+        "fuel_guarded_inversion_Spec.Graph3.graph_state",
+        "function_token_typing_Prims.__cache_version_number__",
+        "function_token_typing_Spec.Graph3.edge", "int_inversion",
+        "int_typing", "lemma_FStar.Seq.Base.lemma_create_len",
+        "lemma_FStar.Seq.Base.lemma_eq_elim",
+        "lemma_FStar.Seq.Base.lemma_index_app1",
+        "lemma_FStar.Seq.Base.lemma_index_create",
+        "lemma_FStar.Seq.Base.lemma_len_append",
+        "lemma_FStar.Seq.Base.lemma_len_slice",
+        "primitive_Prims.op_Addition", "primitive_Prims.op_Equality",
+        "primitive_Prims.op_GreaterThan",
+        "primitive_Prims.op_LessThanOrEqual",
+        "primitive_Prims.op_Subtraction",
+        "projection_inverse_BoxBool_proj_0",
+        "projection_inverse_BoxInt_proj_0",
+        "refinement_interpretation_Tm_refine_167ef714932ec832fb671890fc3eee6c",
+        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
+        "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
+        "refinement_interpretation_Tm_refine_81407705a0828c2c1b1976675443f647",
+        "refinement_interpretation_Tm_refine_b23dae0c66076ae9f4088ea61d320e1f",
+        "refinement_interpretation_Tm_refine_b913a3f691ca99086652e0a655e72f17",
+        "refinement_interpretation_Tm_refine_c1424615841f28cac7fc34e92b7ff33c",
+        "refinement_interpretation_Tm_refine_ca8648493716f5cec3efe13271be0d4d",
+        "refinement_interpretation_Tm_refine_d83f8da8ef6c1cb9f71d1465c1bb1c55",
+        "token_correspondence_FStar.Seq.Properties.count.fuel_instrumented",
+        "token_correspondence_Spec.Graph3.pick_second.fuel_instrumented",
+        "typing_FStar.Pervasives.Native.snd", "typing_FStar.Seq.Base.create",
+        "typing_FStar.Seq.Base.empty", "typing_FStar.Seq.Base.length",
+        "typing_FStar.Seq.Properties.mem",
+        "typing_FStar.Seq.Properties.tail", "typing_FStar.UInt64.t",
+        "typing_Spec.Graph3.mem_graph_vertex",
+        "typing_Spec.Graph3.pick_second", "well-founded-ordering-on-nat"
+      ],
+      0,
+      "70daf77565c05390fb9d7b2ccd7a937c"
+    ],
+    [
+      "Spec.Graph3.pick_second_mem_lemma",
+      2,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "assumption_FStar.Pervasives.Native.tuple2__uu___haseq",
+        "equation_Prims.eqtype", "equation_Spec.Graph3.edge",
+        "equation_Spec.Graph3.vertex_id",
+        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
+        "typing_FStar.UInt64.t"
+      ],
+      0,
+      "e64b90fb27f9d6e7a24d0bc607def35a"
+    ],
+    [
+      "Spec.Graph3.successors_fn2_pick_second_lemma",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "assumption_FStar.Pervasives.Native.tuple2__uu___haseq",
+        "equation_Prims.eqtype", "equation_Spec.Graph3.edge",
+        "equation_Spec.Graph3.vertex_id",
+        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
+        "typing_FStar.UInt64.t"
+      ],
+      0,
+      "36e4b5f1a920f2aa33bca14dcf98666e"
+    ],
+    [
+      "Spec.Graph3.successors_fn2_e2_is_successors_fn2_e_if_no_fst_i_in_e1",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "assumption_FStar.Pervasives.Native.tuple2__uu___haseq",
+        "equation_Prims.eqtype", "equation_Spec.Graph3.edge",
+        "equation_Spec.Graph3.vertex_id",
+        "refinement_interpretation_Tm_refine_1fa0a3af7cad611f885bb6caafd1eb76",
+        "refinement_interpretation_Tm_refine_3b3bcfd56b53b83c73f2c173fdfa9fc3",
+        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
+        "typing_FStar.UInt64.t", "typing_Spec.Graph3.successors_fn2"
+      ],
+      0,
+      "9255f83f3b50b8f1b332370d36909ec8"
+    ],
+    [
+      "Spec.Graph3.successors_fn2_e2_is_successors_fn2_e1_if_no_fst_tl_in_e",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "assumption_FStar.Pervasives.Native.tuple2__uu___haseq",
+        "equation_Prims.eqtype", "equation_Spec.Graph3.edge",
+        "equation_Spec.Graph3.vertex_id",
+        "refinement_interpretation_Tm_refine_3b3bcfd56b53b83c73f2c173fdfa9fc3",
+        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
+        "typing_FStar.UInt64.t", "typing_Spec.Graph3.successors_fn2"
+      ],
+      0,
+      "cfc60f49aa446e1f8e0ff99b9f48409e"
+    ],
+    [
+      "Spec.Graph3.next",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query", "b2t_def",
+        "equation_FStar.UInt.fits", "equation_FStar.UInt.size",
+        "equation_FStar.UInt.uint_t", "int_inversion",
+        "primitive_Prims.op_Addition", "primitive_Prims.op_AmpAmp",
+        "projection_inverse_BoxBool_proj_0",
+        "refinement_interpretation_Tm_refine_e4fcad565ec97e07ab00644b3217d1a5",
+        "refinement_interpretation_Tm_refine_f13070840248fced9d9d60d77bdae3ec",
+        "typing_FStar.UInt64.v"
+      ],
+      0,
+      "fbce7c956559aeaa7ee9c4595562afcb"
+    ],
+    [
+      "Spec.Graph3.previous",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query", "b2t_def",
+        "equation_FStar.UInt.fits", "equation_FStar.UInt.size",
+        "equation_FStar.UInt.uint_t", "int_inversion",
+        "primitive_Prims.op_AmpAmp", "primitive_Prims.op_Subtraction",
+        "projection_inverse_BoxBool_proj_0",
+        "refinement_interpretation_Tm_refine_4a3a4d4ae9affd5c885c79f34c621bf9",
+        "refinement_interpretation_Tm_refine_f13070840248fced9d9d60d77bdae3ec",
+        "typing_FStar.UInt64.v"
+      ],
+      0,
+      "d7d9e084eec46b1581b203730b302c64"
+    ],
+    [
+      "Spec.Graph3.next_wrapper",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query", "equation_Spec.Graph3.hp_addr",
+        "primitive_Prims.op_Addition", "primitive_Prims.op_Modulus",
+        "projection_inverse_BoxInt_proj_0",
+        "refinement_interpretation_Tm_refine_c999f04d0e414c0be2a31aa120131847",
+        "refinement_interpretation_Tm_refine_e1d36e6be2436128502d0baa63fa4486",
+        "refinement_interpretation_Tm_refine_ecb060d9653d4708341356a72eb99b35"
+      ],
+      0,
+      "579eb33e831a8cd9e8b1c012fba88725"
+    ],
+    [
+      "Spec.Graph3.successors_fn2_e2_is_successors_fn2_e1_if_no_fst_tl_in_e'",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "assumption_FStar.Pervasives.Native.tuple2__uu___haseq",
+        "equation_Prims.eqtype", "equation_Spec.Graph3.edge",
+        "equation_Spec.Graph3.vertex_id",
+        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
+        "typing_FStar.UInt64.t"
+      ],
+      0,
+      "127ef2cff24622fd8d36a66bd0ce49da"
+    ],
+    [
+      "Spec.Graph3.successors_fn2_e2_is_successors_fn2_e1_if_no_fst_tl_in_e''",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "assumption_FStar.Pervasives.Native.tuple2__uu___haseq",
+        "equation_Prims.eqtype", "equation_Spec.Graph3.edge",
+        "equation_Spec.Graph3.vertex_id",
+        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
+        "refinement_interpretation_Tm_refine_cdf94e79e1ad1388211fe8f7fb530cc1",
+        "typing_FStar.UInt64.t"
+      ],
+      0,
+      "c5080c1f359a610f6254433147cd591f"
+    ],
+    [
+      "Spec.Graph3.edge_reach_lemma_succ",
+      1,
+      2,
+      1,
+      [ "@query" ],
+      0,
+      "90d9a19171a8dd850c80b643cc4fc7e2"
+    ],
+    [
+      "Spec.Graph3.succ_reach_lemma",
+      1,
+      2,
+      1,
+      [ "@query" ],
+      0,
+      "ba937cb5bbfdef9b912a3f601e87977e"
+    ],
+    [
+      "Spec.Graph3.reach_lemma_transitive",
+      1,
+      2,
+      1,
+      [ "@query" ],
+      0,
+      "6e8b11199bb240292c27350c638ae182"
+    ],
+    [
+      "Spec.Graph3.reachability_non_dependent_on_attributes_lemma",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "equation_Spec.Graph3.mem_graph_vertex",
+        "fuel_guarded_inversion_Spec.Graph3.graph_state",
+        "proj_equation_Spec.Graph3.Mkgraph_state_edge_set",
+        "proj_equation_Spec.Graph3.Mkgraph_state_vertices",
+        "refinement_interpretation_Tm_refine_12bf0227bbed199c90958814277a7b55",
+        "refinement_interpretation_Tm_refine_137ae2bc7ac8119dc0bf2b0f88da46c9"
+      ],
+      0,
+      "8352e3f54a7f8f689e33d5834f5a2c02"
+    ],
+    [
+      "Spec.Graph3.succ_reach_transitive_lemma3",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query", "bool_inversion",
+        "equation_Spec.Graph3.mem_graph_edge",
+        "equation_Spec.Graph3.mem_graph_vertex",
+        "fuel_guarded_inversion_Spec.Graph3.graph_state",
+        "primitive_Prims.op_AmpAmp",
+        "proj_equation_Spec.Graph3.Mkgraph_state_vertices",
+        "projection_inverse_BoxBool_proj_0",
+        "refinement_interpretation_Tm_refine_1077a134a84cb2b3e1130138e5d789e0",
+        "refinement_interpretation_Tm_refine_12bf0227bbed199c90958814277a7b55",
+        "refinement_interpretation_Tm_refine_331c4085d00e250c386341645cc21fbc",
+        "refinement_interpretation_Tm_refine_7a02212cd682f262270a21f693a9a7c2",
+        "refinement_interpretation_Tm_refine_99fdbcce0d2dc4a9c1cba88e399c50cd",
+        "refinement_interpretation_Tm_refine_ca8648493716f5cec3efe13271be0d4d",
+        "refinement_interpretation_Tm_refine_cca251361371befb0b5898cb38c49e13",
+        "typing_Spec.Graph3.__proj__Mkgraph_state__item__vertices",
+        "typing_Spec.Graph3.mem_graph_edge",
+        "typing_Spec.Graph3.mem_graph_vertex",
+        "typing_Spec.Graph3.successors", "typing_Spec.Graph3.vertex_mem"
+      ],
+      0,
+      "685fb1ba34f575f7a4aed6499da474d4"
+    ],
+    [
+      "Spec.Graph3.createEmptySet",
+      1,
+      2,
+      1,
+      [ "@query" ],
+      0,
+      "eedc05065649c5f518ff89137aab6747"
+    ],
+    [
+      "Spec.Graph3.empty_set_mem",
+      1,
+      2,
+      1,
+      [ "@query" ],
+      0,
+      "5df29dec0bbd112c634661fe48a14a58"
+    ],
+    [
+      "Spec.Graph3.empty_set_subset_all_sets",
+      1,
+      2,
+      1,
+      [ "@query" ],
+      0,
+      "2931a21d2545f96fd8bdee44d63478aa"
+    ],
+    [
+      "Spec.Graph3.get_head",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query", "bool_inversion",
+        "refinement_interpretation_Tm_refine_829c9fa0742b20e5b025d6e43deb27ee",
+        "refinement_interpretation_Tm_refine_c460461ecaeeb3d04c238d6c3f797901",
+        "typing_Spec.Graph3.nonEmpty_set"
+      ],
+      0,
+      "bbea6ceb6ce7994aac1425a4ea40a786"
+    ],
+    [
+      "Spec.Graph3.get_tail",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query", "bool_inversion",
+        "refinement_interpretation_Tm_refine_829c9fa0742b20e5b025d6e43deb27ee",
+        "refinement_interpretation_Tm_refine_c460461ecaeeb3d04c238d6c3f797901",
+        "typing_Spec.Graph3.nonEmpty_set"
+      ],
+      0,
+      "4f00ac6ca49e4a7cd93f19b70a97b3b6"
+    ],
+    [
+      "Spec.Graph3.get_last_elem",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query", "bool_inversion",
+        "equation_Spec.Graph3.cardinal1", "equation_Spec.Graph3.vertex_id",
+        "primitive_Prims.op_Subtraction", "projection_inverse_BoxInt_proj_0",
+        "refinement_interpretation_Tm_refine_829c9fa0742b20e5b025d6e43deb27ee",
+        "refinement_interpretation_Tm_refine_c460461ecaeeb3d04c238d6c3f797901",
+        "typing_Spec.Graph3.nonEmpty_set"
+      ],
+      0,
+      "5c8bff060e3b14c978a50224f1ba0001"
+    ],
+    [
+      "Spec.Graph3.get_first",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query", "bool_inversion",
+        "equation_Spec.Graph3.cardinal1", "equation_Spec.Graph3.vertex_id",
+        "equation_Spec.Graph3.vertex_set",
+        "primitive_Prims.op_LessThanOrEqual",
+        "primitive_Prims.op_Subtraction", "projection_inverse_BoxInt_proj_0",
+        "refinement_interpretation_Tm_refine_829c9fa0742b20e5b025d6e43deb27ee",
+        "refinement_interpretation_Tm_refine_99fdbcce0d2dc4a9c1cba88e399c50cd",
+        "refinement_interpretation_Tm_refine_c460461ecaeeb3d04c238d6c3f797901",
+        "typing_Spec.Graph3.is_vertex_set", "typing_Spec.Graph3.nonEmpty_set"
+      ],
+      0,
+      "50149e7b7945dc6c3e53f7605e23870d"
+    ],
+    [
+      "Spec.Graph3.last_first_set_connect_lemma_helper",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query", "equation_Prims.eqtype",
+        "equation_Spec.Graph3.vertex_id",
+        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
+        "typing_FStar.UInt64.t"
+      ],
+      0,
+      "05ee4bfdadcb4c6d810b67e3b0ae43a7"
+    ],
+    [
+      "Spec.Graph3.last_first_set_connect_lemma1_helper",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query", "equation_Prims.eqtype",
+        "equation_Spec.Graph3.vertex_id",
+        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
+        "typing_FStar.UInt64.t"
+      ],
+      0,
+      "0077f2df067a3802a065ea30a6f58858"
+    ],
+    [
+      "Spec.Graph3.get_tail_mem_lemma",
+      1,
+      2,
+      1,
+      [ "@query" ],
+      0,
+      "495fcbaab07d135ad2d3b4b217805bca"
+    ],
+    [
+      "Spec.Graph3.get_first_mem_lemma",
+      1,
+      2,
+      1,
+      [ "@query" ],
+      0,
+      "665b8a660361ad5aef70e57402b04c86"
+    ],
+    [
+      "Spec.Graph3.insert_to_vertex_set",
+      1,
+      2,
+      1,
+      [
+        "@query", "primitive_Prims.op_Addition",
+        "projection_inverse_BoxInt_proj_0"
+      ],
+      0,
+      "df08842f26b460ab2bb130e013450a89"
+    ],
+    [
+      "Spec.Graph3.reach_singleton",
+      1,
+      2,
+      1,
+      [ "@query" ],
+      0,
+      "385d96d9093790c3576eae150528ba82"
+    ],
+    [
+      "Spec.Graph3.reach_empty",
+      1,
+      2,
+      1,
+      [ "@query" ],
+      0,
+      "e8e5fd2a96ddcc02cc96d79553343cd2"
+    ],
+    [
+      "Spec.Graph3.reach_from_x_equals_reach_from_singleton_x_set",
+      1,
+      2,
+      1,
+      [ "@query" ],
+      0,
+      "a2e15c935550255917858d1a108405f9"
+    ],
+    [
+      "Spec.Graph3.insert_to_vertex_set_head_tail_mem_neg_lemma",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query", "equation_Prims.eqtype",
+        "equation_Spec.Graph3.vertex_id",
+        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
+        "typing_FStar.UInt64.t"
+      ],
+      0,
+      "2e3e3a425fcc54ef59f4c787292b2925"
+    ],
+    [
+      "Spec.Graph3.insert_to_vertex_set_last_first_mem_neg_lemma",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query", "equation_Prims.eqtype",
+        "equation_Spec.Graph3.vertex_id",
+        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
+        "typing_FStar.UInt64.t"
+      ],
+      0,
+      "b67a99054502781aedc03b694fa2f7bf"
+    ],
+    [
+      "Spec.Graph3.insert_to_vertex_set_head_tail_mem_lemma",
+      1,
+      2,
+      1,
+      [ "@query" ],
+      0,
+      "7760b196b944c3a31cd3eab79c28495d"
+    ],
+    [
+      "Spec.Graph3.insert_to_vertex_set_last_first_mem_lemma",
+      1,
+      2,
+      1,
+      [ "@query" ],
+      0,
+      "9a1adc600bf7bd9fff0ab7419cf9fcf6"
+    ],
+    [
+      "Spec.Graph3.insert_to_vertex_set_reach_lemma",
+      1,
+      2,
+      1,
+      [ "@query" ],
+      0,
+      "3727d1008155bc5340ba23298eca5248"
+    ],
+    [
+      "Spec.Graph3.insert_to_vertex_set_reach_lemma_root_set",
+      1,
+      2,
+      1,
+      [ "@query" ],
+      0,
+      "c70832d0f3b1937aa2027633caf0ef74"
+    ],
+    [
+      "Spec.Graph3.insert_to_vertex_set_mem_negation_lemma",
+      1,
+      2,
+      1,
+      [ "@query" ],
+      0,
+      "c6d47a8d8bccc085c5b58d0e2e57c596"
+    ],
+    [
+      "Spec.Graph3.union_vertex_sets_subset_lemma",
+      1,
+      2,
+      1,
+      [ "@query" ],
+      0,
+      "6b0afc473f28666b867dc9b08a569ff9"
+    ],
+    [
+      "Spec.Graph3.successor_push_body",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query", "bool_inversion",
+        "equation_Prims.eqtype", "equation_Prims.nat",
+        "equation_Spec.Graph3.mem_graph_vertex",
+        "equation_Spec.Graph3.vertex_id", "equation_Spec.Graph3.vertex_list",
+        "fuel_guarded_inversion_Spec.Graph3.graph_state", "int_inversion",
+        "lemma_FStar.Seq.Properties.seq_mem_k",
+        "proj_equation_Spec.Graph3.Mkgraph_state_vertices",
+        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
+        "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
+        "refinement_interpretation_Tm_refine_6aac250229b32a9b0752ee1b61e0ff99",
+        "refinement_interpretation_Tm_refine_7a02212cd682f262270a21f693a9a7c2",
+        "refinement_interpretation_Tm_refine_8bd1da98b525041f5b935746fc977af1",
+        "refinement_interpretation_Tm_refine_99fdbcce0d2dc4a9c1cba88e399c50cd",
+        "refinement_interpretation_Tm_refine_ca8648493716f5cec3efe13271be0d4d",
+        "refinement_interpretation_Tm_refine_d83f8da8ef6c1cb9f71d1465c1bb1c55",
+        "typing_FStar.Seq.Base.index", "typing_FStar.UInt64.t",
+        "typing_Spec.Graph3.__proj__Mkgraph_state__item__vertices",
+        "typing_Spec.Graph3.mem_graph_vertex",
+        "typing_Spec.Graph3.vertex_mem"
+      ],
+      0,
+      "e6f1c8d310732f9d6e549da9aa35cf97"
+    ],
+    [
+      "Spec.Graph3.successor_push_body1",
+      1,
+      2,
+      1,
+      [ "@query" ],
+      0,
+      "e9b4a64ce488655068451d4f330f8f73"
+    ],
+    [
+      "Spec.Graph3.successor_push_itr_lemma",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query", "b2t_def", "equation_Prims.nat",
+        "equation_Prims.squash",
+        "fuel_guarded_inversion_Spec.Graph3.graph_state", "int_inversion",
+        "primitive_Prims.op_Addition", "primitive_Prims.op_LessThan",
+        "projection_inverse_BoxBool_proj_0",
+        "projection_inverse_BoxInt_proj_0",
+        "refinement_interpretation_Tm_refine_2de20c066034c13bf76e9c0b94f4806c",
+        "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
+        "refinement_interpretation_Tm_refine_d2681482f3bc27dabef020617f8e355c"
+      ],
+      0,
+      "499db1111131cd00132f1b80915f4e0d"
+    ],
+    [
+      "Spec.Graph3.successor_push_itr_lemma1",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "refinement_interpretation_Tm_refine_8093448543801006a90f1f94f7dbaae5",
+        "typing_Spec.Graph3.successor_push_itr"
+      ],
+      0,
+      "c020e7c98ed2e9a38655dd5a2db75e1f"
+    ],
+    [
+      "Spec.Graph3.successor_push_itr1_lemma",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query", "b2t_def", "equation_Prims.nat",
+        "equation_Prims.squash", "int_inversion",
+        "primitive_Prims.op_Addition", "primitive_Prims.op_LessThan",
+        "projection_inverse_BoxBool_proj_0",
+        "projection_inverse_BoxInt_proj_0",
+        "refinement_interpretation_Tm_refine_2de20c066034c13bf76e9c0b94f4806c",
+        "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2"
+      ],
+      0,
+      "ee559bbb85edf58587ad6614b3908bfd"
+    ],
+    [
+      "Spec.Graph3.successor_push_itr1_lemma1",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "refinement_interpretation_Tm_refine_b65bb75c1f30c4c9f9a6cdbecf6000d9",
+        "typing_Spec.Graph3.successor_push_itr1"
+      ],
+      0,
+      "35d1ba5cde1d53013dd617317d517212"
+    ],
+    [
+      "Spec.Graph3.push_to_stack_graph1_subset_lemma",
+      1,
+      2,
+      1,
+      [ "@query" ],
+      0,
+      "2c852ecdac6fddc3dc78518df2f47802"
+    ],
+    [
+      "Spec.Graph3.successor_push_body1_subset_lemma",
+      1,
+      2,
+      1,
+      [ "@query" ],
+      0,
+      "a67b1b83c1c49a4e8bf51510daf71e59"
+    ],
+    [
+      "Spec.Graph3.successor_push_itr1_subset_lemma",
+      1,
+      2,
+      1,
+      [ "@query" ],
+      0,
+      "d3c1a24ef158cbdf6e68638f9c56eeb3"
+    ],
+    [
+      "Spec.Graph3.successor_equals_if_graph_equals_lemma",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "refinement_interpretation_Tm_refine_0dee8cb03258a67c2f7ec66427696212",
+        "refinement_interpretation_Tm_refine_12bf0227bbed199c90958814277a7b55"
+      ],
+      0,
+      "357cf6fc876ca999d60d6ce0cc61abf4"
+    ],
+    [
+      "Spec.Graph3.remove_lemma_subset",
+      1,
+      2,
+      1,
+      [ "@query" ],
+      0,
+      "3bc7c066b7431ee6493832ccd7e1ae36"
+    ],
+    [
+      "Spec.Graph3.vertices_in_path_concat",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "refinement_interpretation_Tm_refine_19b324a35504f242aaf422d8b110cada"
+      ],
+      0,
+      "00d783cc7f35bc09a9b5e3738537f421"
+    ],
+    [
+      "Spec.Graph3.vertices_in_path_concat1",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query",
+        "refinement_interpretation_Tm_refine_19b324a35504f242aaf422d8b110cada"
+      ],
+      0,
+      "936bb588d855de58e86582cc86c2149a"
+    ],
+    [
+      "Spec.Graph3.mem_of_seq_upto_index",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query", "bool_inversion",
+        "equation_Prims.eqtype", "equation_Prims.nat", "int_inversion",
+        "lemma_FStar.Seq.Properties.seq_mem_k",
+        "primitive_Prims.op_LessThanOrEqual",
+        "projection_inverse_BoxBool_proj_0",
+        "refinement_interpretation_Tm_refine_3df7d4dcd73fc9d3874a7262c2b779e4",
+        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
+        "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
+        "refinement_interpretation_Tm_refine_d83f8da8ef6c1cb9f71d1465c1bb1c55",
+        "typing_FStar.Seq.Base.length", "typing_FStar.UInt64.t"
+      ],
+      0,
+      "5b94fff7f9a0ad26e708232f77d53c7a"
+    ],
+    [
+      "Spec.Graph3.mem_of_seq",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query", "bool_inversion",
+        "lemma_FStar.Seq.Properties.seq_mem_k",
+        "projection_inverse_BoxBool_proj_0",
+        "refinement_interpretation_Tm_refine_d83f8da8ef6c1cb9f71d1465c1bb1c55",
+        "typing_FStar.UInt64.t"
+      ],
+      0,
+      "9e85e1678d99caded768ce8bfc359441"
+    ],
+    [
+      "Spec.Graph3.mem_snoc",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query", "bool_inversion", "bool_typing",
+        "equation_FStar.Seq.Properties.mem", "equation_Prims.eqtype",
+        "equation_Prims.nat", "equation_Spec.Graph3.mem_of_seq_upto_index",
+        "int_inversion", "primitive_Prims.op_Addition",
+        "primitive_Prims.op_Equality", "primitive_Prims.op_GreaterThan",
+        "primitive_Prims.op_LessThan", "primitive_Prims.op_LessThanOrEqual",
+        "primitive_Prims.op_Subtraction",
+        "projection_inverse_BoxBool_proj_0",
+        "projection_inverse_BoxInt_proj_0",
+        "refinement_interpretation_Tm_refine_3df7d4dcd73fc9d3874a7262c2b779e4",
+        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
+        "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
+        "refinement_interpretation_Tm_refine_7ad5b930a339862396bbd7c1a7637326",
+        "refinement_interpretation_Tm_refine_99a95f4050962c41cef33104480bb60b",
+        "refinement_interpretation_Tm_refine_c24016b278cdba3d6139d414af27e383",
+        "refinement_interpretation_Tm_refine_d83f8da8ef6c1cb9f71d1465c1bb1c55",
+        "typing_FStar.Seq.Base.index", "typing_FStar.Seq.Base.length",
+        "typing_FStar.UInt64.t", "typing_Spec.Graph3.mem_of_seq_upto_index"
+      ],
+      0,
+      "c12b66b76f6ba5fc01118e42d228712e"
+    ],
+    [
+      "Spec.Graph3.is_vertex_set_slice",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query", "bool_inversion",
+        "equation_Prims.eqtype", "equation_Prims.nat",
+        "equation_Spec.Graph3.mem_graph_vertex",
+        "equation_Spec.Graph3.vertex_id",
+        "fuel_guarded_inversion_Spec.Graph3.graph_state", "int_inversion",
+        "int_typing", "lemma_FStar.Seq.Base.lemma_len_slice",
+        "primitive_Prims.op_Addition", "primitive_Prims.op_LessThanOrEqual",
+        "primitive_Prims.op_Subtraction",
+        "projection_inverse_BoxBool_proj_0",
+        "projection_inverse_BoxInt_proj_0",
+        "refinement_interpretation_Tm_refine_12bf0227bbed199c90958814277a7b55",
+        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
+        "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
+        "refinement_interpretation_Tm_refine_55934a22a9a73c34707d6621c252a677",
+        "refinement_interpretation_Tm_refine_81407705a0828c2c1b1976675443f647",
+        "refinement_interpretation_Tm_refine_ad0cd9a5c1e3639134009b78613079e1",
+        "refinement_interpretation_Tm_refine_c1424615841f28cac7fc34e92b7ff33c",
+        "refinement_interpretation_Tm_refine_ca8648493716f5cec3efe13271be0d4d",
+        "typing_FStar.UInt64.t", "typing_Spec.Graph3.mem_graph_vertex"
+      ],
+      0,
+      "0f592b7d590c0a9d40338743587470b2"
+    ],
+    [
+      "Spec.Graph3.is_vertex_set_slice1",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query", "equation_Prims.eqtype",
+        "equation_Prims.nat", "equation_Spec.Graph3.vertex_id",
+        "int_inversion", "int_typing",
+        "lemma_FStar.Seq.Base.lemma_len_slice",
+        "primitive_Prims.op_Addition", "primitive_Prims.op_LessThanOrEqual",
+        "primitive_Prims.op_Subtraction",
+        "projection_inverse_BoxBool_proj_0",
+        "projection_inverse_BoxInt_proj_0",
+        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
+        "refinement_interpretation_Tm_refine_4bab86c61dfd24d698e3b596704d3dd3",
+        "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
+        "refinement_interpretation_Tm_refine_81407705a0828c2c1b1976675443f647",
+        "refinement_interpretation_Tm_refine_ad0cd9a5c1e3639134009b78613079e1",
+        "refinement_interpretation_Tm_refine_c1424615841f28cac7fc34e92b7ff33c",
+        "typing_FStar.UInt64.t"
+      ],
+      0,
+      "65e797adbb99600c7f95279052e9b20c"
+    ],
+    [
+      "Spec.Graph3.empty_seq_mem_lemma",
+      1,
+      2,
+      1,
+      [
+        "@MaxFuel_assumption", "@MaxIFuel_assumption",
+        "@fuel_correspondence_FStar.Seq.Properties.count.fuel_instrumented",
+        "@query", "FStar.UInt32_pretyping_2ab3c8ba2d08b0172817fc70b5994868",
+        "Prims_pretyping_ae567c2fb75be05905677af440075565",
+        "equation_FStar.Seq.Properties.mem", "equation_Prims.eqtype",
+        "equation_Prims.nat",
+        "equation_with_fuel_FStar.Seq.Properties.count.fuel_instrumented",
+        "function_token_typing_Prims.__cache_version_number__",
+        "lemma_FStar.Seq.Base.lemma_eq_elim",
+        "lemma_FStar.Seq.Base.lemma_eq_intro", "primitive_Prims.op_Equality",
+        "primitive_Prims.op_GreaterThan",
+        "projection_inverse_BoxBool_proj_0",
+        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
+        "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
+        "refinement_interpretation_Tm_refine_b913a3f691ca99086652e0a655e72f17",
+        "refinement_interpretation_Tm_refine_d83f8da8ef6c1cb9f71d1465c1bb1c55",
+        "refinement_interpretation_Tm_refine_f29620ef6b87ef15e5ef4b6097a4f848",
+        "typing_FStar.Seq.Base.empty", "typing_FStar.UInt32.t"
+      ],
+      0,
+      "54be965616d6f344c914f8f57c10d4ee"
+    ],
+    [
+      "Spec.Graph3.seq_union_lemma",
+      1,
+      2,
+      1,
+      [
+        "@MaxIFuel_assumption", "@query", "bool_inversion", "bool_typing",
+        "equation_FStar.Seq.Properties.mem", "equation_Prims.eqtype",
+        "equation_Prims.nat", "equation_Spec.Graph3.mem_of_seq_upto_index",
+        "int_inversion", "primitive_Prims.op_Addition",
+        "primitive_Prims.op_Equality", "primitive_Prims.op_GreaterThan",
+        "primitive_Prims.op_LessThan", "primitive_Prims.op_LessThanOrEqual",
+        "primitive_Prims.op_Subtraction",
+        "projection_inverse_BoxBool_proj_0",
+        "projection_inverse_BoxInt_proj_0",
+        "refinement_interpretation_Tm_refine_1272da238468ec7997d1caebc832d523",
+        "refinement_interpretation_Tm_refine_3df7d4dcd73fc9d3874a7262c2b779e4",
+        "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
+        "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2",
+        "refinement_interpretation_Tm_refine_621f8645066b2f490d38e06965645321",
+        "refinement_interpretation_Tm_refine_7ad5b930a339862396bbd7c1a7637326",
+        "refinement_interpretation_Tm_refine_99a95f4050962c41cef33104480bb60b",
+        "refinement_interpretation_Tm_refine_c24016b278cdba3d6139d414af27e383",
+        "typing_FStar.Seq.Base.length", "typing_FStar.UInt64.t",
+        "typing_Spec.Graph3.mem_of_seq_upto_index"
+      ],
+      0,
+      "f6b27453b1a08006d1832c06790331a8"
+    ]
+  ]
+]
