@@ -1,4 +1,6 @@
-# Setup Instructions and Tools required
+# Verified OCaml GC
+
+This is an artifact submitted along with the paper "A Mechanically Verified Garbage Collector for OCaml". This document explains the installation of tools required for verifying and integrating the F*/Low* GC with the OCaml runtime and then running the benchmarks.
 
 ## Tools required
 
