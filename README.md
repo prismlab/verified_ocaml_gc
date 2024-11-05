@@ -75,24 +75,24 @@ https://github.com/FStarLang/fstar-vscode-assistant
 
 ## Proofs
 
-- This directory contains all the proof files(.fst and .fsti files). They can be readily checked in VS
-  Code/Emacs(once you've followed the setup instructions).
+- This directory contains all the proof files (.fst and .fsti files). They can be readily checked in VS
+  Code/Emacs.
   
 ### Specification Files
-- **Spec.GC_infix_closure_ver3.fsti** - Bridge GC spec between graph world and low level GC code world.
+- **Spec.GC_infix_closure_ver3.fsti** - Bridge GC spec between graph world and low-level GC code.
 - **Spec.GC_infix_closure_ver3.fst** - Corresponding implementation file.
-- **Spec.Graph3.fsti** - Graph interface
-- **Spec.Graph3.fst** - Graph implementation
+- **Spec.Graph3.fsti** - Graph interface.
+- **Spec.Graph3.fst** - Graph implementation.
 - **DFS.fst** - Depth First Search.
 
 ### Implementation File
-- **Impl.GC_infix_closure_ver3.fsti** - Low level GC code interface.
-- **Impl.GC_infix_closure_ver3.fst** - Low level GC code implementation.
+- **Impl.GC_infix_closure_ver3.fsti** - Low-level GC code interface.
+- **Impl.GC_infix_closure_ver3.fst** - Low-level GC code implementation.
 
 ### How to typecheck?
 
-- In your editor of choice(Emacs or VSCode), open the
-  **Impl.GC_infix_closure_ver3.fst** file and put the cursor at the end of the
+- In your editor of choice (Emacs or VSCode), open the
+  **Impl.GC_infix_closure_ver3.fst** file. Place the cursor at the end of the
   file. Then, press `Ctrl .` in VSCode or `Ctrl-c Ctrl-Ret` in Emacs. This will
   typecheck all the files involved because this is the extractable Low\* file
   and will need all other proofs to typecheck.
