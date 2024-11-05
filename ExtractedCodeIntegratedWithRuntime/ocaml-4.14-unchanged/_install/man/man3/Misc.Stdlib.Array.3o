@@ -1,0 +1,51 @@
+.TH "Misc.Stdlib.Array" 3 2024-11-04 OCamldoc "OCaml library"
+.SH NAME
+Misc.Stdlib.Array \- no description
+.SH Module
+Module   Misc.Stdlib.Array
+.SH Documentation
+.sp
+Module
+.BI "Array"
+ : 
+.B sig end
+
+.sp
+
+.sp
+
+.sp
+.sp
+
+.I val exists2 
+: 
+.B ('a -> 'b -> bool) -> 'a array -> 'b array -> bool
+.sp
+Same as 
+.ft B
+Array\&.exists2
+.ft R
+from the standard library\&.
+
+.sp
+
+.I val for_alli 
+: 
+.B (int -> 'a -> bool) -> 'a array -> bool
+.sp
+Same as 
+.ft B
+Array\&.for_all
+.ft R
+from the standard library, but the
+function is applied with the index of the element as first argument,
+and the element itself as second argument\&.
+
+.sp
+
+.I val all_somes 
+: 
+.B 'a option array -> 'a array option
+.sp
+
+.sp

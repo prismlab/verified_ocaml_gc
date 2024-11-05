@@ -1,0 +1,183 @@
+diff --git a/runtime/Makefile b/runtime/Makefile
+index b62a5791a9..50069332a4 100644
+--- a/runtime/Makefile
++++ b/runtime/Makefile
+@@ -122,7 +122,7 @@ endif
+ 
+ OC_NATIVE_CPPFLAGS += -DSYS_$(SYSTEM)
+ 
+-OC_DEBUG_CPPFLAGS=-DDEBUG
++OC_DEBUG_CPPFLAGS=-DDEBUG -O0
+ OC_INSTR_CPPFLAGS=-DCAML_INSTR
+ 
+ ifeq "$(TOOLCHAIN)" "msvc"
+@@ -269,7 +269,7 @@ build_config.h: $(ROOTDIR)/Makefile.config sak$(EXE)
+ # Libraries and programs
+ 
+ ocamlrun$(EXE): prims.$(O) libcamlrun.$(A)
+-	$(MKEXE) -o $@ $^ $(LIBS)
++	$(MKEXE) -o $@ $^ $(LIBS) -lgc
+ 
+ ocamlruns$(EXE): prims.$(O) libcamlrun_non_shared.$(A)
+ 	$(call MKEXE_USING_COMPILER,$@,$^ $(LIBS))
+@@ -281,7 +281,7 @@ libcamlrun_non_shared.$(A): $(libcamlrun_non_shared_OBJECTS)
+ 	$(call MKLIB,$@, $^)
+ 
+ ocamlrund$(EXE): prims.$(O) libcamlrund.$(A)
+-	$(MKEXE) $(MKEXEDEBUGFLAG) -o $@ $^ $(LIBS)
++	$(MKEXE) $(MKEXEDEBUGFLAG) -o $@ $^ $(LIBS) -lgc
+ 
+ libcamlrund.$(A): $(libcamlrund_OBJECTS)
+ 	$(call MKLIB,$@, $^)
+@@ -299,10 +299,10 @@ libcamlrun_shared.$(SO): $(libcamlrunpic_OBJECTS)
+ 	$(MKDLL) -o $@ $^ $(BYTECCLIBS)
+ 
+ libasmrun.$(A): $(libasmrun_OBJECTS)
+-	$(call MKLIB,$@, $^)
++	$(call MKLIB,$@, $^ $(LIBS))
+ 
+ libasmrund.$(A): $(libasmrund_OBJECTS)
+-	$(call MKLIB,$@, $^)
++	$(call MKLIB,$@, $^ $(LIBS)
+ 
+ libasmruni.$(A): $(libasmruni_OBJECTS)
+ 	$(call MKLIB,$@, $^)
+@@ -351,7 +351,7 @@ ifneq "$(1)" "%"
+ # don't use -MG and instead include $(BUILT_HEADERS) in the order only
+ # dependencies to ensure that they exist before dependencies are computed.
+ $(DEPDIR)/$(1).$(D): %.c | $(DEPDIR) $(BUILT_HEADERS)
+-	$$(DEP_CC) $$(OC_CPPFLAGS) $$(CPPFLAGS) $$< -MT \
++	$$(DEP_CC) $$(OC_CFLAGS) $$(CFLAGS) $$(OC_CPPFLAGS) $$(CPPFLAGS) $$< -MT \
+ 	  '$$*$(subst %,,$(1)).$(O)' -MF $$@
+ endif # ifneq "$(1)" "%"
+ $(1).$(O): $(2).c
+diff --git a/runtime/caml/address_class.h b/runtime/caml/address_class.h
+index 82e5cf71ff..64803b8230 100644
+--- a/runtime/caml/address_class.h
++++ b/runtime/caml/address_class.h
+@@ -70,7 +70,7 @@
+    (char *)(val) < (char *)Caml_state_field(young_end) && \
+    (char *)(val) > (char *)Caml_state_field(young_start))
+ 
+-#define Is_in_heap(a) (Classify_addr(a) & In_heap)
++#define Is_in_heap(a) 1
+ 
+ #ifdef NO_NAKED_POINTERS
+ 
+diff --git a/runtime/caml/memory.h b/runtime/caml/memory.h
+index d9e58bc2d0..82843c3778 100644
+--- a/runtime/caml/memory.h
++++ b/runtime/caml/memory.h
+@@ -30,6 +30,12 @@
+ #include "misc.h"
+ #include "mlvalues.h"
+ #include "domain.h"
++#include <gc/gc.h>
++
++#define malloc(n) GC_malloc(n)
++#define calloc(m,n) GC_malloc((m)*(n))
++#define free(p) GC_free(p)
++#define realloc(p,n) GC_realloc(p,n)
+ 
+ #ifdef __cplusplus
+ extern "C" {
+@@ -221,19 +227,14 @@ extern void caml_alloc_small_dispatch (intnat wosize, int flags,
+   CAMLassert ((wosize) >= 1);                                          \
+   CAMLassert ((tag_t) (tag) < 256);                                    \
+   CAMLassert ((wosize) <= Max_young_wosize);                           \
+-  Caml_state_field(young_ptr) -= Whsize_wosize (wosize);               \
+-  if (Caml_state_field(young_ptr) < Caml_state_field(young_limit)) {   \
+-    Setup_for_gc;                                                      \
+-    caml_alloc_small_dispatch((wosize), (track) | Alloc_small_origin,  \
+-                              1, NULL);                                \
+-    Restore_after_gc;                                                  \
+-  }                                                                    \
+-  Hd_hp (Caml_state_field(young_ptr)) =                                \
++  (result) = (value)malloc(Bhsize_wosize (wosize));                    \
++  Hd_hp (result) =                                                     \
+     Make_header_with_profinfo ((wosize), (tag), 0, profinfo);          \
+-  (result) = Val_hp (Caml_state_field(young_ptr));                     \
++  (result) = Val_hp (result);                                          \
+   DEBUG_clear ((result), (wosize));                                    \
+ }while(0)
+ 
++
+ #define Alloc_small_with_profinfo(result, wosize, tag, profinfo) \
+   Alloc_small_aux(result, wosize, tag, profinfo, CAML_DO_TRACK)
+ 
+diff --git a/runtime/memory.c b/runtime/memory.c
+index 66d1c50ccb..32226f5446 100644
+--- a/runtime/memory.c
++++ b/runtime/memory.c
+@@ -355,7 +355,7 @@ int caml_add_to_heap (char *m)
+    to [Max_wosize].
+    Return NULL when out of memory.
+ */
+-static value *expand_heap (mlsize_t request)
++/* static */ value *expand_heap (mlsize_t request)
+ {
+   /* these point to headers, but we do arithmetic on them, hence [value *]. */
+   value *mem, *hp, *prev;
+@@ -464,38 +464,9 @@ Caml_inline value caml_alloc_shr_aux (mlsize_t wosize, tag_t tag, int track,
+                                       uintnat profinfo)
+ {
+   header_t *hp;
+-  value *new_block;
+-
+-  if (wosize > Max_wosize) return 0;
+-  CAML_EV_ALLOC(wosize);
+-  hp = caml_fl_allocate (wosize);
+-  if (hp == NULL){
+-    new_block = expand_heap (wosize);
+-    if (new_block == NULL) return 0;
+-    caml_fl_add_blocks ((value) new_block);
+-    hp = caml_fl_allocate (wosize);
+-  }
+-
+-  CAMLassert (Is_in_heap (Val_hp (hp)));
+-
+-  /* Inline expansion of caml_allocation_color. */
+-  if (caml_gc_phase == Phase_mark || caml_gc_phase == Phase_clean ||
+-      (caml_gc_phase == Phase_sweep && (char *)hp >= (char *)caml_gc_sweep_hp)){
+-    Hd_hp (hp) = Make_header_with_profinfo (wosize, tag, Caml_black, profinfo);
+-  }else{
+-    CAMLassert (caml_gc_phase == Phase_idle
+-            || (caml_gc_phase == Phase_sweep
+-                && (char *)hp < (char *)caml_gc_sweep_hp));
+-    Hd_hp (hp) = Make_header_with_profinfo (wosize, tag, Caml_white, profinfo);
+-  }
+-  CAMLassert (Hd_hp (hp)
+-    == Make_header_with_profinfo (wosize, tag, caml_allocation_color (hp),
+-                                  profinfo));
+-  caml_allocated_words += Whsize_wosize (wosize);
+-  if (caml_allocated_words > Caml_state->minor_heap_wsz){
+-    CAML_EV_COUNTER (EV_C_REQUEST_MAJOR_ALLOC_SHR, 1);
+-    caml_request_major_slice ();
+-  }
++  hp = (header_t*) malloc (Bhsize_wosize (wosize));
++  Hd_hp (hp) =
++    Make_header_with_profinfo (wosize, tag, Caml_black, profinfo);
+ #ifdef DEBUG
+   {
+     uintnat i;
+@@ -504,8 +475,6 @@ Caml_inline value caml_alloc_shr_aux (mlsize_t wosize, tag_t tag, int track,
+     }
+   }
+ #endif
+-  if(track)
+-    caml_memprof_track_alloc_shr(Val_hp (hp));
+   return Val_hp (hp);
+ }
+ 
+diff --git a/runtime/startup_byt.c b/runtime/startup_byt.c
+index de7549748a..9469a07b04 100644
+--- a/runtime/startup_byt.c
++++ b/runtime/startup_byt.c
+@@ -466,6 +466,7 @@ CAMLexport void caml_main(char_os **argv)
+ 
+   /* Initialize the domain */
+   caml_init_domain();
++  GC_INIT();
+ 
+   /* Determine options */
+ #ifdef DEBUG

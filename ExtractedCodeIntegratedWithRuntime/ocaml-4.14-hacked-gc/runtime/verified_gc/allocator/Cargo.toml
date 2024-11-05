@@ -1,0 +1,25 @@
+[package]
+name = "rust-allocator"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+crate-type = ["staticlib", "rlib"]
+
+[dev-dependencies]
+criterion = "0.3"
+rand= { version = "0.8.5",  features = ["small_rng"] }
+shuffle = "0.1.7"
+
+[[bench]]
+name = "benchmark"
+harness = false
+
+[features]
+no_expand_heap = []
+no_merge = []
+check_invariants = []
+
+[dependencies]
+
