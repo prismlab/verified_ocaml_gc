@@ -7,16 +7,15 @@ This is an artifact submitted along with the paper "A Mechanically Verified Garb
 - Git
 - [Opam](https://opam.ocaml.org/doc/Install.html) for F\*/Low\*
 - [Rust toolchain](https://www.rust-lang.org/tools/install)
-- [Hyperfine](https://github.com/sharkdp/hyperfine) for running benchmarks
-- [difftastic](https://github.com/Wilfred/difftastic) to see diffs clearly
+- [Hyperfine](https://github.com/sharkdp/hyperfine) for running benchmarks.
+- [difftastic](https://github.com/Wilfred/difftastic) visualise the diffs better.
 - Have a global installation of a stable version of
   [bdwgc](https://github.com/ivmai/bdwgc). Instructions available at:
-  https://github.com/ivmai/bdwgc?tab=readme-ov-file#building-and-installing) .
-  Global installation is required because we just link `bdwgc` to our runtime
-  through `-lgc`, so it should be in the system path. (You'll see this in
+  https://github.com/ivmai/bdwgc?tab=readme-ov-file#building-and-installing).
+  Global installation is required because we only link `bdwgc` to our runtime
+  through `-lgc`, so it should be in the system path. You'll see this in
   `ExtractedCodeIntegratedWithRuntime` directory, which is explained later below
-  as well )
-
+  as well.
 
 ## Setup FStar
 
