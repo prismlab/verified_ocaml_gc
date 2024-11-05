@@ -25,11 +25,32 @@ For `karamel`, **python2.7 installation is needed.**
 $ opam switch create fstar-fresh 4.14.0
 $ eval $(opam env --switch=fstar-fresh)
 $ opam pin add fstar --dev-repo
+```
+
+`karamel` requires GNU make. If you are on macOS, you can install it using
+`brew`. The following steps are only for macOS. If you are on Linux, skip to the
+`karamel` installation step.
+
+```bash
+$ brew install make
+$ alias make=`gmake` # create an alias in the current shell
+$ make --version # verify 
+gmake: getcwd: No such file or directory
+GNU Make 4.4.1
+Built for aarch64-apple-darwin24.0.0
+Copyright (C) 1988-2023 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+```
+
+Now install `karamel`:
+
+```bash
 $ opam pin add karamel --dev-repo
 ```
 
-
-- You can verify everything is set up correctly by using the following commands:
+You can verify everything is set up correctly by using the following commands:
 
 ``` sh
 $ fstar.exe --version

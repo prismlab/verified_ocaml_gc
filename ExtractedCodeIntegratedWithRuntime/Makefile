@@ -1,5 +1,5 @@
 UNCHANGED:=ocaml-4.14-unchanged
-HACKED:=ocaml-4.14-hacked-gc
+VERIFIED:=ocaml-4.14-verified-gc
 BDWGC:=ocaml-4.14-bdwgc
 unchanged:
 	PWD=$(shell pwd)
@@ -8,8 +8,8 @@ unchanged:
 	make -C $(UNCHANGED) install
 
 verified-gc:
-	cd $(HACKED); ./configure --disable-naked-pointers
-	make -C $(HACKED)/runtime -j ocamlrun ocamlrund
+	cd $(VERIFIED); ./configure --disable-naked-pointers
+	make -C $(VERIFIED)/runtime -j ocamlrun ocamlrund
 
 bdwgc:
 	cd $(BDWGC); ./configure --disable-naked-pointers
@@ -22,7 +22,7 @@ clean-bdwgc:
 	make -C $(BDWGC) clean
 
 clean-verified-gc:
-	make -C $(HACKED) clean
+	make -C $(VERIFIED) clean
 
 all: unchanged verified-gc bdwgc
 
