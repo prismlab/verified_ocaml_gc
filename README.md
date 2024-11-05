@@ -104,13 +104,20 @@ https://github.com/FStarLang/fstar-vscode-assistant
 
 ## ExtractableVerifiedCode
 
-- This directory contains everything that the `Proofs` contains but in a
-  slightly different structure, suitable for extraction. The files are just symlinks.
+This directory contains everything that the `Proofs` contains but in a slightly
+different structure, suitable for extraction. You can verify that they are
+indeed the same by running the script(which diffs these files) that we have
+included.
+
+```sh
+$ ./diff-proofs-and-extractable-verified-code.sh
+```
   
 ### Extraction Instructions
 
-- cd inside the directory using `cd ExtractableVerifiedCode`.
-- Make sure you are still in the same opam switch we created at the started `fstar-fresh`.
+- Switch to the target directory using `cd ExtractableVerifiedCode`.
+- Make sure you are still in the same opam switch we created at the start
+  `fstar-fresh`.
 - Run the following command (with appropriate substitution for `<fstar-version>`
   and `<karamel-version>`):
 
