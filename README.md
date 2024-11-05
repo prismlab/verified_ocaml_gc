@@ -105,11 +105,7 @@ https://github.com/FStarLang/fstar-vscode-assistant
 ## ExtractableVerifiedCode
 
 - This directory contains everything that the `Proofs` contains but in a
-  slightly different structure, suitable for extraction. You can verify that
-  they are indeed the same by running the script(which diffs these files) that we have included.
-  ```sh
-  $ ./diff-proofs-and-extractable-verified-code.sh
-  ```
+  slightly different structure, suitable for extraction. The files are just symlinks.
   
 ### Extraction Instructions
 
