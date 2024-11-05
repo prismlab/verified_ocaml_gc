@@ -192,7 +192,7 @@ We have a bunch of make targets set up in the `Makefile` in `tests` directory.
 ### Misc Information
 
 - The `allocator`'s source code is located at
-  `ExtractedCodeIntegratedWithRuntime/ocaml-4.14-hacked-gc/runtime/verified_gc/allocator/`
+  `ExtractedCodeIntegratedWithRuntime/ocaml-4.14-verified-gc/runtime/verified_gc/allocator/`
   from the top-level.
 - The `MIN_EXPANSION_WORDSIZE` variable is used to tweak the size of heap(which
   will be `MIN_EXPANSION_WORDSIZE * 8 bytes`) for the allocator. We operate
@@ -202,15 +202,16 @@ We have a bunch of make targets set up in the `Makefile` in `tests` directory.
 ### Generated Code to Integrated code mapping and seeing the differences
 
 We needed to write some patches to integrate with the runtime. You can see the
-modifications to the verified code by running the following script. The patched
-code is available at ``
+modifications to the verified code by running the following script. 
+
+> NOTE: This script won't work unless you have the extracted code(by following the instruction given in [Extraction Instructions section](#extraction-instructions))
 
 ``` sh
 $ ./diff-extracted-code-and-integrated-code.sh
 ```
 
 There are other files as well for the purpose of integration in
-`ExtractedCodeIntegratedWithRuntime/ocaml-4.14-hacked-gc/runtime/verified_gc`
+`ExtractedCodeIntegratedWithRuntime/ocaml-4.14-verified-gc/runtime/verified_gc`
 directory.
 
 - **allocator/** : The code for the `allocator`.
