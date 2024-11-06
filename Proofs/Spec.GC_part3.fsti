@@ -140,7 +140,7 @@ let fieldaddress_within_limits_lemma_x_all5 (g:heap{Seq.length (objects2 0UL g) 
 
 #restart-solver
 
-#push-options "--split_queries always"
+#reset-options "--z3rlimit 100 --split_queries always --z3seed 1"
 
 let colorHeader1_alloc_colors_lemma  (v_id:hp_addr)
                                      (g:heap{well_formed_heap2 g /\ is_valid_header1 v_id g})
