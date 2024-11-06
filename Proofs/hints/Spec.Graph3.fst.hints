@@ -24,7 +24,7 @@
         "well-founded-ordering-on-nat"
       ],
       0,
-      "7434a32bc509e1530ef3c3429b2e3d6b"
+      "6bfe645f16965a863e9f3ed5b90d9e42"
     ],
     [
       "Spec.Graph3.no_duplicates'",
@@ -49,7 +49,7 @@
         "well-founded-ordering-on-nat"
       ],
       0,
-      "11ba0fffda6759ba9aac8e35208153ba"
+      "3e9946627a841ddd43b7223f367b3638"
     ],
     [
       "Spec.Graph3.count",
@@ -74,7 +74,7 @@
         "typing_FStar.Seq.Base.length", "well-founded-ordering-on-nat"
       ],
       0,
-      "075f68a02bf91dbff4f91bf92cc46459"
+      "3817f0e6991992402aedfd37e02dd474"
     ],
     [
       "Spec.Graph3.count_lemma_helper",
@@ -106,7 +106,7 @@
         "unit_inversion", "unit_typing", "well-founded-ordering-on-nat"
       ],
       0,
-      "46688a3a0ee81122c3882bb3885d0d40"
+      "ad1a111c8c1af9b72f70e4bee8d21b3f"
     ],
     [
       "Spec.Graph3.count_lemma_helper",
@@ -115,7 +115,7 @@
       1,
       [ "@query" ],
       0,
-      "5da574036e543f6b38a5cc7a699338c1"
+      "e3f2541079508fc36e8c8263f6dc7a06"
     ],
     [
       "Spec.Graph3.is_vertex_set",
@@ -140,7 +140,7 @@
         "well-founded-ordering-on-nat"
       ],
       0,
-      "04b0da20cb3c8383e063610ff24318f9"
+      "1e56a112153cb2f93f0f7d97da57ca2c"
     ],
     [
       "Spec.Graph3.count_zero_lemma",
@@ -180,7 +180,7 @@
         "unit_inversion", "unit_typing", "well-founded-ordering-on-nat"
       ],
       0,
-      "43ba081d8ed4fe5f37638c2bc4ea14b9"
+      "a65316fd3ecd07fe235de054b7640282"
     ],
     [
       "Spec.Graph3.is_vertex_set_count_lemma",
@@ -224,7 +224,7 @@
         "unit_inversion", "unit_typing", "well-founded-ordering-on-nat"
       ],
       0,
-      "3e42b54717e0816380e0fb156d8738cc"
+      "4fe921c2c12a744c97881fe56858f323"
     ],
     [
       "Spec.Graph3.is_vertex_set_count_lemma1",
@@ -268,7 +268,7 @@
         "well-founded-ordering-on-nat"
       ],
       0,
-      "57385eeedfa6ac3a68247da00e323e55"
+      "c6c1b033d32143accf97b247196ddc7b"
     ],
     [
       "Spec.Graph3.is_vertex_set_count_lemma_all",
@@ -280,7 +280,7 @@
         "refinement_interpretation_Tm_refine_60b02c59968d189b29580148f61f2ec0"
       ],
       0,
-      "4b673fbf124ec0e34c0fcffbb0861a45"
+      "1c925d6b0704a1fa0d4dca2b040e6e36"
     ],
     [
       "Spec.Graph3.is_vertex_set_count_lemma_all1",
@@ -292,7 +292,7 @@
         "refinement_interpretation_Tm_refine_60b02c59968d189b29580148f61f2ec0"
       ],
       0,
-      "68f662666776812e249b174e102b2226"
+      "0e48ce4e465214b151901cd05a550d27"
     ],
     [
       "Spec.Graph3.is_vertex_set_lemma",
@@ -301,7 +301,7 @@
       1,
       [ "@query" ],
       0,
-      "23c1acee177c758fa9c2d84e18634afd"
+      "a514689ebb699e34f869c0f216533d21"
     ],
     [
       "Spec.Graph3.is_vertex_set_lemma",
@@ -322,7 +322,7 @@
         "token_correspondence_Spec.Graph3.is_vertex_set.fuel_instrumented"
       ],
       0,
-      "cb234952a700aca627beadad5569a918"
+      "f5fb3fb226d085b204399ff9a4f16973"
     ],
     [
       "Spec.Graph3.is_vertex_set_cons",
@@ -373,7 +373,7 @@
         "typing_Spec.Graph3.is_vertex_set"
       ],
       0,
-      "5b4c8a179fdaf04859d75c2b2f4dcc4a"
+      "2362aeddce0d558547dfe0c463530132"
     ],
     [
       "Spec.Graph3.is_vertex_set_lemma1",
@@ -390,7 +390,7 @@
         "primitive_Prims.op_Equality", "projection_inverse_BoxBool_proj_0"
       ],
       0,
-      "d87a1239de2456bcdb3e8f9a857f757f"
+      "defd762e8dd7d1197891c52b5c0d84ec"
     ],
     [
       "Spec.Graph3.is_vertex_set_lemma2",
@@ -423,7 +423,7 @@
         "typing_FStar.Seq.Properties.tail", "typing_FStar.UInt64.t"
       ],
       0,
-      "1265b5a5e8513faf999e408e3001a509"
+      "5c7d5c84269bce68160a6ec458886284"
     ],
     [
       "Spec.Graph3.slice_mem_helper_lemma",
@@ -478,7 +478,7 @@
         "typing_FStar.Seq.Properties.tail", "typing_FStar.UInt64.t"
       ],
       0,
-      "54226dc418c02972e2f629694c5cbb19"
+      "c427f292c58d0599cab0301acf2c67b1"
     ],
     [
       "Spec.Graph3.slice_mem_helper_lemma",
@@ -494,7 +494,7 @@
         "refinement_interpretation_Tm_refine_d9b20e90da8de11db7b9faa32fe08b85"
       ],
       0,
-      "438c32b2e3ce7b460300b21e92fd9e1f"
+      "589612e3a19356dd379e82bb7cad17c0"
     ],
     [
       "Spec.Graph3.slice_mem_lemma",
@@ -510,7 +510,7 @@
         "refinement_interpretation_Tm_refine_d9b20e90da8de11db7b9faa32fe08b85"
       ],
       0,
-      "5ff4f14c009d5df43db1fb5077734255"
+      "83a74ad33ffca7c7cc0f3e52a46a7391"
     ],
     [
       "Spec.Graph3.slice_mem_helper_lemma_edge",
@@ -554,7 +554,7 @@
         "typing_FStar.UInt64.t"
       ],
       0,
-      "790264cc1e19fe7b0acd21ebbdb961d3"
+      "125aa7681b022dac7ec438bdf14b59e1"
     ],
     [
       "Spec.Graph3.slice_mem_helper_lemma_edge",
@@ -570,7 +570,7 @@
         "refinement_interpretation_Tm_refine_cefe575398ae6fa0a08b46188329773b"
       ],
       0,
-      "2c0842c3ef2cec8683d5388b74e9e920"
+      "74549b6d269c7780f2f24464edaffe0f"
     ],
     [
       "Spec.Graph3.slice_mem_lemma_edge",
@@ -586,7 +586,7 @@
         "typing_FStar.UInt64.t"
       ],
       0,
-      "bb8db61b261bca7d5956102afe66bdcd"
+      "9b32e0d140d3d663ba97d83ed5ab6821"
     ],
     [
       "Spec.Graph3.slice_mem_lemma_edge",
@@ -602,7 +602,7 @@
         "refinement_interpretation_Tm_refine_cefe575398ae6fa0a08b46188329773b"
       ],
       0,
-      "2c0842c3ef2cec8683d5388b74e9e920"
+      "08f4fef514d71fe649d24e44f30b6d08"
     ],
     [
       "Spec.Graph3.vertex_set_uniqueness",
@@ -628,7 +628,7 @@
         "typing_FStar.Seq.Properties.mem", "typing_FStar.UInt64.t"
       ],
       0,
-      "6f458fd579637d15a36f60c0cc079e6c"
+      "c05437c09125be43f929b6319e617ae5"
     ],
     [
       "Spec.Graph3.vertex_set_uniqueness1",
@@ -648,7 +648,7 @@
         "typing_FStar.UInt64.t"
       ],
       0,
-      "1407d5975f094a96e136ce436c97ae71"
+      "da8dbfed7e11462cdfbf0720ebed52aa"
     ],
     [
       "Spec.Graph3.slice_uniqueness_lemma",
@@ -705,7 +705,7 @@
         "typing_Spec.Graph3.is_vertex_set", "well-founded-ordering-on-nat"
       ],
       0,
-      "533fc3cd4a23829aafe30ac7f238d111"
+      "a16f5b9aa61a42496a9d15f51a215ddd"
     ],
     [
       "Spec.Graph3.slice_uniqueness_lemma",
@@ -733,7 +733,7 @@
         "typing_Spec.Graph3.is_vertex_set"
       ],
       0,
-      "1378fa2fab0d1b206c6c3b91941c580c"
+      "c65b7137644c3d9cf15c70adc865d437"
     ],
     [
       "Spec.Graph3.is_vertex_set_lemma3",
@@ -752,7 +752,7 @@
         "typing_Spec.Graph3.is_vertex_set"
       ],
       0,
-      "c12f93a2a9b99c3e9c2decc4eda9d77f"
+      "c68e338faf6fb964d82b2ceac61ac9e0"
     ],
     [
       "Spec.Graph3.is_vertex_set_lemma3",
@@ -765,7 +765,7 @@
         "projection_inverse_BoxBool_proj_0", "unit_inversion", "unit_typing"
       ],
       0,
-      "3b605d66bf417a72f272b775df512a60"
+      "995f9d2c70f93007e2994c492b278706"
     ],
     [
       "Spec.Graph3.is_vertex_set_lemma4",
@@ -774,7 +774,7 @@
       1,
       [ "@query" ],
       0,
-      "2b78262fdf4bde1ff9086eac5f37ea25"
+      "5f14c256e339740cba6854f2c45eaaed"
     ],
     [
       "Spec.Graph3.is_vertex_set_lemma4",
@@ -795,7 +795,7 @@
         "typing_Spec.Graph3.is_vertex_set"
       ],
       0,
-      "a95b3c375805d9212140d7320dd17216"
+      "a65eb2cc813dd8beb6e454891c340c90"
     ],
     [
       "Spec.Graph3.is_vertex_set_lemma5",
@@ -819,7 +819,7 @@
         "typing_Spec.Graph3.is_vertex_set"
       ],
       0,
-      "807f401debbfa4418b2b4122b9e4bade"
+      "1e2d9235e460b0c08b1b088049d7e736"
     ],
     [
       "Spec.Graph3.is_vertex_set_lemma5",
@@ -871,7 +871,7 @@
         "well-founded-ordering-on-nat"
       ],
       0,
-      "ff7b2dfe3923864a1cf92642d248e102"
+      "2e9363dc2ac7a7f5498ef766b8c60228"
     ],
     [
       "Spec.Graph3.is_vertex_set_lemma5",
@@ -896,7 +896,7 @@
         "typing_Spec.Graph3.is_vertex_set"
       ],
       0,
-      "e73e571bcdb7d3fef82e0f069479fd20"
+      "9f16af2499fa4af9759b94c326acdaba"
     ],
     [
       "Spec.Graph3.is_vertex_set_lemma6",
@@ -915,7 +915,7 @@
         "typing_FStar.UInt32.v"
       ],
       0,
-      "a8d5a40919a7c90b01ff13d49e7f6a32"
+      "d081de09ecbf061601b9646f3601d474"
     ],
     [
       "Spec.Graph3.is_vertex_set_lemma6",
@@ -951,7 +951,7 @@
         "typing_Spec.Graph3.is_vertex_set"
       ],
       0,
-      "adcf6672a7a282a574a6247dd52cc20c"
+      "dad21ce2dc824ce62cea515447563f8f"
     ],
     [
       "Spec.Graph3.is_vertex_set_lemma7",
@@ -970,7 +970,7 @@
         "typing_FStar.UInt32.v"
       ],
       0,
-      "6a21a8c85370e6feef09be99fbe3b7f5"
+      "cd3becd58ae039880bd081864de69e40"
     ],
     [
       "Spec.Graph3.is_vertex_set_lemma7",
@@ -1011,7 +1011,7 @@
         "typing_Spec.Graph3.is_vertex_set"
       ],
       0,
-      "4a13f5955e18ca89bb8238123e1becc7"
+      "970813cf3d0ba9cc0eeff2f86c666d6e"
     ],
     [
       "Spec.Graph3.is_edge_set",
@@ -1038,7 +1038,7 @@
         "well-founded-ordering-on-nat"
       ],
       0,
-      "87ddc99e94d401f2aa732cd4d56aaf55"
+      "ed483de953c5253ba133ca75171d5f83"
     ],
     [
       "Spec.Graph3.is_edge_set_lemma",
@@ -1047,7 +1047,7 @@
       1,
       [ "@query" ],
       0,
-      "1fde7f74cd8f745ffc308d6a3ef0b202"
+      "d867f8a77f7bef34687a84e2c0a4ba9e"
     ],
     [
       "Spec.Graph3.is_edge_set_lemma",
@@ -1067,7 +1067,7 @@
         "projection_inverse_BoxBool_proj_0", "typing_Spec.Graph3.is_edge_set"
       ],
       0,
-      "92f17b92285b5c2f5f5f41931976ba66"
+      "1e446049fa19c242fdd4006a5678c2f8"
     ],
     [
       "Spec.Graph3.is_edge_set_lemma1",
@@ -1084,7 +1084,7 @@
         "primitive_Prims.op_Equality", "projection_inverse_BoxBool_proj_0"
       ],
       0,
-      "fdff087b7b044b49d8eb574d02b63229"
+      "4a5bb0f8c9470c16ce58882df2952d96"
     ],
     [
       "Spec.Graph3.is_edge_set_lemma2",
@@ -1120,7 +1120,7 @@
         "typing_FStar.Seq.Properties.tail", "typing_FStar.UInt64.t"
       ],
       0,
-      "13bfba4cd574f6f41cc66906d15499c8"
+      "29e6c9e51138f47e8c1fb3c37fedc50e"
     ],
     [
       "Spec.Graph3.slice_uniqueness_lemma_edge",
@@ -1178,7 +1178,7 @@
         "typing_Spec.Graph3.is_edge_set", "well-founded-ordering-on-nat"
       ],
       0,
-      "ae56dc799fefbc8617f69b4a13eca7a8"
+      "ee5f4071d06d27938bb04d5a7c788a99"
     ],
     [
       "Spec.Graph3.slice_uniqueness_lemma_edge",
@@ -1199,7 +1199,7 @@
         "typing_Spec.Graph3.is_edge_set"
       ],
       0,
-      "c7ec3e4fa77bd6f8d22cc21d5d674f57"
+      "ed8337521341190cf47d3eb8a4727ddf"
     ],
     [
       "Spec.Graph3.is_edge_set_lemma3",
@@ -1215,7 +1215,7 @@
         "projection_inverse_BoxInt_proj_0", "typing_Spec.Graph3.is_edge_set"
       ],
       0,
-      "f3d787a5041f032437ea17ebcc654f14"
+      "ed43a319a17197efb80dfc786c2ab543"
     ],
     [
       "Spec.Graph3.is_edge_set_lemma3",
@@ -1228,7 +1228,7 @@
         "unit_inversion", "unit_typing"
       ],
       0,
-      "55c3b64b35ce07dcf46d494c370c16d7"
+      "a214fcd21389e5067a4b239fc0bef8be"
     ],
     [
       "Spec.Graph3.is_edge_set_lemma4",
@@ -1244,7 +1244,7 @@
         "typing_FStar.UInt64.t"
       ],
       0,
-      "1a0030bcde776ab97f163d928a745656"
+      "b71f2dc410da68b2d17f084b70296d9d"
     ],
     [
       "Spec.Graph3.is_edge_set_lemma4",
@@ -1264,7 +1264,7 @@
         "projection_inverse_BoxBool_proj_0", "typing_Spec.Graph3.is_edge_set"
       ],
       0,
-      "366aacea7e545d88846014424ec88577"
+      "c42c1cddde8ad38f3c7bc68b96ae2eec"
     ],
     [
       "Spec.Graph3.vertex_mem",
@@ -1281,7 +1281,7 @@
         "typing_FStar.Seq.Properties.mem", "typing_FStar.UInt64.t"
       ],
       0,
-      "2de0747488b8917b39b8b21a9c68acd5"
+      "d1ed3d953108a9ee16e40c840c4ffbd7"
     ],
     [
       "Spec.Graph3.mem_index_count",
@@ -1320,7 +1320,7 @@
         "well-founded-ordering-on-nat"
       ],
       0,
-      "15a221db20a1c820ef3ad183f8e7b6c7"
+      "48781cbf3fbe16a64d1a811d06b662dc"
     ],
     [
       "Spec.Graph3.edge_mem",
@@ -1336,7 +1336,7 @@
         "typing_FStar.UInt64.t"
       ],
       0,
-      "b60c486c0c43b7a0f3198d3a57d27b11"
+      "be9689a7398f7f316db7db23f0769066"
     ],
     [
       "Spec.Graph3.edge_mem",
@@ -1353,7 +1353,7 @@
         "typing_FStar.UInt64.t"
       ],
       0,
-      "54f6e10f8917be380aeb01b647f257d0"
+      "08adb53cb8cc63e1be9d9f514808900f"
     ],
     [
       "Spec.Graph3.mem_graph_vertex",
@@ -1365,7 +1365,7 @@
         "projection_inverse_BoxBool_proj_0"
       ],
       0,
-      "5135e85f05a8a6ab0efa3746e366c229"
+      "8322893cf9c6ae0a437c06668a1b0875"
     ],
     [
       "Spec.Graph3.mem_graph_edge",
@@ -1377,7 +1377,7 @@
         "projection_inverse_BoxBool_proj_0"
       ],
       0,
-      "31783f8f1dad1b369064dcd62fdffe23"
+      "8e1fd69eaaf8724a76558df984449264"
     ],
     [
       "Spec.Graph3.reach",
@@ -1386,7 +1386,7 @@
       1,
       [ "@query" ],
       0,
-      "4e5a33d03f91c4d2bb1031334719f3be"
+      "3a7e00c964f8aad7b5687ed360b9c216"
     ],
     [
       "Spec.Graph3.__proj__ReachRefl__item__a",
@@ -1398,7 +1398,7 @@
         "refinement_interpretation_Tm_refine_d3f01931406243174ab22b51491f0ed5"
       ],
       0,
-      "6c4e274f2880dd60742b9a4701d355f2"
+      "121028fc4f6072602053d22c794e753f"
     ],
     [
       "Spec.Graph3.__proj__ReachRefl__item__b",
@@ -1410,7 +1410,7 @@
         "refinement_interpretation_Tm_refine_d3f01931406243174ab22b51491f0ed5"
       ],
       0,
-      "d57015636bd5c544b9839528fea4ea8b"
+      "c34ea5d6a0e406d592f9a988335a83f4"
     ],
     [
       "Spec.Graph3.__proj__ReachRefl__item__g",
@@ -1423,7 +1423,7 @@
         "refinement_interpretation_Tm_refine_d3f01931406243174ab22b51491f0ed5"
       ],
       0,
-      "02fe4136a2aae1f58b35533378957cfb"
+      "4747c7f62c4d2b8c9f7ca9025bb33bc3"
     ],
     [
       "Spec.Graph3.__proj__ReachRefl__item__x",
@@ -1436,7 +1436,7 @@
         "refinement_interpretation_Tm_refine_d3f01931406243174ab22b51491f0ed5"
       ],
       0,
-      "b90e5ff2bf4b68a8d3e2e3cb9acea939"
+      "25d89445c3fae673813fc20a43ac618b"
     ],
     [
       "Spec.Graph3.__proj__ReachTrans__item__a",
@@ -1448,7 +1448,7 @@
         "refinement_interpretation_Tm_refine_a59d7b29a5808a1572d98dcc51a6d311"
       ],
       0,
-      "fd2155689100acd72a09feb662dbe741"
+      "0829f87d6c533468e8643c4905839a6e"
     ],
     [
       "Spec.Graph3.__proj__ReachTrans__item__b",
@@ -1460,7 +1460,7 @@
         "refinement_interpretation_Tm_refine_a59d7b29a5808a1572d98dcc51a6d311"
       ],
       0,
-      "73370e953bd5e66bc74a3ef3c4f1eb54"
+      "d86fff06902026ef34debcdec4aca5e2"
     ],
     [
       "Spec.Graph3.__proj__ReachTrans__item__g",
@@ -1473,7 +1473,7 @@
         "refinement_interpretation_Tm_refine_a59d7b29a5808a1572d98dcc51a6d311"
       ],
       0,
-      "31c3622283f9e3b5bb127a608d43b0c6"
+      "2c148d0416cd92e6999ee74d48aa4a38"
     ],
     [
       "Spec.Graph3.__proj__ReachTrans__item__x",
@@ -1486,7 +1486,7 @@
         "refinement_interpretation_Tm_refine_a59d7b29a5808a1572d98dcc51a6d311"
       ],
       0,
-      "b300b4849662f25f35cc78c7be88c111"
+      "b2e21346a2cac76fd836e2dda9ce7549"
     ],
     [
       "Spec.Graph3.__proj__ReachTrans__item__y",
@@ -1499,7 +1499,7 @@
         "refinement_interpretation_Tm_refine_a59d7b29a5808a1572d98dcc51a6d311"
       ],
       0,
-      "063d7f8aa9725945b2f9373b031af744"
+      "aeedb176aea2389953dc925eb24b77d3"
     ],
     [
       "Spec.Graph3.__proj__ReachTrans__item__z",
@@ -1512,7 +1512,7 @@
         "refinement_interpretation_Tm_refine_a59d7b29a5808a1572d98dcc51a6d311"
       ],
       0,
-      "81b8ed9c636d2d53423849c892cf148e"
+      "57342da1a397223f3e7e57035f006c9f"
     ],
     [
       "Spec.Graph3.__proj__ReachTrans__item___6",
@@ -1525,7 +1525,7 @@
         "refinement_interpretation_Tm_refine_a59d7b29a5808a1572d98dcc51a6d311"
       ],
       0,
-      "096f44689d739b37eb4926ef122a2a00"
+      "61bf873be5bee38aecaf00b5be16669e"
     ],
     [
       "Spec.Graph3.subset_vertices",
@@ -1578,7 +1578,7 @@
         "typing_Spec.Graph3.vertex_mem", "well-founded-ordering-on-nat"
       ],
       0,
-      "dca9b7eb808a75143a17a2ba1b4e0775"
+      "21546384b5cfcec51b98c8456e6cf313"
     ],
     [
       "Spec.Graph3.subset_edges",
@@ -1622,7 +1622,7 @@
         "typing_Spec.Graph3.subset_edges", "well-founded-ordering-on-nat"
       ],
       0,
-      "f262410cac61a4acea8c83ba1c45be46"
+      "7c49aae2960ef17f8352866e5fc8ebd5"
     ],
     [
       "Spec.Graph3.subset_edges",
@@ -1638,7 +1638,7 @@
         "typing_FStar.UInt64.t"
       ],
       0,
-      "ae59886113983089119da5c701f311ee"
+      "843c5b19aa1157e752e00f5d69ea6d40"
     ],
     [
       "Spec.Graph3.edge_rel",
@@ -1650,7 +1650,7 @@
         "projection_inverse_BoxBool_proj_0"
       ],
       0,
-      "95f5cf83dd126828f7461a84d47b6751"
+      "76a01bc20e312be3ac7197d4005f8bb9"
     ],
     [
       "Spec.Graph3.vertices_in_path",
@@ -1669,7 +1669,7 @@
         "subterm_ordering_Spec.Graph3.ReachTrans"
       ],
       0,
-      "4cb7a66a50b9fb9b99d379413fd41481"
+      "a1538e7a19afcee5f85401734d6a6b03"
     ],
     [
       "Spec.Graph3.subset_vertices_in_path",
@@ -1722,7 +1722,7 @@
         "typing_Spec.Graph3.vertex_mem", "well-founded-ordering-on-nat"
       ],
       0,
-      "c0a135e7cd0539345b1fa48431029dd3"
+      "9ca7204e5b08b3d5d44b13fc70be2b55"
     ],
     [
       "Spec.Graph3.subset_vertices_in_path_lemma",
@@ -1748,7 +1748,7 @@
         "typing_Spec.Graph3.vertex_mem"
       ],
       0,
-      "2d2db0796e34b68ce7dd9d9780f1a09a"
+      "7a126ed165fab4822d106a4974c32578"
     ],
     [
       "Spec.Graph3.get_index",
@@ -1796,7 +1796,7 @@
         "well-founded-ordering-on-nat"
       ],
       0,
-      "f078ed0c0ef6021a9da156322877dcd7"
+      "78683ec8cafa61c35e8005586ba64cfe"
     ],
     [
       "Spec.Graph3.remove",
@@ -1858,7 +1858,7 @@
         "typing_Spec.Graph3.is_vertex_set", "well-founded-ordering-on-nat"
       ],
       0,
-      "1dbb6daa49990baa3a3f4bf51480256b"
+      "c3a0db4dd55929a363e720d4f6bd4757"
     ],
     [
       "Spec.Graph3.subset_lemma",
@@ -1908,7 +1908,7 @@
         "typing_Spec.Graph3.vertex_mem", "well-founded-ordering-on-nat"
       ],
       0,
-      "41fb29b4fc9700186917cfbf3466b5b2"
+      "f95720579ff3ce46cdedb598f57f1609"
     ],
     [
       "Spec.Graph3.subset_lemma",
@@ -1917,7 +1917,7 @@
       1,
       [ "@query" ],
       0,
-      "80d27d8c8eae6d9200ea87fa9d25c8ee"
+      "a4a1890bde60dddf183a47f2f1f08432"
     ],
     [
       "Spec.Graph3.is_vertex_set_lemma8",
@@ -1982,7 +1982,7 @@
         "well-founded-ordering-on-nat"
       ],
       0,
-      "1dd8faa0da4112e1427c76e5621c6e70"
+      "d43a5d9cfdcc2f50c887e156997f73e7"
     ],
     [
       "Spec.Graph3.is_vertex_set_lemma8",
@@ -1991,7 +1991,7 @@
       1,
       [ "@query" ],
       0,
-      "d9bf199919ff33e5b711d6ae99fed946"
+      "2093dec6396e1b70e457aa9b87e58731"
     ],
     [
       "Spec.Graph3.slice_membership_lemma_reach_x_2",
@@ -2016,7 +2016,7 @@
         "typing_Spec.Graph3.vertex_mem"
       ],
       0,
-      "75bd855b9b15c264b05760401493e0e7"
+      "c7cf293ab10cd59da785bbe4ca41f5f9"
     ],
     [
       "Spec.Graph3.subset_equal",
@@ -2039,7 +2039,7 @@
         "typing_FStar.Seq.Base.length", "typing_FStar.UInt64.t"
       ],
       0,
-      "2bb2d3195ff7d83130779c7dac8f27fb"
+      "65fef6a125cb423a848a47d89c8c1617"
     ],
     [
       "Spec.Graph3.subset_of_each_other",
@@ -2097,7 +2097,7 @@
         "typing_Spec.Graph3.vertex_mem", "well-founded-ordering-on-nat"
       ],
       0,
-      "a00773065aab56814d5aaf9302e54b74"
+      "b4e2c123516a9ea0ca102ab43b210f0b"
     ],
     [
       "Spec.Graph3.subset_of_each_other",
@@ -2106,7 +2106,7 @@
       1,
       [ "@query" ],
       0,
-      "f681e2f44b12bc2d31f32394f25e7813"
+      "8264bd5e60e8119bd0ce8a29ff1f7708"
     ],
     [
       "Spec.Graph3.vertices_in_sub_path_lemma",
@@ -2115,7 +2115,7 @@
       1,
       [ "@query" ],
       0,
-      "ee237e866052e7591d28efecf177731f"
+      "ba71652ab5ff0db6263b55f6995cae0c"
     ],
     [
       "Spec.Graph3.vertices_in_sub_path_lemma",
@@ -2181,7 +2181,7 @@
         "unit_typing"
       ],
       0,
-      "f0f88528ee1f9376f3c5c96c3bd782d7"
+      "879905860e55a30a6a4bef3acca3fca8"
     ],
     [
       "Spec.Graph3.vertices_in_sub_path_lemma_mem",
@@ -2247,7 +2247,7 @@
         "unit_typing"
       ],
       0,
-      "2434f135673f76a01176ec65d4d00f1e"
+      "0cf11c81df850bba87b96ed144b5dc73"
     ],
     [
       "Spec.Graph3.vertices_in_sub_path_lemma_reach",
@@ -2324,7 +2324,7 @@
         "unit_typing"
       ],
       0,
-      "e97b26d8fc1ef4e97baa4eb883d2cbb9"
+      "e3c3193dbf60ed3b6a1e03a08a99c7e0"
     ],
     [
       "Spec.Graph3.vertices_in_sub_path_lemma_reach",
@@ -2336,7 +2336,7 @@
         "refinement_interpretation_Tm_refine_bf657d42185cac03470944bf88b6b864"
       ],
       0,
-      "6d35d14fe7fdd6c7a676e8c1ca1525f7"
+      "c140cc1dc367b43d58cd7c758c524786"
     ],
     [
       "Spec.Graph3.path_length",
@@ -2357,7 +2357,7 @@
         "subterm_ordering_Spec.Graph3.ReachTrans"
       ],
       0,
-      "2b261912ac288f86664fa18c220a2650"
+      "607308fd98cce8923b87329f830de839"
     ],
     [
       "Spec.Graph3.reach_vertices_in_path_lemma",
@@ -2452,7 +2452,7 @@
         "typing_Spec.Graph3.vertices_in_path"
       ],
       0,
-      "aa9c60f619ddfd6e056367ce58a3c0f2"
+      "3bf63c62ad0313b48d73394ec838d76f"
     ],
     [
       "Spec.Graph3.shortest_path_lemma",
@@ -2510,7 +2510,7 @@
         "typing_Spec.Graph3.vertices_in_path", "well-founded-ordering-on-nat"
       ],
       0,
-      "3d3170fd7a2254735cf7994675dd32dd"
+      "6bbdd7b804629da1ac09b7c1d9adbeeb"
     ],
     [
       "Spec.Graph3.edge_reach_constructor",
@@ -2519,7 +2519,7 @@
       1,
       [ "@query" ],
       0,
-      "5b55605d376d72ea3d9a1d06a350d2b5"
+      "169dd20e3fc7be322acf14b23496d57c"
     ],
     [
       "Spec.Graph3.edge_reach_constructor",
@@ -2528,7 +2528,7 @@
       1,
       [ "@query" ],
       0,
-      "874da806dc2cc514bd2b467078bd694c"
+      "9236e79947649856728a1d56b42ec1b5"
     ],
     [
       "Spec.Graph3.reflex_lemma",
@@ -2546,7 +2546,7 @@
         "typing_Spec.Graph3.mem_graph_vertex"
       ],
       0,
-      "1edd8e694dac7ce1b1939834ccab5216"
+      "593a6b514b04a41f10cb8a325f2f8d55"
     ],
     [
       "Spec.Graph3.reflex_lemma1",
@@ -2558,7 +2558,7 @@
         "projection_inverse_BoxBool_proj_0"
       ],
       0,
-      "719f4e7f62a32f5c756e531d52e0ee69"
+      "d6f6fca5d5f0899b882afc74bda7b87a"
     ],
     [
       "Spec.Graph3.reflex_lemma_list",
@@ -2567,7 +2567,7 @@
       1,
       [ "@query" ],
       0,
-      "660efdffe258f69fe04110fe123eb724"
+      "140db44c78a0396bafe96520eacd7062"
     ],
     [
       "Spec.Graph3.reflex_lemma_list",
@@ -2626,7 +2626,7 @@
         "typing_Spec.Graph3.vertex_mem", "well-founded-ordering-on-nat"
       ],
       0,
-      "bdffb8c9bad7969797708a84ce1554c2"
+      "17631b86b9520fa6a2191f473e782c78"
     ],
     [
       "Spec.Graph3.reflex_lemma_list",
@@ -2635,7 +2635,7 @@
       1,
       [ "@query" ],
       0,
-      "3853fbc245eb25de1ecfbc08413c4ddc"
+      "02a1e863715135a4ed3de426bb2b0223"
     ],
     [
       "Spec.Graph3.reachability_lemma",
@@ -2649,7 +2649,7 @@
         "typing_FStar.UInt64.t"
       ],
       0,
-      "dfb3573b769d03ab7745130a8c6284b3"
+      "33fc2ad3025e95ba5fc046e73b20d4af"
     ],
     [
       "Spec.Graph3.reachability_lemma",
@@ -2670,7 +2670,7 @@
         "typing_FStar.UInt64.t"
       ],
       0,
-      "6525c1f0bbb7712a85d49bb87b0a69ce"
+      "8295a52d981f2e149a5fbf37b3cade09"
     ],
     [
       "Spec.Graph3.add_to_vertex_set",
@@ -2719,7 +2719,7 @@
         "typing_Spec.Graph3.vertex_mem"
       ],
       0,
-      "75f5a76f1fc9474ada7b5117e407d1c5"
+      "43388f0cee4f05dcf9b0b5e440cda9d2"
     ],
     [
       "Spec.Graph3.append_reach",
@@ -2775,7 +2775,7 @@
         "typing_Spec.Graph3.subset_vertices", "typing_Spec.Graph3.vertex_mem"
       ],
       0,
-      "19ba4f451dcd816f92453a7a7dba5081"
+      "7d24e734c8398cd81d22b1f34ae70093"
     ],
     [
       "Spec.Graph3.successors_fn",
@@ -2869,7 +2869,7 @@
         "typing_Spec.Graph3.vertex_mem", "well-founded-ordering-on-nat"
       ],
       0,
-      "c6e15233bcebdc929f7c0fba9bf402ba"
+      "2b37d88ca5d18d66a5fe96154566c0fb"
     ],
     [
       "Spec.Graph3.test_snoc",
@@ -2906,7 +2906,7 @@
         "well-founded-ordering-on-nat"
       ],
       0,
-      "b60f4cfe18b1c4512df7b4c086b8f0f9"
+      "42adf8537b6705ed2acc198e39de5a90"
     ],
     [
       "Spec.Graph3.snoc_helper_lemma1",
@@ -2915,7 +2915,7 @@
       1,
       [ "@query" ],
       0,
-      "6391c9ded7ead9cd18691e3f52d73cae"
+      "5fc1a0c8b1e4c35e21ff514598ff870e"
     ],
     [
       "Spec.Graph3.snoc_helper_lemma1_edge",
@@ -2932,7 +2932,7 @@
         "typing_FStar.UInt64.t"
       ],
       0,
-      "7268592ea50d81c87859195795d25e00"
+      "bac0fdbdbf124aa460ea72720a39837c"
     ],
     [
       "Spec.Graph3.snoc_helper_lemma2",
@@ -2941,7 +2941,7 @@
       1,
       [ "@query" ],
       0,
-      "61b4111be3be0ecbc4ff9528e53f63cd"
+      "6ca6527cf2faff2bbb8ad66b2427738d"
     ],
     [
       "Spec.Graph3.snoc_helper_lemma2_edge",
@@ -2958,7 +2958,7 @@
         "typing_FStar.UInt64.t"
       ],
       0,
-      "ebcf07948a6c9b430ee1e1b5364d3b3a"
+      "45e5f7054bb500baeeb8d037ca845ef2"
     ],
     [
       "Spec.Graph3.snoc_uniqueness_lemma",
@@ -3019,7 +3019,7 @@
         "typing_Spec.Graph3.is_vertex_set", "well-founded-ordering-on-nat"
       ],
       0,
-      "af7a6a63a89c3d99acdea1eff6e5e6fb"
+      "11e06359934acb6e7162b5382f8982a1"
     ],
     [
       "Spec.Graph3.snoc_uniqueness_lemma_edge",
@@ -3082,7 +3082,7 @@
         "typing_Spec.Graph3.is_edge_set", "well-founded-ordering-on-nat"
       ],
       0,
-      "c0579ef9875cea0203e18d77b65896c3"
+      "1a0830fb37ebf0ccf3e4102bd25147ee"
     ],
     [
       "Spec.Graph3.snoc_uniqueness_lemma_edge",
@@ -3098,7 +3098,7 @@
         "typing_FStar.UInt64.t"
       ],
       0,
-      "51614ff9013234da62753134514b2808"
+      "68efc1dc97914978eae5dfb0022a5535"
     ],
     [
       "Spec.Graph3.snoc_unique_lemma_edge",
@@ -3114,7 +3114,7 @@
         "typing_FStar.UInt64.t"
       ],
       0,
-      "c8e284274aa3bcfeb1e266622d300b6f"
+      "500868184fb2ed7167f79b23a0c9fc62"
     ],
     [
       "Spec.Graph3.successors_fn1",
@@ -3211,7 +3211,7 @@
         "well-founded-ordering-on-nat"
       ],
       0,
-      "76cb1c156c9b85721564f205edb897c8"
+      "5f379c10b35a492645e4d3b7601e4002"
     ],
     [
       "Spec.Graph3.successors_fn2",
@@ -3276,7 +3276,7 @@
         "well-founded-ordering-on-nat"
       ],
       0,
-      "fb027fa450ea862888aaa816d19a0c41"
+      "a00bc955018e51ec3e9af7dc328d9e94"
     ],
     [
       "Spec.Graph3.successors",
@@ -3316,7 +3316,7 @@
         "typing_Spec.Graph3.successors_fn2", "typing_Spec.Graph3.vertex_mem"
       ],
       0,
-      "930906c9eeb18d6601001924680c9d59"
+      "e85f4f689135f486ab49653542780769"
     ],
     [
       "Spec.Graph3.successors_successors_fn2_connect_lemma",
@@ -3325,7 +3325,7 @@
       1,
       [ "@query" ],
       0,
-      "120eec51c10d8355375165e7a97b7f0d"
+      "2711eb9b29354be283bb992c969657ed"
     ],
     [
       "Spec.Graph3.successors_successors_fn2_connect_lemma",
@@ -3334,7 +3334,7 @@
       1,
       [ "@query", "equation_Spec.Graph3.successors" ],
       0,
-      "59b7dd0e1ff741e850bf0eb14debea5a"
+      "79508bc1ceb6ff846d22a4378d5149e8"
     ],
     [
       "Spec.Graph3.pick_second",
@@ -3358,7 +3358,7 @@
         "typing_FStar.Seq.Base.length", "well-founded-ordering-on-nat"
       ],
       0,
-      "3ba9210b559ee5240fa5f54d570eb8d3"
+      "e886964964fd2db010e4fb6b9c3798e1"
     ],
     [
       "Spec.Graph3.pick_second_lemma",
@@ -3379,7 +3379,7 @@
         "refinement_interpretation_Tm_refine_2de20c066034c13bf76e9c0b94f4806c"
       ],
       0,
-      "8eef9afd71941c31247120405326cfee"
+      "af4a485316c486f8cf904f7dcb03f909"
     ],
     [
       "Spec.Graph3.pick_second_length_lemma",
@@ -3419,7 +3419,7 @@
         "typing_Spec.Graph3.pick_second", "well-founded-ordering-on-nat"
       ],
       0,
-      "801536f2dce12e296b7ba71d759a0e15"
+      "e0f329cde4b59591166f45376f917f2a"
     ],
     [
       "Spec.Graph3.pick_second_mem_lemma",
@@ -3482,7 +3482,7 @@
         "typing_Spec.Graph3.pick_second", "well-founded-ordering-on-nat"
       ],
       0,
-      "5b246182bf01f1f10f0877a4d8e9b38f"
+      "4bb2fc003a70d8074d50b296b8619075"
     ],
     [
       "Spec.Graph3.pick_second_mem_lemma",
@@ -3498,7 +3498,7 @@
         "typing_FStar.UInt64.t"
       ],
       0,
-      "9792db64250ec3e299d05dbdcb0b135d"
+      "95d3b948606a7371a275974cc39cbfcf"
     ],
     [
       "Spec.Graph3.successors_fn2_pick_second_lemma",
@@ -3514,7 +3514,7 @@
         "typing_FStar.UInt64.t"
       ],
       0,
-      "c550e4e5c6142bb21a7c128ffdc7b475"
+      "f6f1dbe76202441716b5cdee084d0df2"
     ],
     [
       "Spec.Graph3.successors_fn2_pick_second_lemma",
@@ -3559,7 +3559,7 @@
         "typing_FStar.UInt64.t", "well-founded-ordering-on-nat"
       ],
       0,
-      "7c49d476a15ed33590d0f414566795ad"
+      "a8ee2553667228e7f78a161d65403e90"
     ],
     [
       "Spec.Graph3.successors_fn2_pick_second_lemma",
@@ -3575,7 +3575,7 @@
         "typing_FStar.UInt64.t"
       ],
       0,
-      "dc799a850b7abbe08741606c7660d1bd"
+      "909c5fbab1fcf45b81209ad7e1605881"
     ],
     [
       "Spec.Graph3.successors_fn2_empty_if_no_fst_i_in_e",
@@ -3620,7 +3620,7 @@
         "well-founded-ordering-on-nat"
       ],
       0,
-      "08e3ae56cff34c684ce8eaff4ecdb292"
+      "679b3fa9869f8b3a2844afbbdd046d5c"
     ],
     [
       "Spec.Graph3.successors_fn2_empty_if_no_fst_i_in_e",
@@ -3636,7 +3636,7 @@
         "typing_FStar.UInt64.t"
       ],
       0,
-      "3db00d4a6f9f8d42dac83550fe9f2858"
+      "58b567b018f06ffce3e6301cc830b73c"
     ],
     [
       "Spec.Graph3.successors_fn2_empty_if_no_fst_tl_in_e",
@@ -3654,7 +3654,7 @@
         "typing_FStar.UInt64.t"
       ],
       0,
-      "447a35528da9b706548fc58ab7cc6e8f"
+      "78c3f314db706ac2dd96e0717c115df9"
     ],
     [
       "Spec.Graph3.successors_fn2_empty_if_no_fst_tl_in_e",
@@ -3670,7 +3670,7 @@
         "typing_FStar.UInt64.t"
       ],
       0,
-      "b77cfe0904bd5ec683aa9e2c8c2dc1fd"
+      "ecd461d4f9dd728a96d91124879a6e57"
     ],
     [
       "Spec.Graph3.seq_append_lemma",
@@ -3692,7 +3692,7 @@
         "typing_FStar.Seq.Base.append", "typing_FStar.Seq.Base.length"
       ],
       0,
-      "0ca3048ef5be87e68f77b15501720191"
+      "de9b3fcc1d45d9f075af51dafebdb231"
     ],
     [
       "Spec.Graph3.successors_fn2_append_lemma",
@@ -3750,7 +3750,7 @@
         "well-founded-ordering-on-nat"
       ],
       0,
-      "585f1270717c50953f0999dac9455aff"
+      "bc41116d7dce26af454324b995e81de0"
     ],
     [
       "Spec.Graph3.successors_fn2_e2_is_successors_fn2_e_if_no_fst_i_in_e1",
@@ -3766,7 +3766,7 @@
         "typing_FStar.UInt64.t"
       ],
       0,
-      "b6a619c1b898eba738240cb93753a6b2"
+      "f3d2520a750f1272d1fa42b539d34752"
     ],
     [
       "Spec.Graph3.successors_fn2_e2_is_successors_fn2_e_if_no_fst_i_in_e1",
@@ -3778,7 +3778,7 @@
         "refinement_interpretation_Tm_refine_003c08503cdab657faf7b9377b8d5a79"
       ],
       0,
-      "3250614766968ccc0b5dec4f1822b743"
+      "ad0c9036b6a607472422d49b287f50f9"
     ],
     [
       "Spec.Graph3.successors_fn2_e2_is_successors_fn2_e_if_no_fst_i_in_e1",
@@ -3794,7 +3794,7 @@
         "typing_FStar.UInt64.t"
       ],
       0,
-      "6bfbcb474d86ef4327c9637705b44407"
+      "df12d6ce8ea3acef4c4fe1aebf4a494e"
     ],
     [
       "Spec.Graph3.successors_fn2_mem_lemma2_helper",
@@ -3803,7 +3803,7 @@
       1,
       [ "@query" ],
       0,
-      "dab37d9f78d40d05d3b0b432a61c92e9"
+      "43da07ea6b0b127b6c51a4aa021e6b94"
     ],
     [
       "Spec.Graph3.successors_fn2_mem_lemma2_helper",
@@ -3819,7 +3819,7 @@
         "typing_FStar.UInt64.t"
       ],
       0,
-      "30c595e490218a837106c50fcb9e13e6"
+      "f1108cd59f671ab05c5467f7beb8e3e7"
     ],
     [
       "Spec.Graph3.successors_fn2_e2_is_successors_fn2_e1_if_no_fst_tl_in_e",
@@ -3835,7 +3835,7 @@
         "typing_FStar.UInt64.t"
       ],
       0,
-      "9e522bdd739c083529b7efba2d52f80b"
+      "7bef79e13268f0d4026c23db163c3047"
     ],
     [
       "Spec.Graph3.successors_fn2_e2_is_successors_fn2_e1_if_no_fst_tl_in_e",
@@ -3853,7 +3853,7 @@
         "typing_FStar.UInt64.t"
       ],
       0,
-      "220b41bb12273dc69827aa56930b4e3f"
+      "9795342c494d18b549988d3ad3d90d9a"
     ],
     [
       "Spec.Graph3.successors_fn2_e2_is_successors_fn2_e1_if_no_fst_tl_in_e",
@@ -3869,7 +3869,7 @@
         "typing_FStar.UInt64.t"
       ],
       0,
-      "16eb5bcc92ea7f015a3ceb9090777d74"
+      "e59fab2f78cbee309f221fd60101b094"
     ],
     [
       "Spec.Graph3.next",
@@ -3887,7 +3887,7 @@
         "typing_FStar.UInt64.v"
       ],
       0,
-      "bc5bb3ec91ef4c47f79f8ddd13ae0dac"
+      "2432c963b64bfd56ea684c9e1868c4b6"
     ],
     [
       "Spec.Graph3.previous",
@@ -3905,7 +3905,7 @@
         "typing_FStar.UInt64.v"
       ],
       0,
-      "63606ca31547ddf416ed217f4f76a870"
+      "7c44d570288a8f349f77147d2042448e"
     ],
     [
       "Spec.Graph3.subset_vertices_variant",
@@ -3951,7 +3951,7 @@
         "well-founded-ordering-on-nat"
       ],
       0,
-      "dee5eec7e100d2a311140b825dee219b"
+      "025d05e950d6184a5ba3f78d5c7149aa"
     ],
     [
       "Spec.Graph3.subset_variant_lemma",
@@ -4010,7 +4010,7 @@
         "well-founded-ordering-on-nat"
       ],
       0,
-      "9a5ed4ff00be519ccb8b37705da293d8"
+      "862ef3954ee9343a74cbade83096014a"
     ],
     [
       "Spec.Graph3.subset_variant_lemma",
@@ -4019,7 +4019,7 @@
       1,
       [ "@query" ],
       0,
-      "47ad4ca349a72fceb9555332b7848d0e"
+      "c2b751dcbd6f12e004c28d5a7247cab5"
     ],
     [
       "Spec.Graph3.subset_of_each_other1",
@@ -4091,7 +4091,7 @@
         "typing_Spec.Graph3.remove", "well-founded-ordering-on-nat"
       ],
       0,
-      "b3b7c19f53d0107b4e01b9a1ce0a0cbc"
+      "4194f164a4ddd8f4d8021177d6412ed6"
     ],
     [
       "Spec.Graph3.next_wrapper",
@@ -4107,7 +4107,7 @@
         "refinement_interpretation_Tm_refine_ecb060d9653d4708341356a72eb99b35"
       ],
       0,
-      "0dc03d9f43509c9ee1f9ebf4dcebdac3"
+      "bfc7979efba48b0c5e6ef4b3f4e25783"
     ],
     [
       "Spec.Graph3.successors_fn2_e2_is_successors_fn2_e1_if_no_fst_tl_in_e'",
@@ -4123,7 +4123,7 @@
         "typing_FStar.UInt64.t"
       ],
       0,
-      "43607f5117a9a9814be7756faad678ef"
+      "7d0b1a0aa4b2507033da52d7fc8f6746"
     ],
     [
       "Spec.Graph3.successors_fn2_e2_is_successors_fn2_e1_if_no_fst_tl_in_e'",
@@ -4144,7 +4144,7 @@
         "typing_FStar.UInt64.t", "typing_Spec.Graph3.next"
       ],
       0,
-      "4bc4bcb7cc95f336c01085b7356b4d67"
+      "4215eab503456512387367e8d53245e6"
     ],
     [
       "Spec.Graph3.successors_fn2_e2_is_successors_fn2_e1_if_no_fst_tl_in_e'",
@@ -4160,7 +4160,7 @@
         "typing_FStar.UInt64.t"
       ],
       0,
-      "38f03b046ee70b247a2628a1b7ddb2a4"
+      "bbecc8a5ddbe6f424e164c5999c6a585"
     ],
     [
       "Spec.Graph3.successors_fn2_e2_is_successors_fn2_e1_if_no_fst_tl_in_e''",
@@ -4177,7 +4177,7 @@
         "typing_FStar.UInt64.t"
       ],
       0,
-      "7641925d3c44818f14225b3d318a8598"
+      "ff9b01c76fb9ada701de3d72fcda80f1"
     ],
     [
       "Spec.Graph3.successors_fn2_e2_is_successors_fn2_e1_if_no_fst_tl_in_e''",
@@ -4200,7 +4200,7 @@
         "typing_FStar.UInt64.t", "typing_Spec.Graph3.next_wrapper"
       ],
       0,
-      "34ed8c30f6af4b03415656878f904be5"
+      "07d1fafa49a3ebe96d03b79c80a0ab9f"
     ],
     [
       "Spec.Graph3.successors_fn2_e2_is_successors_fn2_e1_if_no_fst_tl_in_e''",
@@ -4216,7 +4216,7 @@
         "typing_FStar.UInt64.t"
       ],
       0,
-      "55227ff3c0a528a6ea832e14fceefd6e"
+      "a96ae0f3c9ba21fdd2c73912f04e98bc"
     ],
     [
       "Spec.Graph3.edge_reach_lemma_succ_helper_lemma",
@@ -4260,7 +4260,7 @@
         "well-founded-ordering-on-nat"
       ],
       0,
-      "9895c4e4369bc4b9e3e1003a156d5e07"
+      "147313eaef9402fdf1e57d59ebdddf21"
     ],
     [
       "Spec.Graph3.edge_reach_lemma_succ_helper_lemma",
@@ -4275,7 +4275,7 @@
         "typing_FStar.UInt64.t"
       ],
       0,
-      "a0f5dda59b00883660db2d557f95b541"
+      "ef291781842208df2380bd7322196c89"
     ],
     [
       "Spec.Graph3.edge_reach_lemma_succ",
@@ -4284,7 +4284,7 @@
       1,
       [ "@query" ],
       0,
-      "010e7267060ffa8f174c747c9cf11163"
+      "6de206d05ee6ae19c75037308a752075"
     ],
     [
       "Spec.Graph3.edge_reach_lemma_succ",
@@ -4313,7 +4313,7 @@
         "typing_Spec.Graph3.is_vertex_set", "typing_Spec.Graph3.vertex_mem"
       ],
       0,
-      "47ac1a4f8fddaeac6eb2b4ffc6f775eb"
+      "050484513e3e66486d99eb2a9c82b458"
     ],
     [
       "Spec.Graph3.succ_reach_lemma_helper",
@@ -4359,7 +4359,7 @@
         "well-founded-ordering-on-nat"
       ],
       0,
-      "779849250e09554300af0de3bb0a1187"
+      "ce77c508c1d4871dd53719bc2cba1b9e"
     ],
     [
       "Spec.Graph3.succ_reach_lemma_helper",
@@ -4374,7 +4374,7 @@
         "typing_FStar.UInt64.t"
       ],
       0,
-      "03b1f8dc231a0eb1a2bc9a9f9bf3fb4d"
+      "a555d4db6b8cb19571c6f1ac4e650c25"
     ],
     [
       "Spec.Graph3.succ_reach_lemma",
@@ -4383,7 +4383,7 @@
       1,
       [ "@query" ],
       0,
-      "e41affc9e8947bf7744744fb3244395e"
+      "ee9dad70d58643901a9f772343e5883f"
     ],
     [
       "Spec.Graph3.succ_reach_lemma",
@@ -4413,7 +4413,7 @@
         "typing_Spec.Graph3.vertex_mem"
       ],
       0,
-      "b11cc0d708d6f44d6a93b83bb6c5753d"
+      "7c958260e61a07f2be76638866d65fc5"
     ],
     [
       "Spec.Graph3.reach_lemma_transitive",
@@ -4422,7 +4422,7 @@
       1,
       [ "@query" ],
       0,
-      "07e4c4dc1479d23e1422a70695670c98"
+      "e544e80c5af57959088e65269aead437"
     ],
     [
       "Spec.Graph3.reach_lemma_transitive",
@@ -4439,7 +4439,7 @@
         "typing_Spec.Graph3.mem_graph_vertex"
       ],
       0,
-      "db3d644fb7642935f74b51f1a31f477b"
+      "6df4a918bade351e978634f2715dbf09"
     ],
     [
       "Spec.Graph3.reach_lemma_transitive_list",
@@ -4490,7 +4490,7 @@
         "typing_Spec.Graph3.vertex_mem", "well-founded-ordering-on-nat"
       ],
       0,
-      "f05681f529205d9d8a3d30ecbc31a493"
+      "4d96ec951834e48751a89d498094258f"
     ],
     [
       "Spec.Graph3.reachability_helper",
@@ -4532,7 +4532,7 @@
         "typing_Spec.Graph3.mem_graph_vertex"
       ],
       0,
-      "36be3f23bb9f07a9fe03e9258d57c2d2"
+      "1fbc0d5a04a718aa946bb76ce71b5060"
     ],
     [
       "Spec.Graph3.reachability_helper",
@@ -4551,7 +4551,7 @@
         "typing_Spec.Graph3.mem_graph_vertex"
       ],
       0,
-      "720198e4101a9890d1f7467bc0f90f6f"
+      "e3fc57e1bfa1d987684800e29108463d"
     ],
     [
       "Spec.Graph3.reachability_helper1",
@@ -4577,7 +4577,7 @@
         "typing_FStar.UInt64.t", "typing_Spec.Graph3.mem_graph_vertex"
       ],
       0,
-      "d609a8160d4ab88fadc980d83a5746e6"
+      "c5f3149d426b1df128181aee3c84540c"
     ],
     [
       "Spec.Graph3.reachability_non_dependent_on_attributes_lemma",
@@ -4594,7 +4594,7 @@
         "refinement_interpretation_Tm_refine_137ae2bc7ac8119dc0bf2b0f88da46c9"
       ],
       0,
-      "bf35da368a070a5c61e33e2b4d9271f9"
+      "87a8885bac740a032b5f5598373961cc"
     ],
     [
       "Spec.Graph3.reachability_non_dependent_on_attributes_lemma",
@@ -4618,7 +4618,7 @@
         "typing_Spec.Graph3.mem_graph_vertex"
       ],
       0,
-      "62eea51af381fd84e1b400647bd215cb"
+      "c8822027af5d82db2920008630e6d091"
     ],
     [
       "Spec.Graph3.succ_reach_transitive_lemma",
@@ -4635,7 +4635,7 @@
         "typing_Spec.Graph3.mem_graph_vertex"
       ],
       0,
-      "14abb39151bb9181f6ebd928274eeed0"
+      "0d55c2dbb0b9cd3a187c6416f3e457c7"
     ],
     [
       "Spec.Graph3.succ_reach_transitive_lemma1",
@@ -4687,7 +4687,7 @@
         "typing_Spec.Graph3.vertex_mem"
       ],
       0,
-      "a87094f1ed9d8dee75df3756fac23b57"
+      "64e05b5562da47846f9c0de0231c8a51"
     ],
     [
       "Spec.Graph3.succ_reach_transitive_lemma3",
@@ -4706,7 +4706,7 @@
         "typing_Spec.Graph3.mem_graph_edge", "typing_Spec.Graph3.successors"
       ],
       0,
-      "0c86f7b46b8c687d0a04b0293fdee308"
+      "4ad054a0a2d504f301afcc69eb9ec277"
     ],
     [
       "Spec.Graph3.succ_reach_transitive_lemma3",
@@ -4814,7 +4814,7 @@
         "typing_Spec.Graph3.vertices_in_path"
       ],
       0,
-      "c860bf7d34aaf7adcbe04ed6df9f246d"
+      "178bcc139c13abb640fc9cf6e9e1707c"
     ],
     [
       "Spec.Graph3.succ_reach_transitive_lemma3",
@@ -4833,7 +4833,7 @@
         "typing_Spec.Graph3.mem_graph_edge", "typing_Spec.Graph3.successors"
       ],
       0,
-      "d159ab184621d5a386171142ba9d7e65"
+      "b6016a02cc779e91689f7f436410d76f"
     ],
     [
       "Spec.Graph3.graph_subset_itself",
@@ -4850,7 +4850,7 @@
         "typing_Spec.Graph3.subset_vertices"
       ],
       0,
-      "922ba3c558717588c140f3827c629e28"
+      "caad566d769fdc68e4078a7958ba3c8b"
     ],
     [
       "Spec.Graph3.empty_is_subset_of_all_sets",
@@ -4887,7 +4887,7 @@
         "typing_Spec.Graph3.subset_vertices", "typing_Spec.Graph3.vertex_mem"
       ],
       0,
-      "a60c356ceebd4aac29114ff6d0a1bf1a"
+      "05c2f9886a021e194f92be8fefdc94b3"
     ],
     [
       "Spec.Graph3.createEmptySet",
@@ -4896,7 +4896,7 @@
       1,
       [ "@query" ],
       0,
-      "2e964202a1459bd4427682ab3d1e3cdc"
+      "5c847c7414c062a05187e9b7f72c330b"
     ],
     [
       "Spec.Graph3.createEmptySet",
@@ -4925,7 +4925,7 @@
         "typing_Spec.Graph3.__proj__Mkgraph_state__item__vertices"
       ],
       0,
-      "14df778ca174a45f874e44a3d395e25a"
+      "4b6baa75d0816b0eaa3a143243bf7760"
     ],
     [
       "Spec.Graph3.empty_set_mem",
@@ -4934,7 +4934,7 @@
       1,
       [ "@query" ],
       0,
-      "ecf85456777f756375259608fedb3b7d"
+      "5dbbac56cd0448cd7b40f4bd1ddb5d42"
     ],
     [
       "Spec.Graph3.empty_set_mem",
@@ -4959,7 +4959,7 @@
         "typing_FStar.Seq.Base.empty", "typing_FStar.UInt64.t"
       ],
       0,
-      "154b69ef6f75293a1ef9359b6541aafd"
+      "e05aef526aea571cfd00b15ba4fd01a7"
     ],
     [
       "Spec.Graph3.empty_set_mem",
@@ -4968,7 +4968,7 @@
       1,
       [ "@query" ],
       0,
-      "784345d50d7dae28baa1b7c797baea2a"
+      "7e434481def97405d32736e7091a2a9f"
     ],
     [
       "Spec.Graph3.nonEmpty_set",
@@ -4993,7 +4993,7 @@
         "typing_FStar.Seq.Base.length", "typing_FStar.UInt64.t"
       ],
       0,
-      "7c1d2503b013fc68fe7cd9e1c378e782"
+      "c377383cf028f7a8b740990aafd97666"
     ],
     [
       "Spec.Graph3.is_emptySet",
@@ -5011,7 +5011,7 @@
         "token_correspondence_Spec.Graph3.is_vertex_set.fuel_instrumented"
       ],
       0,
-      "d78cba3bb4c2b91bfbb5df6c83e77443"
+      "8159c9f07c6309744bcf332747cc8090"
     ],
     [
       "Spec.Graph3.empty_set_subset_all_sets",
@@ -5020,7 +5020,7 @@
       1,
       [ "@query" ],
       0,
-      "aafb30ec296a0383d2cfff2739c0d462"
+      "5a958aed4a4e193ec7d115a68d882081"
     ],
     [
       "Spec.Graph3.empty_set_subset_all_sets",
@@ -5045,7 +5045,7 @@
         "typing_Spec.Graph3.is_emptySet", "typing_Spec.Graph3.is_vertex_set"
       ],
       0,
-      "62c652237ec92c1db3fa3ab1fb0a7d88"
+      "df51add5e16b2bd98c0ec8e575eaf038"
     ],
     [
       "Spec.Graph3.negation_nonEmpty_implies_empty",
@@ -5068,7 +5068,7 @@
         "typing_Spec.Graph3.nonEmpty_set"
       ],
       0,
-      "e84b56797bfc1dec115a49632c7db86f"
+      "c960f07f3ac141b9e227147308e1603c"
     ],
     [
       "Spec.Graph3.get_head",
@@ -5084,7 +5084,7 @@
         "typing_Spec.Graph3.nonEmpty_set"
       ],
       0,
-      "a913ddaf4d0fff0ad289a8042016ec96"
+      "0f341e610ccc0343e37c34dcb5da6014"
     ],
     [
       "Spec.Graph3.get_head",
@@ -5115,7 +5115,7 @@
         "typing_Spec.Graph3.subset_vertices", "typing_Spec.Graph3.vertex_mem"
       ],
       0,
-      "4432a439e2beaa1882325d3cb3886fa1"
+      "03b570c1ed2ba83db6e2e4348c07ec30"
     ],
     [
       "Spec.Graph3.get_tail",
@@ -5131,7 +5131,7 @@
         "typing_Spec.Graph3.nonEmpty_set"
       ],
       0,
-      "c66544c9c0b4524a14c54b49604df848"
+      "065128128a3dc4f18ccf721028f56516"
     ],
     [
       "Spec.Graph3.get_tail",
@@ -5177,7 +5177,7 @@
         "typing_Spec.Graph3.subset_vertices", "typing_Spec.Graph3.vertex_mem"
       ],
       0,
-      "d2565e08155dc214e1017a6f9af9b94d"
+      "040486b0e148e080c4041d49f6f6582e"
     ],
     [
       "Spec.Graph3.get_last_elem",
@@ -5193,7 +5193,7 @@
         "typing_Spec.Graph3.nonEmpty_set"
       ],
       0,
-      "3a5baac494070dc9a5fe12b7131814cf"
+      "420876382e26167fada13820081ca418"
     ],
     [
       "Spec.Graph3.get_last_elem",
@@ -5224,7 +5224,7 @@
         "typing_Spec.Graph3.subset_vertices", "typing_Spec.Graph3.vertex_mem"
       ],
       0,
-      "b6c19adf11686206b79d17e36939d87b"
+      "156cb70ca97549377b9900763b326caf"
     ],
     [
       "Spec.Graph3.get_first",
@@ -5244,7 +5244,7 @@
         "typing_Spec.Graph3.is_vertex_set", "typing_Spec.Graph3.nonEmpty_set"
       ],
       0,
-      "01430dcad7b5e6d58cd9d6165e8c81cc"
+      "8963634e992246bd6b33d101214d0ce1"
     ],
     [
       "Spec.Graph3.get_first",
@@ -5300,7 +5300,7 @@
         "typing_Spec.Graph3.subset_vertices", "typing_Spec.Graph3.vertex_mem"
       ],
       0,
-      "1f02ab25729d2c844bf76af0a96c057a"
+      "d9b57558e03d4abf1d49bcd8aeb849f0"
     ],
     [
       "Spec.Graph3.head_tail_set_connect_lemma",
@@ -5341,7 +5341,7 @@
         "typing_Spec.Graph3.subset_vertices", "typing_Spec.Graph3.vertex_mem"
       ],
       0,
-      "481b079c87a4d699f70272569c111902"
+      "38e295e0f91135a709fd2058e4dc28b1"
     ],
     [
       "Spec.Graph3.last_first_set_connect_lemma_helper",
@@ -5355,7 +5355,7 @@
         "typing_FStar.UInt64.t"
       ],
       0,
-      "349d1de58988248a8ab4625bd0ab73d2"
+      "da3981a93e079ef7a814d6f89b7a7d5b"
     ],
     [
       "Spec.Graph3.last_first_set_connect_lemma_helper",
@@ -5387,7 +5387,7 @@
         "typing_Spec.Graph3.subset_vertices", "typing_Spec.Graph3.vertex_mem"
       ],
       0,
-      "b2dda2adf5cd052a673b8a95c90ad1b4"
+      "b71acfeecbe4806014ce05b8c8076812"
     ],
     [
       "Spec.Graph3.last_first_set_connect_lemma2",
@@ -5469,7 +5469,7 @@
         "typing_Spec.Graph3.vertex_mem", "well-founded-ordering-on-nat"
       ],
       0,
-      "6ffb8a563d32386d08c0893ec216d849"
+      "db42dc552996b0bb2071b6bdb4e5ab08"
     ],
     [
       "Spec.Graph3.last_first_set_connect_lemma2",
@@ -5481,7 +5481,7 @@
         "refinement_interpretation_Tm_refine_43b9f3700b47a62ec3de4807c005f856"
       ],
       0,
-      "5e64f66d637a679dc77705a8a7e5936b"
+      "419310e50ea41aa94b72dfd9c91b146d"
     ],
     [
       "Spec.Graph3.last_first_set_connect_lemma",
@@ -5496,7 +5496,7 @@
         "typing_FStar.UInt64.t"
       ],
       0,
-      "227df19bd54593790d2b84f2edaa1a27"
+      "f301f60e6d0be71704c55e6e11adf2da"
     ],
     [
       "Spec.Graph3.head_tail_set_connect_lemma1",
@@ -5537,7 +5537,7 @@
         "typing_Spec.Graph3.subset_vertices", "typing_Spec.Graph3.vertex_mem"
       ],
       0,
-      "3fe8cb39462098f2fd6e8086fd09a301"
+      "72b5210237bf70bbb874fe3e71f011a1"
     ],
     [
       "Spec.Graph3.last_first_set_connect_lemma1_helper",
@@ -5551,7 +5551,7 @@
         "typing_FStar.UInt64.t"
       ],
       0,
-      "3f290f5db39cca0c25fb3190051f1bff"
+      "a1cec77de1db5e69d478f24eafbe1bd8"
     ],
     [
       "Spec.Graph3.last_first_set_connect_lemma1_helper",
@@ -5583,7 +5583,7 @@
         "typing_Spec.Graph3.subset_vertices", "typing_Spec.Graph3.vertex_mem"
       ],
       0,
-      "9e4304336e4b786d7502134d447ecffe"
+      "28b458a772a7ede03f1fb1e2a3d1557e"
     ],
     [
       "Spec.Graph3.last_first_set_connect_lemma1",
@@ -5617,7 +5617,7 @@
         "typing_Spec.Graph3.subset_vertices", "typing_Spec.Graph3.vertex_mem"
       ],
       0,
-      "16ffbcbe7a2fc58918f2c0d52421955b"
+      "9cb6f68e1ea67eb561d774bd9a806545"
     ],
     [
       "Spec.Graph3.get_head_mem_lemma",
@@ -5654,7 +5654,7 @@
         "typing_Spec.Graph3.subset_vertices", "typing_Spec.Graph3.vertex_mem"
       ],
       0,
-      "94b9a8553f5c026e1d8191faa12a7ec1"
+      "60e6c5f4664a3b68f230b72b6be38b4b"
     ],
     [
       "Spec.Graph3.get_tail_mem_lemma",
@@ -5663,7 +5663,7 @@
       1,
       [ "@query" ],
       0,
-      "fd229c4121080c3e17c8806602389014"
+      "f7793d8d8fa1e806e8d51c9e58abc881"
     ],
     [
       "Spec.Graph3.get_tail_mem_lemma",
@@ -5678,7 +5678,7 @@
         "typing_Spec.Graph3.get_tail"
       ],
       0,
-      "0215711ff75bdfb58d53d4efd057b663"
+      "8d2031f83967f3b30caf02ab6ce41c05"
     ],
     [
       "Spec.Graph3.get_tail_mem_lemma",
@@ -5687,7 +5687,7 @@
       1,
       [ "@query" ],
       0,
-      "77bafb223ce6e788a84ebf5c320805bd"
+      "c86fe44b7b9a7478d357413677037568"
     ],
     [
       "Spec.Graph3.get_tail_length_lemma",
@@ -5718,7 +5718,7 @@
         "typing_Spec.Graph3.is_vertex_set", "typing_Spec.Graph3.nonEmpty_set"
       ],
       0,
-      "31c1bc6566107e0a9700efa48d188626"
+      "9d43e1f295abbdddf378f67320a96d42"
     ],
     [
       "Spec.Graph3.get_last_mem_lemma",
@@ -5752,7 +5752,7 @@
         "typing_Spec.Graph3.nonEmpty_set", "typing_Spec.Graph3.vertex_mem"
       ],
       0,
-      "732967f419bca4328a8dbc16635b0fc9"
+      "a692ca0dfcfc8f8fd28b410ff4bd989e"
     ],
     [
       "Spec.Graph3.get_first_mem_lemma",
@@ -5761,7 +5761,7 @@
       1,
       [ "@query" ],
       0,
-      "09651476540451cbe05ddc4f86dc481c"
+      "6a00ade804b549da0e24b4eda7c705e2"
     ],
     [
       "Spec.Graph3.get_first_mem_lemma",
@@ -5776,7 +5776,7 @@
         "typing_Spec.Graph3.get_first"
       ],
       0,
-      "025a131128c6e371e64dc4fa3fa0670e"
+      "1cdf0f14ff37bcb0c82754aa1bfc6d42"
     ],
     [
       "Spec.Graph3.get_first_mem_lemma",
@@ -5785,7 +5785,7 @@
       1,
       [ "@query" ],
       0,
-      "77bafb223ce6e788a84ebf5c320805bd"
+      "236e4a166528192c3f6a906af0db0c26"
     ],
     [
       "Spec.Graph3.get_first_length_lemma",
@@ -5816,7 +5816,7 @@
         "typing_Spec.Graph3.nonEmpty_set"
       ],
       0,
-      "c0aa9bc3f54edb2e851f6b14fab4ddd9"
+      "8c1110084b4bb9566896d2dadda1eaf7"
     ],
     [
       "Spec.Graph3.insert_to_vertex_set_cons",
@@ -5877,7 +5877,7 @@
         "typing_Spec.Graph3.subset_vertices", "typing_Spec.Graph3.vertex_mem"
       ],
       0,
-      "ec203006b742a95b7be4dfcb6e42c7d0"
+      "a90fd44abd930bdee7ab39c761095b0a"
     ],
     [
       "Spec.Graph3.insert_to_vertex_set_snoc",
@@ -5937,7 +5937,7 @@
         "typing_Spec.Graph3.subset_vertices", "typing_Spec.Graph3.vertex_mem"
       ],
       0,
-      "7d723fa0ad13a9d21443c66ef9fb67d2"
+      "9511ddf1338cc5f285dca639a92d824c"
     ],
     [
       "Spec.Graph3.insert_to_vertex_set",
@@ -5949,7 +5949,7 @@
         "projection_inverse_BoxInt_proj_0"
       ],
       0,
-      "8ac0f6e8457fd6fa3927e2f108953f99"
+      "b520f56226c4cc4117f24e36ea2b6a52"
     ],
     [
       "Spec.Graph3.insert_to_vertex_set",
@@ -6003,7 +6003,7 @@
         "typing_Spec.Graph3.vertex_mem"
       ],
       0,
-      "cc18ec68e9f91729d8b2e082efcd191e"
+      "4dfabea2fcc6fe02e0ec60e1ed54779d"
     ],
     [
       "Spec.Graph3.reach_singleton",
@@ -6012,7 +6012,7 @@
       1,
       [ "@query" ],
       0,
-      "1bcabd09e6deb790467dd30fba139479"
+      "b0a0c0c5ab9bb63f83ca10e85d4e03bd"
     ],
     [
       "Spec.Graph3.reach_singleton",
@@ -6061,7 +6061,7 @@
         "typing_Spec.Graph3.vertex_mem"
       ],
       0,
-      "4c4cb01b017d196a8ec398bcec2b5aee"
+      "d03941f082d0ec5a29dcfb9003753772"
     ],
     [
       "Spec.Graph3.reach_singleton",
@@ -6070,7 +6070,7 @@
       1,
       [ "@query" ],
       0,
-      "f081330c8ad46499e318f45bf6eab9a3"
+      "a71bbc300429ed139688d59168adfc63"
     ],
     [
       "Spec.Graph3.reach_empty",
@@ -6079,7 +6079,7 @@
       1,
       [ "@query" ],
       0,
-      "db016e325a8efc80188fad32a53e85af"
+      "b902a12238a7b31dac063a67d4c59016"
     ],
     [
       "Spec.Graph3.reach_empty",
@@ -6113,7 +6113,7 @@
         "typing_Spec.Graph3.vertex_mem"
       ],
       0,
-      "e9c4b5e16f318d7874df1366e2ff8230"
+      "fe90fd20c42b42d51cc156ae2df56b34"
     ],
     [
       "Spec.Graph3.reach_empty",
@@ -6122,7 +6122,7 @@
       1,
       [ "@query" ],
       0,
-      "400f94b58dea624729d64a84f6b8c97c"
+      "1a112369daaa1df0a5d649a37a2433cf"
     ],
     [
       "Spec.Graph3.reach_from_x_equals_reach_from_singleton_x_set",
@@ -6131,7 +6131,7 @@
       1,
       [ "@query" ],
       0,
-      "3cdf62edf0ca8945d269baf8c7b53fd6"
+      "57a7d6f0a73bb632398796cb0926e9fb"
     ],
     [
       "Spec.Graph3.reach_from_x_equals_reach_from_singleton_x_set",
@@ -6151,7 +6151,7 @@
         "typing_Spec.Graph3.insert_to_vertex_set"
       ],
       0,
-      "44ef96c4cb3ee70045bf72880260b24d"
+      "94206fd5e2fe1f0ce88929226f642c4f"
     ],
     [
       "Spec.Graph3.reach_from_x_equals_reach_from_singleton_x_set",
@@ -6160,7 +6160,7 @@
       1,
       [ "@query" ],
       0,
-      "f081330c8ad46499e318f45bf6eab9a3"
+      "517736bbd6b76c1aed93bae71a79ba1f"
     ],
     [
       "Spec.Graph3.insert_to_vertex_set_lemma",
@@ -6170,7 +6170,6 @@
       [
         "@MaxFuel_assumption", "@MaxIFuel_assumption",
         "@fuel_correspondence_FStar.Seq.Properties.count.fuel_instrumented",
-        "@fuel_correspondence_Spec.Graph3.is_vertex_set.fuel_instrumented",
         "@query", "Prims_pretyping_ae567c2fb75be05905677af440075565",
         "bool_inversion", "bool_typing", "equation_FStar.Seq.Properties.mem",
         "equation_Prims.eqtype", "equation_Prims.nat",
@@ -6183,9 +6182,7 @@
         "fuel_guarded_inversion_Spec.Graph3.graph_state",
         "function_token_typing_Prims.__cache_version_number__",
         "int_inversion", "primitive_Prims.op_Equality",
-        "primitive_Prims.op_GreaterThan",
-        "projection_inverse_BoxBool_proj_0",
-        "projection_inverse_BoxInt_proj_0",
+        "primitive_Prims.op_GreaterThan", "projection_inverse_BoxInt_proj_0",
         "refinement_interpretation_Tm_refine_12bf0227bbed199c90958814277a7b55",
         "refinement_interpretation_Tm_refine_1865c3bcaf1887cd9b7a566b133434bd",
         "refinement_interpretation_Tm_refine_414d0a9f578ab0048252f8c8f552b99f",
@@ -6196,11 +6193,10 @@
         "typing_FStar.Seq.Properties.snoc", "typing_FStar.UInt64.t",
         "typing_Spec.Graph3.cardinal1",
         "typing_Spec.Graph3.insert_to_vertex_set_snoc",
-        "typing_Spec.Graph3.is_vertex_set", "typing_Spec.Graph3.vertex_mem",
-        "unit_inversion", "unit_typing"
+        "typing_Spec.Graph3.vertex_mem", "unit_inversion", "unit_typing"
       ],
       0,
-      "8959089c710be757d6cb67e8d5025730"
+      "e2cba9e371868950813750299c8d7b7b"
     ],
     [
       "Spec.Graph3.insert_to_vertex_set_nonEmpty_lemma",
@@ -6264,7 +6260,7 @@
         "typing_FStar.UInt64.t"
       ],
       0,
-      "87d39396148ee77b99722012d6ad491f"
+      "fecb05b1be9dbb5dacea2ec1d26da5a5"
     ],
     [
       "Spec.Graph3.insert_to_vertex_set_head_tail_mem_neg_lemma",
@@ -6306,7 +6302,7 @@
         "typing_Spec.Graph3.nonEmpty_set", "typing_Spec.Graph3.vertex_mem"
       ],
       0,
-      "6d62c86d6a2c8336ab4db78582d8bec0"
+      "020436e7e59147024d7a6e292bb9f956"
     ],
     [
       "Spec.Graph3.insert_to_vertex_set_last_first_mem_neg_lemma",
@@ -6320,7 +6316,7 @@
         "typing_FStar.UInt64.t"
       ],
       0,
-      "a7352c3e5b1002a7e596341d4d37f308"
+      "8c4f9e3e5461bb3b680183e58469b45d"
     ],
     [
       "Spec.Graph3.insert_to_vertex_set_last_first_mem_neg_lemma",
@@ -6348,7 +6344,7 @@
         "typing_Spec.Graph3.vertex_mem"
       ],
       0,
-      "105abcb6936ae1412ecd567354ce07f5"
+      "5bb84cbaa52863c0ac1564d497b5e98e"
     ],
     [
       "Spec.Graph3.insert_to_vertex_set_head_tail_mem_lemma",
@@ -6357,7 +6353,7 @@
       1,
       [ "@query" ],
       0,
-      "2c2a7dbf6df1f3717acfe305e53da487"
+      "56f5d889b073a0c82e5a6325ca0eb115"
     ],
     [
       "Spec.Graph3.insert_to_vertex_set_head_tail_mem_lemma",
@@ -6402,7 +6398,7 @@
         "typing_Spec.Graph3.subset_vertices", "typing_Spec.Graph3.vertex_mem"
       ],
       0,
-      "eaff3fb93fcbfbe82dc7656886c2a845"
+      "0b56a5ec92ee18be55fdd5be3512e831"
     ],
     [
       "Spec.Graph3.insert_to_vertex_set_last_first_mem_lemma",
@@ -6411,7 +6407,7 @@
       1,
       [ "@query" ],
       0,
-      "83b21443dbb17112a12b2095bc0fe684"
+      "87149fc0b488a7480e010c501f2e0d32"
     ],
     [
       "Spec.Graph3.insert_to_vertex_set_last_first_mem_lemma",
@@ -6440,7 +6436,7 @@
         "typing_Spec.Graph3.subset_vertices", "typing_Spec.Graph3.vertex_mem"
       ],
       0,
-      "a2953b5126e59a03724f86cd51026ae7"
+      "2303133f16fac55261cddf60794c45c7"
     ],
     [
       "Spec.Graph3.insert_to_vertex_set_reach_lemma",
@@ -6449,7 +6445,7 @@
       1,
       [ "@query" ],
       0,
-      "cf22289d312109a1b2c2922ac08463fb"
+      "170602ac068421d359e913479e8c55fd"
     ],
     [
       "Spec.Graph3.insert_to_vertex_set_reach_lemma",
@@ -6499,7 +6495,7 @@
         "typing_Spec.Graph3.vertex_mem", "unit_inversion", "unit_typing"
       ],
       0,
-      "e393d2797cf99d267b95302c1cb80bdd"
+      "501c938535897b1bf5af8d22b4b0818a"
     ],
     [
       "Spec.Graph3.insert_to_vertex_set_reach_lemma",
@@ -6508,7 +6504,7 @@
       1,
       [ "@query" ],
       0,
-      "e32f3cd683594d6a2b5ec98cac5d1149"
+      "3332cde321f47df011a16cf04e5c25c6"
     ],
     [
       "Spec.Graph3.insert_to_vertex_set_reach_lemma_root_set",
@@ -6517,7 +6513,7 @@
       1,
       [ "@query" ],
       0,
-      "2383a8179ace968fd5b09bac2a108f08"
+      "d461697f1411e5c871af17a8c43d9d8e"
     ],
     [
       "Spec.Graph3.insert_to_vertex_set_reach_lemma_root_set",
@@ -6561,7 +6557,7 @@
         "unit_inversion", "unit_typing"
       ],
       0,
-      "b1343cc73ebeb42a404b758642b3ddf2"
+      "ba250b5357b3566621a0244a84c17e9e"
     ],
     [
       "Spec.Graph3.insert_to_vertex_set_reach_lemma_root_set",
@@ -6570,7 +6566,7 @@
       1,
       [ "@query" ],
       0,
-      "e32f3cd683594d6a2b5ec98cac5d1149"
+      "ab3dc85f5a80be4e00d62d37e0754fdf"
     ],
     [
       "Spec.Graph3.insert_to_vertex_set_mem_lemma",
@@ -6605,7 +6601,7 @@
         "typing_Spec.Graph3.vertex_mem", "unit_inversion", "unit_typing"
       ],
       0,
-      "85f09fe49d377b963d0e62e1c05fedc0"
+      "0d029f5ddc4e750b5988ff288714c111"
     ],
     [
       "Spec.Graph3.insert_to_vertex_set_length_lemma",
@@ -6643,7 +6639,7 @@
         "unit_inversion", "unit_typing"
       ],
       0,
-      "7b31f742b1b591c83e67eddbe8fe15ec"
+      "ba2536ccf3b6bd5a12cccc6efe8f231c"
     ],
     [
       "Spec.Graph3.insert_to_vertex_set_mem_negation_lemma",
@@ -6652,7 +6648,7 @@
       1,
       [ "@query" ],
       0,
-      "e7bfa0043cdb28c2ac6aa486f4ddb919"
+      "2aa4b3978ee868be4dec47bf4add363a"
     ],
     [
       "Spec.Graph3.insert_to_vertex_set_mem_negation_lemma",
@@ -6697,7 +6693,7 @@
         "typing_Spec.Graph3.vertex_mem", "unit_inversion", "unit_typing"
       ],
       0,
-      "edac55054399c8725c451dc82cc3d039"
+      "ae70e035ed13bf90ee01c8f53357d453"
     ],
     [
       "Spec.Graph3.insert_to_vertex_set_mem_negation_lemma",
@@ -6706,7 +6702,7 @@
       1,
       [ "@query" ],
       0,
-      "0aab56d679e2061444d92eac7359d26a"
+      "4e6d17d570e305b9c5e53bae3c877996"
     ],
     [
       "Spec.Graph3.union_vertex_sets_cons",
@@ -6780,7 +6776,7 @@
         "typing_Spec.Graph3.vertex_mem", "well-founded-ordering-on-nat"
       ],
       0,
-      "346bc2e6b2f50c0ce18a2720d0e5fa43"
+      "88425af96a555a60ba10febf68c6f2ca"
     ],
     [
       "Spec.Graph3.union_vertex_sets_snoc",
@@ -6853,7 +6849,7 @@
         "typing_Spec.Graph3.vertex_mem", "well-founded-ordering-on-nat"
       ],
       0,
-      "68b60c92075487a298001c961d6758da"
+      "7e0582f8bf552a0003e393ec68dd52ab"
     ],
     [
       "Spec.Graph3.union_vertex_sets_snoc1",
@@ -6910,7 +6906,7 @@
         "well-founded-ordering-on-nat"
       ],
       0,
-      "353c5040710c45353650df65c8586b24"
+      "07325cfdfb0626a7d161bc4fb6b02845"
     ],
     [
       "Spec.Graph3.union_vertex_sets_snoc2",
@@ -6965,7 +6961,7 @@
         "well-founded-ordering-on-nat"
       ],
       0,
-      "1745933ff97c4018c4e9f1de26c2e9ea"
+      "d48c1b3232e125963c82dadca6c22fbd"
     ],
     [
       "Spec.Graph3.union_vertex_sets_snoc2_uniqueness_lemma",
@@ -7022,7 +7018,7 @@
         "well-founded-ordering-on-nat"
       ],
       0,
-      "3e8164d7126c20a8dc6121abbe94063f"
+      "f3da267238f06be8e52530494b98291f"
     ],
     [
       "Spec.Graph3.union_vertex_sets_subset_lemma",
@@ -7031,7 +7027,7 @@
       1,
       [ "@query" ],
       0,
-      "4c8b2ea9460552fefd86bcdb01294ffb"
+      "df1ef3e52b4f51a352c3728864bcc2e6"
     ],
     [
       "Spec.Graph3.union_vertex_sets_subset_lemma",
@@ -7087,7 +7083,7 @@
         "typing_Spec.Graph3.vertex_mem", "unit_inversion", "unit_typing"
       ],
       0,
-      "2c131063b889a78e7a2fa4bb1bb5399e"
+      "1db93e1cba05e89b12b03e61395c32d1"
     ],
     [
       "Spec.Graph3.union_vertex_sets_subset_lemma1",
@@ -7108,7 +7104,7 @@
         "typing_Spec.Graph3.vertex_mem"
       ],
       0,
-      "1b6dca9068b11d4c46a9890d2555c695"
+      "e5ee0e304514728717a1549574eafd98"
     ],
     [
       "Spec.Graph3.union_vertex_sets_reach_lemma1",
@@ -7159,7 +7155,7 @@
         "typing_Spec.Graph3.vertex_mem", "unit_inversion", "unit_typing"
       ],
       0,
-      "a1273a9c85559b6a5862d673bef9f680"
+      "2fdc19189a6ee2765249c977d63a412f"
     ],
     [
       "Spec.Graph3.union_vertex_sets_mem_lemma1",
@@ -7201,7 +7197,7 @@
         "unit_typing"
       ],
       0,
-      "e6a5b644595c3e97422ac4c9eb0705ed"
+      "cbb69e26b91a35dde16607e70247f1b6"
     ],
     [
       "Spec.Graph3.push_to_vertex_set",
@@ -7281,7 +7277,7 @@
         "typing_Spec.Graph3.vertex_mem", "well-founded-ordering-on-nat"
       ],
       0,
-      "724fd3575baed849aa5e04a831d4694c"
+      "bbd8845cdf5e823c19fa37e85a864fc1"
     ],
     [
       "Spec.Graph3.union_vertex_sets_reach_lemma",
@@ -7338,7 +7334,7 @@
         "typing_Spec.Graph3.vertex_mem", "unit_inversion", "unit_typing"
       ],
       0,
-      "6b385aadd4b74874e1f32fd336259923"
+      "7b30807dd2b82ed9434cf0124dc64673"
     ],
     [
       "Spec.Graph3.union_vertex_sets_mem_lemma",
@@ -7421,7 +7417,7 @@
         "typing_Spec.Graph3.is_vertex_set", "well-founded-ordering-on-nat"
       ],
       0,
-      "bef1d025180cd9f8320c146eb397607c"
+      "c124f649b348653cfa50dd95ade92a19"
     ],
     [
       "Spec.Graph3.push_to_stack_graph",
@@ -7486,7 +7482,7 @@
         "typing_Spec.Graph3.subset_vertices", "typing_Spec.Graph3.vertex_mem"
       ],
       0,
-      "3eefea6c1379367114d67bceba75aea0"
+      "e76011a5abba2c5a22e5ce1279aa21d7"
     ],
     [
       "Spec.Graph3.push_to_stack_graph1",
@@ -7531,7 +7527,7 @@
         "typing_Spec.Graph3.is_vertex_set"
       ],
       0,
-      "ba2c55f50e26d412566625f710a4a6d5"
+      "b01b6d2a8e2fa8050d5dae7bda3e37f3"
     ],
     [
       "Spec.Graph3.push_to_stack_graph_lemma",
@@ -7546,7 +7542,7 @@
         "primitive_Prims.op_Equality"
       ],
       0,
-      "d17aa890d9a2462f78e69d4d15a1b79e"
+      "7346c849f8f9f63f4992b3c7cc8a8693"
     ],
     [
       "Spec.Graph3.push_to_stack_graph_lemma1",
@@ -7561,7 +7557,7 @@
         "primitive_Prims.op_Equality", "projection_inverse_BoxBool_proj_0"
       ],
       0,
-      "95d62f5d3ab86764fbfb38cf20b4c41b"
+      "452cd31ffbe3839cc36af2aaa2516ebe"
     ],
     [
       "Spec.Graph3.successor_push_body",
@@ -7592,7 +7588,7 @@
         "typing_Spec.Graph3.vertex_mem"
       ],
       0,
-      "2ff7cc3920e7c82a61bdd993e56cd816"
+      "930fdc2cc2fee62cd1a9bb06232921b1"
     ],
     [
       "Spec.Graph3.successor_push_body",
@@ -7627,7 +7623,7 @@
         "typing_Spec.Graph3.is_vertex_set"
       ],
       0,
-      "6f41b4ada42805affa51bc01ed145b13"
+      "8e3444d42b4de60d43677619dbcd6ccb"
     ],
     [
       "Spec.Graph3.successor_push_body1",
@@ -7636,7 +7632,7 @@
       1,
       [ "@query" ],
       0,
-      "288691c52621cd9af84fba67243b34dd"
+      "97fb11aa893bada84df83883abd817af"
     ],
     [
       "Spec.Graph3.successor_push_body1",
@@ -7657,7 +7653,7 @@
         "typing_Spec.Graph3.is_vertex_set"
       ],
       0,
-      "40c6444be761dbef29d832086b74aef0"
+      "d8a8b27749176bcbb0fa9991d0ac6e74"
     ],
     [
       "Spec.Graph3.successor_push_itr",
@@ -7699,7 +7695,7 @@
         "typing_Spec.Graph3.vertex_mem", "well-founded-ordering-on-nat"
       ],
       0,
-      "bd57a4b92d4142679b760c476837d6d7"
+      "f1d8c7907905de354e5e3d1e09a76206"
     ],
     [
       "Spec.Graph3.successor_push_itr1",
@@ -7724,7 +7720,7 @@
         "well-founded-ordering-on-nat"
       ],
       0,
-      "a6633f334041633c8c6abb3d8aa83f04"
+      "f9796cfc13da988190f7988a79c16ae6"
     ],
     [
       "Spec.Graph3.successor_push_itr_lemma",
@@ -7743,7 +7739,7 @@
         "refinement_interpretation_Tm_refine_d2681482f3bc27dabef020617f8e355c"
       ],
       0,
-      "d9df63210194b8060f86749adf59aa49"
+      "a62b872017827ca66ed0e822f9f18c28"
     ],
     [
       "Spec.Graph3.successor_push_itr_lemma",
@@ -7771,7 +7767,7 @@
         "typing_Spec.Graph3.is_vertex_set"
       ],
       0,
-      "da83f4102b8cd8057e77bd3d7bf23dd6"
+      "78ab9e5cc0bed819d937aeee2c7511b1"
     ],
     [
       "Spec.Graph3.successor_push_itr_lemma1",
@@ -7783,7 +7779,7 @@
         "refinement_interpretation_Tm_refine_03af07a593c1213bc43f8fb06cb01f8b"
       ],
       0,
-      "5f735adf2d5957e4a423f57d36c7ed27"
+      "bc5cb14203a3365ae849cd28d20c9085"
     ],
     [
       "Spec.Graph3.successor_push_itr_lemma1",
@@ -7801,7 +7797,7 @@
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2"
       ],
       0,
-      "dcea925558c1a8e042951d47bbcd3858"
+      "39d5b7bda1a7e2716d17fa3b8c457054"
     ],
     [
       "Spec.Graph3.successor_push_itr1_lemma",
@@ -7818,7 +7814,7 @@
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2"
       ],
       0,
-      "41a19043aee08786e34e1a0ac3b4014e"
+      "fa453ca9b6ae4b1789be27ef542871e6"
     ],
     [
       "Spec.Graph3.successor_push_itr1_lemma",
@@ -7844,7 +7840,7 @@
         "typing_Spec.Graph3.is_vertex_set"
       ],
       0,
-      "74423dc6d250501dd2b4565631bd14e3"
+      "4c8cb0dd59e43829869b3261bb40dc8a"
     ],
     [
       "Spec.Graph3.successor_push_itr1_lemma1",
@@ -7856,7 +7852,7 @@
         "refinement_interpretation_Tm_refine_d9588b51f96cdc9e5952546eca885ca4"
       ],
       0,
-      "76b06799b65915315b6d4982847a8899"
+      "9a0b8631884af22b449a285f56e74371"
     ],
     [
       "Spec.Graph3.successor_push_itr1_lemma1",
@@ -7872,7 +7868,7 @@
         "refinement_interpretation_Tm_refine_542f9d4f129664613f2483a6c88bc7c2"
       ],
       0,
-      "be2e9ab65f3c51b7510df15175251f49"
+      "2dace1c068a5e0f99cafd32ba9258b36"
     ],
     [
       "Spec.Graph3.push_to_stack_graph1_subset_lemma",
@@ -7881,7 +7877,7 @@
       1,
       [ "@query" ],
       0,
-      "3cbbc5d582c380662ddd48942a5e1342"
+      "e8d8ebb21f0f8d235a751d395e8b09a9"
     ],
     [
       "Spec.Graph3.push_to_stack_graph1_subset_lemma",
@@ -7949,7 +7945,7 @@
         "typing_Spec.Graph3.subset_vertices", "typing_Spec.Graph3.vertex_mem"
       ],
       0,
-      "c173b840b56754b994a87a8dbcab0134"
+      "70922a5a8305cc4441567985e77c02cf"
     ],
     [
       "Spec.Graph3.successor_push_body1_subset_lemma",
@@ -7958,7 +7954,7 @@
       1,
       [ "@query" ],
       0,
-      "442cdb2109305ca591874a4731f269c5"
+      "2dca213dab02ce765c307cdb1ea665e2"
     ],
     [
       "Spec.Graph3.successor_push_body1_subset_lemma",
@@ -7993,7 +7989,7 @@
         "typing_Spec.Graph3.subset_vertices"
       ],
       0,
-      "2cfe30d5d5a7c7d0e041edd184250652"
+      "ab62e7293a95b8181089a5807d40db34"
     ],
     [
       "Spec.Graph3.successor_push_itr1_subset_lemma",
@@ -8002,7 +7998,7 @@
       1,
       [ "@query" ],
       0,
-      "fc46527f13ea1d7d6cb97ff383dfccd5"
+      "e802706e2df752cd62231dc026da8886"
     ],
     [
       "Spec.Graph3.successor_push_itr1_subset_lemma",
@@ -8043,7 +8039,7 @@
         "typing_Spec.Graph3.subset_vertices", "well-founded-ordering-on-nat"
       ],
       0,
-      "9e3446ee2f276bf57cb4a8ae69decf09"
+      "9f83050beabc01d1e350ce5ea19c2488"
     ],
     [
       "Spec.Graph3.successor_push_itr1_subset_lemma",
@@ -8052,7 +8048,7 @@
       1,
       [ "@query" ],
       0,
-      "549fb973e5ce93301f38817a8bc2db62"
+      "3943336bee432353fe5f9f67237e2757"
     ],
     [
       "Spec.Graph3.successor_equals_if_graph_equals_lemma",
@@ -8065,7 +8061,7 @@
         "refinement_interpretation_Tm_refine_12bf0227bbed199c90958814277a7b55"
       ],
       0,
-      "7a6120975fa5992a433e54ae0e4166f1"
+      "e85b241f1d59971962049966be55ab09"
     ],
     [
       "Spec.Graph3.successor_equals_if_graph_equals_lemma",
@@ -8080,7 +8076,7 @@
         "refinement_interpretation_Tm_refine_12bf0227bbed199c90958814277a7b55"
       ],
       0,
-      "59a6af5c94d3b4f3adf7d499a0caed37"
+      "7db073f5813af7df9f21217553a7057f"
     ],
     [
       "Spec.Graph3.push_to_stack_graph1_reach_lemma",
@@ -8141,7 +8137,7 @@
         "typing_Spec.Graph3.subset_vertices", "typing_Spec.Graph3.vertex_mem"
       ],
       0,
-      "bffba2873cf03981a196fd35d2c7f66c"
+      "0d32b5b9e2476719fe7b1d5e26a8c725"
     ],
     [
       "Spec.Graph3.slice_membership_lemma_x",
@@ -8171,7 +8167,7 @@
         "typing_FStar.Seq.Base.length", "typing_FStar.UInt64.t"
       ],
       0,
-      "630bcbce8bd1a1da52dd557ad1cd2d47"
+      "1c2d31dd05241759a432804c9f414d1e"
     ],
     [
       "Spec.Graph3.slice_membership_lemma_x",
@@ -8186,7 +8182,7 @@
         "refinement_interpretation_Tm_refine_eccaeab99e5b843b2497b7a99192fce3"
       ],
       0,
-      "4d16cf701013fbed349afb7ab503d695"
+      "ebb250b7985f0378ac17e5097d476443"
     ],
     [
       "Spec.Graph3.successor_push_body1_reach_lemma",
@@ -8220,7 +8216,7 @@
         "typing_Spec.Graph3.is_vertex_set", "typing_Spec.Graph3.vertex_mem"
       ],
       0,
-      "7f81e1a1f30683b1f96e3e9caeac059a"
+      "ada37c93f309918f4b984ee58430da5e"
     ],
     [
       "Spec.Graph3.successor_push_itr1_reach_lemma",
@@ -8250,7 +8246,7 @@
         "well-founded-ordering-on-nat"
       ],
       0,
-      "efd2e98ea75e0ad2edf1835f54af968d"
+      "a82f8e930bac34a378746b14ab56ba7e"
     ],
     [
       "Spec.Graph3.successor_push_body1_absent_element_lemma",
@@ -8280,7 +8276,7 @@
         "unit_inversion", "unit_typing"
       ],
       0,
-      "fe6bbc94093b2ea274812144350b1f3a"
+      "b8b4ab2388f4a9871b4088d873709543"
     ],
     [
       "Spec.Graph3.successor_push_itr1_absent_element_lemma",
@@ -8338,7 +8334,7 @@
         "well-founded-ordering-on-nat"
       ],
       0,
-      "7fb3c0338b65c1db58fb734002349779"
+      "3732f828a45f62452cfd775626c4d8c9"
     ],
     [
       "Spec.Graph3.successor_push_itr1_absent_element_lemma",
@@ -8352,7 +8348,7 @@
         "refinement_interpretation_Tm_refine_2de20c066034c13bf76e9c0b94f4806c"
       ],
       0,
-      "e3cd584a1c26142f0eb977f41ba4ac83"
+      "0db1b1732c5252f93e606c41d1f3a7b9"
     ],
     [
       "Spec.Graph3.successor_push_itr1_absent_element_l_lemma",
@@ -8376,7 +8372,7 @@
         "typing_Spec.Graph3.is_vertex_set"
       ],
       0,
-      "677d82bef5e2b30bc1da5031ba516071"
+      "ba21b377f1e617224e6dc6cc58803d46"
     ],
     [
       "Spec.Graph3.remove_all_instances_of_vertex_from_vertex_set_cons",
@@ -8437,7 +8433,7 @@
         "typing_Spec.Graph3.vertex_mem", "well-founded-ordering-on-nat"
       ],
       0,
-      "a42188b376c76077d63757cbdc807c88"
+      "df48ac2f2a1bda411b733a22634c0bf0"
     ],
     [
       "Spec.Graph3.remove_all_instances_of_vertex_from_vertex_set_snoc",
@@ -8494,7 +8490,7 @@
         "typing_Spec.Graph3.vertex_mem", "well-founded-ordering-on-nat"
       ],
       0,
-      "6f8e64e249e725178a6f57d5bb83905b"
+      "f00ec2faae7c8333e39fbafe711ba04c"
     ],
     [
       "Spec.Graph3.remove_all_instances_of_vertex_from_vertex_set_mem",
@@ -8531,7 +8527,7 @@
         "unit_inversion", "unit_typing", "well-founded-ordering-on-nat"
       ],
       0,
-      "e5645e4558d6834cf61de904c06c5b3a"
+      "5f972267c1c467b0a7be0d43fe17c51b"
     ],
     [
       "Spec.Graph3.remove_lemma_correctness",
@@ -8583,7 +8579,7 @@
         "well-founded-ordering-on-nat"
       ],
       0,
-      "995df776e22e6841c49eff877b09b619"
+      "db02bd400dd2baa04136a897b14c1d8d"
     ],
     [
       "Spec.Graph3.remove_lemma_correctness1",
@@ -8634,7 +8630,7 @@
         "well-founded-ordering-on-nat"
       ],
       0,
-      "6a5561198a88699689a4e058e3132aa9"
+      "db5b62d6f2b572ef360f123ade82ed1f"
     ],
     [
       "Spec.Graph3.remove_lemma_subset",
@@ -8643,7 +8639,7 @@
       1,
       [ "@query" ],
       0,
-      "a11b8df9c4621e8bbc8bb8d36cc23486"
+      "973531c9794d59633c31aad17fe58f2b"
     ],
     [
       "Spec.Graph3.remove_lemma_subset",
@@ -8705,7 +8701,7 @@
         "well-founded-ordering-on-nat"
       ],
       0,
-      "16c4ed41c7e6dd84ec110711088f7824"
+      "edc84a798daafca7a9608805df01b6fd"
     ],
     [
       "Spec.Graph3.remove_lemma_subset",
@@ -8714,7 +8710,7 @@
       1,
       [ "@query" ],
       0,
-      "5a4413f2d7185a041b80a9b2c232efac"
+      "cff1b3ae1fde3180ac95b0f1d5a3427c"
     ],
     [
       "Spec.Graph3.remove_absent_element_lemma",
@@ -8784,7 +8780,7 @@
         "well-founded-ordering-on-nat"
       ],
       0,
-      "b3c29666788c6164a59b89f9bbe80381"
+      "c22b6d92a22a1c9e6307135b4467fe95"
     ],
     [
       "Spec.Graph3.remove_lemma_reach",
@@ -8842,7 +8838,7 @@
         "well-founded-ordering-on-nat"
       ],
       0,
-      "5c359d42ac0ece5ae97d4b364e3482b9"
+      "d45af4f3a3301aed089108a7472718f6"
     ],
     [
       "Spec.Graph3.vertices_in_path_concat",
@@ -8854,7 +8850,7 @@
         "refinement_interpretation_Tm_refine_19b324a35504f242aaf422d8b110cada"
       ],
       0,
-      "56d6b093d9290df2d6cab146792a0625"
+      "f7bedc257fd5b691067f645ce142cda9"
     ],
     [
       "Spec.Graph3.vertices_in_path_concat",
@@ -8893,7 +8889,7 @@
         "typing_Spec.Graph3.vertex_mem"
       ],
       0,
-      "d4b0d578a53e994f30353720e445d5da"
+      "76a729d97b4fc2b5dfdb31ed236a780d"
     ],
     [
       "Spec.Graph3.vertices_in_path_concat1",
@@ -8905,7 +8901,7 @@
         "refinement_interpretation_Tm_refine_19b324a35504f242aaf422d8b110cada"
       ],
       0,
-      "8cdbdc3b8da0b133fde7110e65df5faf"
+      "c976285231215d301d4ab2942e58aeb1"
     ],
     [
       "Spec.Graph3.vertices_in_path_concat1",
@@ -8945,7 +8941,7 @@
         "typing_Spec.Graph3.subset_vertices", "typing_Spec.Graph3.vertex_mem"
       ],
       0,
-      "8a1a742238671069bf50d760f695c5f1"
+      "2742544924191565f61e0fec93c4858e"
     ],
     [
       "Spec.Graph3.vertices_in_path_neg_lemma",
@@ -8954,7 +8950,7 @@
       1,
       [ "@query" ],
       0,
-      "144aaafc91c6924136d4166c8133ddb1"
+      "67f0bef246a75bc353b55bccec6f7b89"
     ],
     [
       "Spec.Graph3.mem_of_seq_upto_index",
@@ -8974,7 +8970,7 @@
         "typing_FStar.Seq.Base.length", "typing_FStar.UInt64.t"
       ],
       0,
-      "e862be0bb8776b7c34b11b9437f9fa66"
+      "435df1bbfd2d0bf6661e8b371c89819b"
     ],
     [
       "Spec.Graph3.mem_of_seq",
@@ -8989,7 +8985,7 @@
         "typing_FStar.UInt64.t"
       ],
       0,
-      "bca5d0e5e0fe1175d74ff854cd4fec5d"
+      "22b821936e0b64af0cd55667150c79b8"
     ],
     [
       "Spec.Graph3.mem_snoc",
@@ -9017,7 +9013,7 @@
         "typing_FStar.UInt64.t", "typing_Spec.Graph3.mem_of_seq_upto_index"
       ],
       0,
-      "f5742ee8335f43bd3ebf5a84b42e4b35"
+      "223a2b6fba5c9a097f24c6b3a0167327"
     ],
     [
       "Spec.Graph3.index_cannot_exceed_len_helper",
@@ -9034,7 +9030,7 @@
         "typing_Spec.Graph3.mem_graph_vertex"
       ],
       0,
-      "80e3f35e1479d05eb36670f730573521"
+      "bbcae58a1e65349ccaf676015966a2b4"
     ],
     [
       "Spec.Graph3.is_vertex_set_slice",
@@ -9063,7 +9059,7 @@
         "typing_FStar.UInt64.t", "typing_Spec.Graph3.mem_graph_vertex"
       ],
       0,
-      "b0126c0f1539b91a55594f24e977796b"
+      "5b1e9a37ad6673a73020a1c75413c0e9"
     ],
     [
       "Spec.Graph3.is_vertex_set_slice",
@@ -9137,7 +9133,7 @@
         "typing_Spec.Graph3.subset_vertices", "typing_Spec.Graph3.vertex_mem"
       ],
       0,
-      "9d6ed0c1887ed2bc931d5c6398e20b0a"
+      "0bd9a4b0883a9e14863f2d948960ae50"
     ],
     [
       "Spec.Graph3.is_vertex_set_slice",
@@ -9165,7 +9161,7 @@
         "typing_FStar.UInt64.t", "typing_Spec.Graph3.mem_graph_vertex"
       ],
       0,
-      "f1f169ee8fd803b9d4d044ce78e330ad"
+      "dcddac2b5779a8bee4b6e7149c709856"
     ],
     [
       "Spec.Graph3.is_vertex_set_slice1",
@@ -9190,7 +9186,7 @@
         "typing_FStar.UInt64.t"
       ],
       0,
-      "74c5adfff4a380e21efa3910ad110b17"
+      "62523b3a691fb65e863fa0b9dfeffb94"
     ],
     [
       "Spec.Graph3.is_vertex_set_slice1",
@@ -9253,7 +9249,7 @@
         "typing_Spec.Graph3.mem_of_seq_upto_index"
       ],
       0,
-      "f9be62b17134b5473914a1a8843eca8f"
+      "83eca2b9005f310108fcddc07421ea2a"
     ],
     [
       "Spec.Graph3.is_vertex_set_slice1",
@@ -9277,7 +9273,7 @@
         "typing_FStar.UInt64.t"
       ],
       0,
-      "046f3f219800b05d7dcba64102fbb6de"
+      "6077e7a0209289d372784cc166af06ed"
     ],
     [
       "Spec.Graph3.empty_seq_mem_lemma",
@@ -9305,7 +9301,7 @@
         "typing_FStar.Seq.Base.empty", "typing_FStar.UInt32.t"
       ],
       0,
-      "b6303f0eaacc1f7f936cd9bfee432b43"
+      "5e3f004818adeaa2c53b73bc5032cde8"
     ],
     [
       "Spec.Graph3.seq_union_lemma",
@@ -9334,7 +9330,7 @@
         "typing_Spec.Graph3.mem_of_seq_upto_index"
       ],
       0,
-      "5760a071bb041ce63da6462dfdbdd7fe"
+      "c8b5bdef3c62ce77e7f4d76888a80059"
     ]
   ]
 ]
