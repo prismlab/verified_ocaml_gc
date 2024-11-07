@@ -1,4 +1,4 @@
-module Spec.GC_part1
+module Spec.GC_part01
 
 open FStar.Seq
 open FStar.Seq.Base

@@ -1,6 +1,6 @@
-module Spec.GC_part4
+module Spec.GC_part04
 
-include Spec.GC_part3
+include Spec.GC_part03
 
 open FStar.Seq
 open FStar.Seq.Base
