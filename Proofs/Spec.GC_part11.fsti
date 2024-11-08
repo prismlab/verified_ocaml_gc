@@ -25,7 +25,7 @@ module D = DFS2
 
 #restart-solver 
 
-#reset-options "--z3rlimit 100 --split_queries always"
+#reset-options "--z3rlimit 100"
 
 let darken_helper_lemma (g:heap{well_formed_heap2 g})
                         (st: seq Usize.t{stack_props_func g st})
@@ -124,6 +124,9 @@ else
 #restart-solver
 
 #restart-solver
+
+
+#reset-options "--z3rlimit 100 --split_queries always"
 
 let fieldPush_spec_body_successor_push_body_equivalence_lemma2 (g:heap{well_formed_heap2 g})
                                                                (st: seq Usize.t{stack_props_func g st})

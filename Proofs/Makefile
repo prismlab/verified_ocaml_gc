@@ -23,3 +23,7 @@ cache.boot/%.fsti.checked: %.fsti
 
 cache.boot/%.fst.checked: %.fst
 	$(FSTAR) $<
+
+force-clean:
+	rm -rf cache.boot
+	rm -rf hints
