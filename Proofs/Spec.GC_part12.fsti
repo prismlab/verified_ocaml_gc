@@ -24,7 +24,7 @@ module D = DFS2
 
 #restart-solver
 
-#reset-options "--z3rlimit 100 --split_queries always"
+#reset-options "--z3rlimit 100 --max_fuel 1 --max_ifuel 1 --using_facts_from '* -FStar.Seq' --split_queries always" //XXX KC: works!
 
 let rec fieldPush_spec_successor_push_itr_equivalence_lemma2 (g:heap{well_formed_heap2 g})
                                                              (st: seq Usize.t{stack_props_func g st})
