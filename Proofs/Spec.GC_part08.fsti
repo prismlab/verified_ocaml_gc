@@ -1,4 +1,4 @@
-module Spec.GC_parti08
+module Spec.GC_part08
 
 include Spec.GC_part07
 
