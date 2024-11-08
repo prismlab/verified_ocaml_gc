@@ -826,7 +826,6 @@ Classical.forall_intro (Classical.move_requires (h_index_field_index_all_mword_m
 
 #push-options "--split_queries always"
 
-
 #restart-solver 
 
 let hd_address_f_address_lemma7 (x:hp_addr{Usize.v x + Usize.v mword < heap_size})
@@ -867,6 +866,7 @@ let closure_obj_props (g:heap{Seq.length (objects2 0UL g) > 0})
                                                                (forall x. Seq.mem x f ==> is_fields_within_limit1 x (getWosize (read_word g x)))})=
 (forall x. Seq.mem x f ==> closure_obj_props_object x g (wosize_of_object1 x g))
 
+#reset-options "--split_queries always"
 
 let conditions_on_pointer_fields (h_index: hp_addr{Usize.v h_index + Usize.v mword < heap_size}) 
                                        
@@ -891,6 +891,8 @@ let conditions_on_pointer_fields (h_index: hp_addr{Usize.v h_index + Usize.v mwo
 #restart-solver
 
 #restart-solver
+
+#push-options "--split_queries always"
 
 let fields_points_to_blocks_condition (h_index: hp_addr{Usize.v h_index + Usize.v mword < heap_size}) 
                                        
