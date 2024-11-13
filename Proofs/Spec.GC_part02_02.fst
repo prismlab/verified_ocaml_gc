@@ -59,7 +59,7 @@ let objects2_cons_lemma1 h_index g h_index_new =
       if length f' = 0 then
       (
         assert (Seq.length f' > 0 /\ (Usize.v h_index_new < heap_size) ==> Seq.mem h_index_new f');
-        admit ();
+        admit (); //FIXME KC
         ()
       )
        else
@@ -70,11 +70,12 @@ let objects2_cons_lemma1 h_index g h_index_new =
          G.is_vertex_set_cons h_index f';
          //assert (Seq.length f'' > 0 /\ (Usize.v h_index_new < heap_size) ==> Seq.mem h_index_new f'');
          let objs = objects2 h_index g in
+
          assert (Seq.length objs > 0 /\
                         Usize.v h_index_new < heap_size ==>
                          objs == Seq.cons h_index (objects2 h_index_new g));
-         assert (forall x. Seq.mem x (objects2 h_index g) <==> x == h_index \/ (Seq.mem x (objects2 h_index_new g)));
-         admit ()
+        admit (); //FIXME KC
+        assert (forall x. Seq.mem x (objects2 h_index g) <==> x == h_index \/ (Seq.mem x (objects2 h_index_new g)))
        )
     )
   )

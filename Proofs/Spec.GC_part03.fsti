@@ -257,6 +257,8 @@ lemma_mem_snoc st (f_address x);
 
 #restart-solver
 #restart-solver
+#reset-options "--z3rlimit 5000 --query_stats"
+#restart-solver
 
 let push_to_stack2  (g:heap{well_formed_heap2 g})
                     (st: seq Usize.t {stack_props_func g st})
@@ -523,11 +525,10 @@ else
 
 #restart-solver
 
+#reset-options "--z3rlimit 5000 --query_stats"
+
 #restart-solver
 
-#reset-options "--z3rlimit 50 --max_fuel 0 --max_ifuel 0 --using_facts_from '* -FStar.Seq'"
-
-#push-options "--split_queries always"
 
 let parent_closure_of_infix_object (g:heap{well_formed_heap2 g})
                                    (h_index:hp_addr{is_valid_header1 h_index g})

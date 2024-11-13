@@ -15,9 +15,8 @@ SOURCE_FSTI = Spec.Graph3.fsti Spec.GC_part01.fsti \
   Spec.GC_part15.fsti Spec.GC_infix_closure_ver3.fsti
   
 
-SOURCE_FST = Spec.Graph3.fst DFS2.fst \
-						 Spec.GC_part01.fst Spec.GC_part02_01.fst Spec.GC_part02_02.fst \
-						 Spec.GC_infix_closure_ver3.fst
+SOURCE_FST = Spec.Graph3.fst DFS2.fst Spec.GC_part01.fst Spec.GC_part02_01.fst \
+						 Spec.GC_part02_02.fst #Spec.GC_infix_closure_ver3.fst
 
 CHECKED_LAX = $(addprefix cache.boot/,$(SOURCE_FSTI:.fsti=.fsti.checked.lax)) \
           		$(addprefix cache.boot/,$(SOURCE_FST:.fst=.fst.checked.lax))
@@ -25,11 +24,24 @@ CHECKED_LAX = $(addprefix cache.boot/,$(SOURCE_FSTI:.fsti=.fsti.checked.lax)) \
 CHECKED_FULL = $(addprefix cache.boot/,$(SOURCE_FSTI:.fsti=.fsti.checked)) \
           		$(addprefix cache.boot/,$(SOURCE_FST:.fst=.fst.checked))
 
-checked_lax: $(CHECKED_LAX)
-
-checked_full: $(CHECKED_FULL)
-
 all: checked_lax checked_full
+
+warmup_lax:
+	while [ ! -f cache.boot/DFS2.fst.checked.lax ]; do \
+		$(FSTAR) --lax DFS2.fst; \
+	done
+
+warmup_full:
+	while [ ! -f cache.boot/Spec.Graph3.fsti.checked ]; do \
+		$(FSTAR) Spec.Graph3.fsti; \
+	done; \
+	while [ ! -f cache.boot/DFS2.fst.checked ]; do \
+		$(FSTAR) DFS2.fst; \
+	done
+
+checked_lax: warmup_lax $(CHECKED_LAX) $(CHECKED_LAX)
+
+checked_full: checked_lax warmup_full $(CHECKED_FULL)
 
 cache.boot/%.fsti.checked: %.fsti
 	$(FSTAR) $<
@@ -43,5 +55,6 @@ cache.boot/%.fsti.checked.lax: %.fsti
 cache.boot/%.fst.checked.lax: %.fst
 	$(FSTAR) --lax $<
 
-force-clean: 
+clean: 
 	rm -rf cache.boot
+	rm -rf hints
