@@ -4,7 +4,7 @@ endif
 
 FSTAR=fstar.exe -d --timing --cache_checked_modules \
     --cache_dir cache.boot --hint_dir hints --use_hints --use_hint_hashes \
-    --record_hints --ext context_pruning --quake 1/3 $(PROOF_RECOVERY)
+    --record_hints --quake 1/3 $(PROOF_RECOVERY)
 
 SOURCE_FSTI = Spec.Graph3.fsti Spec.GC_part01.fsti \
 	Spec.GC_part02_01.fsti Spec.GC_part02_02.fsti \
