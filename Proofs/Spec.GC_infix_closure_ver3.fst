@@ -12,7 +12,8 @@ open FStar.FunctionalExtensionality
 module Usize = FStar.UInt64
 
 open Spec.GC_part01
-open Spec.GC_part02
+open Spec.GC_part02_01
+open Spec.GC_part02_02
 
 #restart-solver
 
