@@ -530,6 +530,53 @@ let hd_address (st_index: hp_addr{UInt.fits (Usize.v st_index - Usize.v mword) U
 
 #restart-solver 
 
+val objects2_wosize_lemma : (h_index: hp_addr)->
+                           (g:heap) ->
+                 Lemma
+                  (ensures (Seq.length (objects2 h_index g) > 0) ==> Usize.v (getWosize (read_word g h_index)) > 0)
+
+
+val objects2_empty_lemma : (h_index: hp_addr)->
+                           (g:heap) ->
+                Lemma
+                (requires (let wz = getWosize (read_word g h_index) in
+                           let h_index_new = Usize.add h_index (Usize.mul (Usize.add wz 1UL) mword) in
+                           ( Usize.v wz > 0 /\
+                             Usize.v h_index_new < heap_size)))
+                
+                (ensures (let wz = getWosize (read_word g h_index) in
+                          let h_index_new = Usize.add h_index (Usize.mul (Usize.add wz 1UL) mword) in
+                          (Seq.length (objects2 h_index_new g) == 0 ==>
+                          (objects2 h_index g) == (objects2 h_index_new g))
+                         )
+                )
+
+val objects2_non_empty_lemma : (h_index: hp_addr)->
+                           (g:heap) ->
+                Lemma
+                (requires (let wz = getWosize (read_word g h_index) in
+                           let h_index_new = Usize.add h_index (Usize.mul (Usize.add wz 1UL) mword) in
+                           (Usize.v wz > 0 /\
+                            Usize.v h_index_new < heap_size)))
+                
+                (ensures (let wz = getWosize (read_word g h_index) in
+                          let h_index_new = Usize.add h_index (Usize.mul (Usize.add wz 1UL) mword) in
+                          (Seq.length (objects2 h_index_new g) > 0 ==>
+                          (objects2 h_index g) == Seq.cons h_index (objects2 h_index_new g))
+                         )
+                )
+
+val objects2_singleton_lemma : (h_index: hp_addr)->
+                           (g:heap) ->
+                Lemma
+                (requires (let wz = getWosize (read_word g h_index) in
+                           let h_index_new = Usize.add h_index (Usize.mul (Usize.add wz 1UL) mword) in
+                           (Usize.v wz > 0 /\
+                            Usize.v h_index_new == heap_size)))
+                (ensures ((objects2 h_index g) == Seq.create 1 h_index))
+
+
+
 /// Given the header address of an object, the f_address finds the address of the first field of the object
 let f_address (h_index: hp_addr{UInt.fits (Usize.v h_index + Usize.v mword) Usize.n /\ (Usize.v h_index + Usize.v mword < heap_size)}) 
          : Tot (f:hp_addr{Usize.v f == Usize.v h_index + Usize.v mword})=

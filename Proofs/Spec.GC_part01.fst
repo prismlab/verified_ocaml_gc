@@ -340,6 +340,24 @@ else
   )
 )
 
+#restart-solver
+
+let objects2_wosize_lemma h_index g = ()
+
+
+let objects2_empty_lemma h_index g = 
+ let wz =  getWosize (read_word g h_index) in
+  objects2_wosize_lemma h_index g;
+  ()
+
+let objects2_non_empty_lemma h_index g = 
+ let wz =  getWosize (read_word g h_index) in
+  objects2_wosize_lemma h_index g;
+ ()
+
+let objects2_singleton_lemma h_index g =
+   admit()
+   
 let wosize_plus_times_mword_multiple_of_mword (wz:wosize)
                      :Lemma
                       (ensures (Usize.v (Usize.mul (Usize.add wz 1UL) mword) % Usize.v mword == 0)) = ()
