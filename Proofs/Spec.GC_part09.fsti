@@ -609,7 +609,7 @@ if Usize.v i = Usize.v wz + 1 then
   else
     (
        let i' = Usize.(i +^ 1UL) in
-       let st', g' = fieldPush_spec_body g st h_index wz i in
+       let st', g' = fieldPush_spec_body1 g st h_index wz i in
        (*assert ((G.is_vertex_set st') /\
               (Seq.length g == Seq.length g') /\
                (well_formed_heap2 g') /\

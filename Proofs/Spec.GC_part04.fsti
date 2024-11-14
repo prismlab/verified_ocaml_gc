@@ -1003,10 +1003,6 @@ let seq_index_lemma1 (#a:eqtype)
 
 
 
-let test19  (v_id:hp_addr)  
-            (g:heap{well_formed_heap2 g /\ is_valid_header1 v_id g}) 
-            (c:color) = 
- let g1 = colorHeader5 v_id g c in
- admit()
+
 
 

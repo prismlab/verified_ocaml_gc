@@ -262,12 +262,13 @@ let heap_remains_same_except_index_lemma (v_id1:hp_addr)
                           (ensures heap_remains_same_except_index_v_id2 v_id1 v_id2 g g'') = ()
 
 
-#reset-options "--z3rlimit 100 --max_fuel 1 --max_ifuel 1 --using_facts_from '* -FStar.Seq'"
+#reset-options "--z3rlimit 1000 --max_fuel 1 --max_ifuel 1 --using_facts_from '* -FStar.Seq'"
 
 //#push-options "--split_queries always"
 
 #restart-solver
 
+#restart-solver
 
 let write_word_to_blue_object_field_lemma (g:heap(*{well_formed_heap2 g}*){write_word_to_blue_object_field_lemma_props1 g /\ Seq.length (objects2 0UL g) > 0})
                                           (x:hp_addr{first_field_of_blue g x})

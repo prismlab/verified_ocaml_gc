@@ -136,6 +136,11 @@ let edge_graph_succ_connect (g:heap{well_formed_heap2 g})
                                                                                                                  
   (forall x. Seq.mem x f  /\ (Usize.v (tag_of_object1 x g) >= no_scan_tag) ==> G.successors_fn2 (f_address x) f' ==  Seq.empty #UInt64.t)
 
+#restart-solver
+
+#reset-options "--z3rlimit 500"
+
+
 let edge_graph_succ_connect1 (g:heap{well_formed_heap2 g})
                             (f: seq Usize.t { all_mem_of_allocated_blocks f g /\
                                                         within_heap_all f /\
@@ -770,6 +775,8 @@ create_edge_pairs_for_h_index_length_lemma g h_index wz i;
 
 #restart-solver
 
+#reset-options "--z3rlimit 1000"
+
 let graph_successors_mem_lemma (g: heap {well_formed_heap2 g })
                                (h_index:hp_addr{is_valid_header1 h_index g})
                                 : Lemma
@@ -875,8 +882,18 @@ let cons_length_lemma (s:seq Usize.t)
  ()
 
 
-#reset-options "--z3rlimit 100 --max_fuel 1 --max_ifuel 1 --using_facts_from '* -FStar.Seq'"
+#reset-options "--z3rlimit 2000 --max_fuel 1 --max_ifuel 1 --using_facts_from '* -FStar.Seq'"
 
+#push-options "--split_queries always"
+
+
+#restart-solver
+
+#restart-solver
+
+#restart-solver
+
+#restart-solver
 
 let graph_successors_length_lemma (g: heap {well_formed_heap2 g})
                                   (h_index:hp_addr{is_valid_header1 h_index g})
@@ -952,6 +969,7 @@ let allocs = get_allocated_block_addresses g in
   length_empty_lemma (Seq.empty #UInt64.t);
   ()
  )
+
 
 #reset-options "--z3rlimit 500"
 #push-options "--split_queries always"

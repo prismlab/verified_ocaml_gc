@@ -27,7 +27,7 @@ module D = DFS2
 //#reset-options "--z3rlimit 100 --max_fuel 1 --max_ifuel 1 --using_facts_from '* -FStar.Seq' --split_queries always" //XXX KC: works!
 
 
-#reset-options "--z3rlimit 1000 --max_fuel 1 --max_ifuel 1 --using_facts_from '* -FStar.Seq'"
+#reset-options "--z3rlimit 100 --max_fuel 1 --max_ifuel 1 --using_facts_from '* -FStar.Seq'"
 #restart-solver
 
 let rec fieldPush_spec_successor_push_itr_equivalence_lemma2 (g:heap{well_formed_heap2 g})
@@ -142,8 +142,8 @@ let rec fieldPush_spec_successor_push_itr_equivalence_lemma2 (g:heap{well_formed
        assert (fst (fieldPush_spec1 g' st' h_index wz i') == st2);
        assert (fst (fieldPush_spec1 g' st' h_index wz i') == G.successor_push_itr1 l vl st (Usize.v j));
        fieldPush_fieldPush_spec_body_lemma g st h_index wz i i';
-       assert (fieldPush_spec1 g st h_index wz i == fieldPush_spec1 (snd (fieldPush_spec_body g st h_index wz i))
-                                                                                        (fst (fieldPush_spec_body g st h_index wz i))
+       assert (fieldPush_spec1 g st h_index wz i == fieldPush_spec1 (snd (fieldPush_spec_body1 g st h_index wz i))
+                                                                                        (fst (fieldPush_spec_body1 g st h_index wz i))
                                                                                         h_index
                                                                                         wz
                                                                                         i');
@@ -515,8 +515,8 @@ let rec fieldPush_spec_successor_push_itr_equivalence_lemma2 (g:heap{well_formed
        assert (fst (fieldPush_spec1 g' st' h_index wz i') == st2);
        assert (fst (fieldPush_spec1 g' st' h_index wz i') == G.successor_push_itr1 l vl st (Usize.v j));
        fieldPush_fieldPush_spec_body_lemma g st h_index wz i i';
-       assert (fieldPush_spec1 g st h_index wz i == fieldPush_spec1 (snd (fieldPush_spec_body g st h_index wz i))
-                                                                                        (fst (fieldPush_spec_body g st h_index wz i))
+       assert (fieldPush_spec1 g st h_index wz i == fieldPush_spec1 (snd (fieldPush_spec_body1 g st h_index wz i))
+                                                                                        (fst (fieldPush_spec_body1 g st h_index wz i))
                                                                                         h_index
                                                                                         wz
                                                                                         i');

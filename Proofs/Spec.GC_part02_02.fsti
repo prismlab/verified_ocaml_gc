@@ -24,63 +24,298 @@ module D = DFS2
 
 #restart-solver
 
-(*val objects2_equal_lemma1 :  (g:heap{well_formed_heap2 g})-> 
-                             (g':heap)->
-                             (h_index:hp_addr{is_valid_header h_index g})->
-                      Lemma
-                       (requires (forall p. Seq.mem p (objects2 0UL g) ==> getWosize (read_word g' p) ==  getWosize (read_word g p)))
-                       (ensures objects2 h_index g == objects2 h_index g')
-                       (decreases (heap_size - Usize.v h_index))*)
+let wosize_plus_times_mword_multiple_of_mword (wz:wosize)
+                     :Lemma
+                      (ensures (Usize.v (Usize.mul (Usize.add wz 1UL) mword) % Usize.v mword == 0)) = ()
 
-val objects2_cons_lemma1 : (h_index: hp_addr)->
-                           (g:heap)->
-                           (h_index_new:hp_addr{h_index_new == (Usize.add h_index (Usize.mul (Usize.add (getWosize (read_word g h_index)) 1UL) mword))})->
+#restart-solver
+#restart-solver
+
+//#reset-options "--query_stats --z3rlimit "
+
+#reset-options "--z3rlimit 500"
+
+#restart-solver
+
+
+let objects2_cons_lemma1  (h_index: hp_addr)
+                           (g:heap)
+                           (h_index_new:hp_addr{h_index_new == (Usize.add h_index (Usize.mul (Usize.add (getWosize (read_word g h_index)) 1UL) mword))})
                            
-            Lemma 
+           : Lemma 
             (ensures (Seq.length (objects2 h_index g) > 0 /\ 
                         Usize.v h_index_new < heap_size ==> 
                          ((objects2 h_index g) == Seq.cons h_index (objects2 h_index_new g)) /\
-                         (forall x. Seq.mem x (objects2 h_index g) <==> x == h_index \/ (Seq.mem x (objects2 h_index_new g)))))
-                         
-(*val objects2_length_lemma1 :(g:heap{well_formed_heap2 g}) ->
-                            (h_index:hp_addr{is_valid_header h_index g}) ->
-                            (h_index_new:hp_addr{h_index_new == (Usize.add h_index (Usize.mul (Usize.add (getWosize (read_word g h_index)) 1UL) mword))})->
-                  Lemma
-                  (requires (Seq.length (objects2 h_index g) > 0) /\ (Usize.v h_index_new < heap_size))
-                  (ensures ((Seq.length (objects2 h_index_new g) > 0))) *)
+                         (forall x. Seq.mem x (objects2 h_index g) <==> x == h_index \/ (Seq.mem x (objects2 h_index_new g))))) =
+  let wz =  getWosize (read_word g h_index) in
+ objects2_wosize_lemma h_index g;
+ if Usize.v wz = 0 then
+(
+  ()
+)
+else
+(
+  let h_index_new =  Usize.add h_index (Usize.mul (Usize.add wz 1UL) mword) in
+
+ let h_index_new =  Usize.add h_index (Usize.mul (Usize.add wz 1UL) mword) in // possible next header = h_index + (wz + 1) * mword. Eg. h_index = 0; wz = 1; mword = 8;
+                                                                               // h_index_new = 0 + (1 + 1) * 8 = 0 + 16 = 16. h_index range in g = 0......7
+                                                                               // first field range in g = 8......15. Only one field. So next header starts at 16
+ if Usize.v h_index_new <= heap_size then //valid heap condition
+  (
+    if Usize.v h_index_new = heap_size then // h_index_new == heap_size --> The last block is h_index, So just create a singleton with h_index and return.
+    (
+       assert (Usize.v h_index_new == heap_size);
+       let f = Seq.create 1 h_index in
+
+       G.is_vertex_set_lemma2 f;
+       assert (Seq.length f > 0 /\ (Usize.v h_index_new < heap_size) ==> Seq.mem h_index_new f);
+       assert (forall x. Seq.mem x (objects2 h_index g) <==> x == h_index \/ (Seq.mem x (objects2 h_index_new g)));
+       ()
+       
+    )
+    else
+    (
+
+      assert (Usize.v h_index_new < heap_size); // h_index_new < heap_size, still more blocks to explore, hence recurse.
+      wosize_plus_times_mword_multiple_of_mword wz;
+      sum_of_multiple_of_mword_is_multiple_of_mword h_index (Usize.mul (Usize.add wz 1UL) mword);
+      assert (Usize.v h_index_new % Usize.v mword == 0);
+      assert (is_hp_addr h_index_new);
+      let f' =  objects2 h_index_new g in
+      let f_index_new =  Usize.add h_index_new mword in
+      objects2_mem_lemma1 h_index_new g;
+      if length f' = 0 ||  (Usize.v f_index_new = heap_size) then
+      (
+        assert (Seq.length f' > 0 /\ (Usize.v h_index_new < heap_size) ==> Seq.mem h_index_new f');
+        assert (Seq.length f' == 0);
+        
+        objects2_empty_lemma h_index g;
+        assert (Usize.v h_index_new < heap_size /\ (Seq.length (objects2 h_index_new g) == 0 ==>
+                    (objects2 h_index g) == (objects2 h_index_new g)));
+        assert (f' == (objects2 h_index g));
+        (*assert (Seq.length (objects2 h_index g) > 0 /\ 
+                        Usize.v h_index_new < heap_size ==> 
+                         ((objects2 h_index g) == Seq.cons h_index (objects2 h_index_new g)) /\
+                         (forall x. Seq.mem x (objects2 h_index g) <==> x == h_index \/ (Seq.mem x (objects2 h_index_new g))));*)
+        (*admit (); //FIXME KC
+        ()*)
+        
+        ()
+      )
+       else
+       (
+         lemma_tl h_index f';
+         let f'' = cons h_index f' in
+         assert (Seq.length f'' > 0 /\ (Usize.v h_index_new < heap_size) ==> Seq.mem h_index_new f'');
+         G.is_vertex_set_cons h_index f';
+         //assert (Seq.length f'' > 0 /\ (Usize.v h_index_new < heap_size) ==> Seq.mem h_index_new f'');
+         let objs = objects2 h_index g in
+          objects2_non_empty_lemma h_index g;
+         assert(Usize.v h_index_new < heap_size /\ (Seq.length (objects2 h_index_new g) > 0 ==>
+                    (objects2 h_index g) == Seq.cons h_index (objects2 h_index_new g)));
+
+         assert (Seq.length objs > 0 /\
+                        Usize.v h_index_new < heap_size ==>
+                         objs == Seq.cons h_index (objects2 h_index_new g));
+        (*admit (); //FIXME KC
+        assert (forall x. Seq.mem x (objects2 h_index g) <==> x == h_index \/ (Seq.mem x (objects2 h_index_new g)))*)
+        ()
+       )
+    )
+  )
+  else
+  (
+    assert (Usize.v h_index_new > heap_size); //h_index_new is greater than heap_size means the last object size exceeds the heap.
+    
+    ()
+  )
+)
 
 
 
-(*Define the various types of heap operations possible. And prove that during each case, the well-formedness remains intact
-  Case 1 : Header change - Color of an allocated object changes to white, grey or black
-  Case 2 : Header change - Color of an allocated object changes to blue
-  Case 3 : Header Change - wosize of a blue object changes to sum of the wosizes of that object and the next object.
-  Case 4 : Field Change - The first field of a blue object is changed to point to another blue value*)
-
-val objects2_equal_lemma5 :  (g:heap(*{well_formed_heap2 g}*){Seq.length (objects2 0UL g) > 0})-> 
-                             (g':heap)->
-                             (h_index:hp_addr{Seq.mem h_index (objects2 0UL g)})->
-                      Lemma
+let rec objects2_equal_lemma5   (g:heap(*{well_formed_heap2 g}*){Seq.length (objects2 0UL g) > 0})
+                             (g':heap)
+                             (h_index:hp_addr{Seq.mem h_index (objects2 0UL g)})
+                     : Lemma
                        (requires (forall p. Seq.mem p (objects2 0UL g) ==> getWosize (read_word g' p) ==  getWosize (read_word g p)))
                        (ensures objects2 h_index g == objects2 h_index g')
-                       (decreases (heap_size - Usize.v h_index))
+                       (decreases (heap_size - Usize.v h_index)) =
+  let wz =  getWosize (read_word g h_index) in
+  let wz1 =  getWosize (read_word g' h_index) in
+  assert (wz == wz1);
+  assert (Usize.v wz > 0);
+  let h_index_new =  Usize.add h_index (Usize.mul (Usize.add wz 1UL) mword) in
+  if Usize.v h_index_new <= heap_size then //valid heap condition
+  (
+    if Usize.v h_index_new = heap_size then // h_index_new == heap_size --> The last block is h_index, So just create a singleton with h_index and return.
+    (
+       (*assert (Usize.v h_index_new == heap_size);
+       let f = Seq.create 1 h_index in
+
+       G.is_vertex_set_lemma2 f;
+       ()*)
+       objects2_singleton_lemma h_index g;
+       objects2_singleton_lemma h_index g';
+       ()
+    )
+    else
+    (
+      assert (Usize.v h_index_new < heap_size); // h_index_new < heap_size, still more blocks to explore, hence recurse.
+      wosize_plus_times_mword_multiple_of_mword3 wz;
+      assert (Usize.v (Usize.mul (Usize.add wz 1UL) mword) % Usize.v mword == 0);
+      sum_of_multiple_of_mword_is_multiple_of_mword h_index (Usize.mul (Usize.add wz 1UL) mword);
+      assert ((Usize.v h_index + Usize.v (Usize.mul (Usize.add wz 1UL) mword)) % Usize.v mword == 0);
+      assert (h_index_new ==  Usize.add h_index (Usize.mul (Usize.add wz 1UL) mword));
+      assert (Usize.v h_index_new == Usize.v h_index + Usize.v (Usize.mul (Usize.add wz 1UL) mword));
+      assert (Usize.v h_index_new % Usize.v mword == 0);
+      assert (is_hp_addr h_index_new);
+      objects2_mem_lemma1_app1 h_index g;
+      assert (Seq.mem  h_index_new (objects2 0UL g));
+      //assert (is_valid_header h_index_new g);
+      let f' =  objects2 h_index_new g in
+      objects2_equal_lemma5 g g' h_index_new;
+      let f_index_new =  Usize.add h_index_new mword in
+      if length f' = 0 ||  (Usize.v f_index_new = heap_size) then
+      (
+         objects2_empty_lemma h_index g;
+         objects2_empty_lemma h_index g';
+         ()
+      )
+       else
+       (
+         lemma_tl h_index f';
+         let f'' = cons h_index f' in
+         assert (Seq.length f'' > 0 /\ (Usize.v h_index_new < heap_size) ==> Seq.mem h_index_new f'');
+         objects2_non_empty_lemma h_index g;
+         objects2_non_empty_lemma h_index g';
+         //G.is_vertex_set_cons h_index f';
+         (*()*)
+         ()
+       )
+    )
+  )
+  else
+  (
+    assert (Usize.v h_index_new > heap_size); //h_index_new is greater than heap_size means the last object size exceeds the heap.
+    ()
+  )
 
 
 
-val objects2_cons_lemma2 : (h_index: hp_addr)->
-                           (g:heap)->
+
+let objects2_cons_lemma2  (h_index: hp_addr)
+                           (g:heap)
                          
-            Lemma 
+           : Lemma 
             (ensures (Seq.length (objects2 h_index g) > 0 /\ 
                         Usize.v (Usize.add h_index (Usize.mul (Usize.add (getWosize (read_word g h_index)) 1UL) mword)) >= heap_size ==> 
-                          Seq.length (objects2 h_index g) == 1))
+                          Seq.length (objects2 h_index g) == 1)) =
+  let wz =  getWosize (read_word g h_index) in
+ objects2_wosize_lemma h_index g;
+ if Usize.v wz = 0 then
+(
+  ()
+)
+else
+( 
+   let h_index_new =  Usize.add h_index (Usize.mul (Usize.add wz 1UL) mword) in
 
-val objects2_length_lemma3 :(g:heap{Seq.length (objects2 0UL g) > 0}) ->
-                            (h_index:hp_addr{Seq.mem h_index (objects2 0UL g)}) ->
-                            (h_index_new:hp_addr{Usize.v h_index_new == (Usize.v h_index +  (Usize.v (getWosize (read_word g h_index)) + 1) * Usize.v mword)})->
-                  Lemma
+ 
+ if Usize.v h_index_new <= heap_size then //valid heap condition
+  (
+    if Usize.v h_index_new = heap_size then // h_index_new == heap_size --> The last block is h_index, So just create a singleton with h_index and return.
+    (
+       assert (Usize.v h_index_new == heap_size);
+       let f = Seq.create 1 h_index in
+       objects2_singleton_lemma h_index g;
+       ()
+    )
+    else
+    (
+
+      assert (Usize.v h_index_new < heap_size); // h_index_new < heap_size, still more blocks to explore, hence recurse.
+      wosize_plus_times_mword_multiple_of_mword wz;
+      sum_of_multiple_of_mword_is_multiple_of_mword h_index (Usize.mul (Usize.add wz 1UL) mword);
+      assert (Usize.v h_index_new % Usize.v mword == 0);
+      assert (is_hp_addr h_index_new);
+      let f' =  objects2 h_index_new g in
+      let f_index_new =  Usize.add h_index_new mword in
+      objects2_mem_lemma1 h_index_new g;
+      if length f' = 0 ||  (Usize.v f_index_new = heap_size) then
+      (
+        assert (Seq.length f' > 0 /\ (Usize.v h_index_new < heap_size) ==> Seq.mem h_index_new f');
+        assert (Seq.length f' == 0);
+        
+        objects2_empty_lemma h_index g;
+        
+        ()
+      )
+       else
+       (
+         lemma_tl h_index f';
+         let f'' = cons h_index f' in
+         assert (Seq.length f'' > 0 /\ (Usize.v h_index_new < heap_size) ==> Seq.mem h_index_new f'');
+         G.is_vertex_set_cons h_index f';
+         //assert (Seq.length f'' > 0 /\ (Usize.v h_index_new < heap_size) ==> Seq.mem h_index_new f'');
+         let objs = objects2 h_index g in
+          objects2_non_empty_lemma h_index g;
+          ()
+       )
+    )
+  )
+  else
+  (
+    ()
+  )
+)
+
+
+let objects2_length_lemma3  (g:heap{Seq.length (objects2 0UL g) > 0}) 
+                            (h_index:hp_addr{Seq.mem h_index (objects2 0UL g)}) 
+                            (h_index_new:hp_addr{Usize.v h_index_new == (Usize.v h_index +  (Usize.v (getWosize (read_word g h_index)) + 1) * Usize.v mword)})
+                 : Lemma
                   (requires (Seq.length (objects2 h_index g) > 0) /\ (Usize.v h_index_new < heap_size))
-                  (ensures ((Seq.length (objects2 h_index_new g) > 0))) 
+                  (ensures ((Seq.length (objects2 h_index_new g) > 0))) =
+  let wz =  getWosize (read_word g h_index) in
+  let h_index_new =  Usize.add h_index (Usize.mul (Usize.add wz 1UL) mword) in
+
+  let h_index_new =  Usize.add h_index (Usize.mul (Usize.add wz 1UL) mword) in // possible next header = h_index + (wz + 1) * mword. Eg. h_index = 0; wz = 1; mword = 8;
+                                                                               // h_index_new = 0 + (1 + 1) * 8 = 0 + 16 = 16. h_index range in g = 0......7
+                                                                               // first field range in g = 8......15. Only one field. So next header starts at 16
+  if Usize.v h_index_new <= heap_size then //valid heap condition
+  (
+    if Usize.v h_index_new = heap_size then // h_index_new == heap_size --> The last block is h_index, So just create a singleton with h_index and return.
+    (
+       objects2_singleton_lemma h_index g;
+       ()
+    )
+    else
+    (
+      assert (Usize.v h_index_new < heap_size); // h_index_new < heap_size, still more blocks to explore, hence recurse.
+      wosize_plus_times_mword_multiple_of_mword wz;
+      sum_of_multiple_of_mword_is_multiple_of_mword h_index (Usize.mul (Usize.add wz 1UL) mword);
+      assert (Usize.v h_index_new % Usize.v mword == 0);
+      assert (is_hp_addr h_index_new);
+      let f' =  objects2 h_index_new g in
+      let f_index_new =  Usize.add h_index_new mword in
+      objects2_mem_lemma1 h_index_new g;
+      if length f' = 0 ||  (Usize.v f_index_new = heap_size) then
+      (
+         objects2_empty_lemma h_index g;
+        ()
+
+      )
+       else
+       (
+         objects2_non_empty_lemma h_index g;
+         ()
+       )
+    )
+  )
+  else
+  (
+    ()
+  )
 
 
 let check_well_formed_closure_objs_lemma1_pre  (g:heap{Seq.length (objects2 0UL g) > 0})
@@ -96,34 +331,6 @@ let check_well_formed_closure_objs_lemma1_pre  (g:heap{Seq.length (objects2 0UL 
                    Usize.v y <= Usize.v x + (Usize.v (getWosize (read_word g x)) * Usize.v mword) ==>
                                                                      read_word g y == read_word g' y)
 
-
-(*val check_well_formed_closure_objs_lemma2  : (g:heap{Seq.length (objects2 0UL g) > 0}) ->
-                                             (g':heap{Seq.length (objects2 0UL g') > 0}) ->
-                                             (f:seq Usize.t {(forall x. Seq.mem x f ==> Usize.v x >= 0 /\ Usize.v x < heap_size) /\
-                                                              (forall x. Seq.mem x f ==> Usize.v x % Usize.v mword == 0) /\
-                                                               (forall x. Seq.mem x f ==> 
-                                                                 Seq.mem x (get_allocated_block_addresses g)) /\
-                                                               (forall x. Seq.mem x f ==> is_fields_within_limit1 x (getWosize (read_word g x)))}) ->
-                                            (f':seq Usize.t {(forall x. Seq.mem x f' ==> Usize.v x >= 0 /\ Usize.v x < heap_size) /\
-                                                                  (forall x. Seq.mem x f' ==> Usize.v x % Usize.v mword == 0) /\
-                                                                  (forall x. Seq.mem x f' ==> Seq.mem x (get_allocated_block_addresses g')) /\
-                                                                   
-                                                                  (forall x. Seq.mem x f' ==> is_fields_within_limit1 x (getWosize (read_word g' x)))}) ->
-                              Lemma 
-                              (requires (forall x. Seq.mem x f' ==> Seq.mem x f)  /\
-                                        (objects2 0UL g == objects2 0UL g') /\
-                                        (forall x. Seq.mem x (get_allocated_block_addresses g') ==>
-                                                   Seq.mem x (get_allocated_block_addresses g)) /\
-                                        (forall x. Seq.mem x (get_allocated_block_addresses g') ==> 
-                                               getWosize (read_word g x) ==
-                                               getWosize (read_word g' x)) /\
-                                        (forall x. Seq.mem x (get_allocated_block_addresses g') ==> 
-                                               getTag (read_word g x) ==
-                                               getTag (read_word g' x)) /\
-                                        check_well_formed_closure_objs_lemma1_pre g g' f' /\
-                                        check_well_formed_closure_objs g f == true
-                                        )
-                                  (ensures check_well_formed_closure_objs g' f' == true)*)
   
   #restart-solver
   
@@ -159,25 +366,12 @@ let check_well_formed_closure_objs_lemma1_pre  (g:heap{Seq.length (objects2 0UL 
                                         check_well_formed_closure_objs_lemma1_pre g g' f' /\
                                         check_well_formed_closure_objs g f == true
       
-#restart-solver
-
-#restart-solver
-
-#restart-solver
-
-#restart-solver
 
 #reset-options "--z3rlimit 500"
 
-#restart-solver
 
-#restart-solver
 
-//#push-options "--z3rlimit 2000"
-
-#restart-solver
-
-  let rec check_well_formed_closure_objs_lemma2  (g:heap{Seq.length (objects2 0UL g) > 0}) 
+let rec check_well_formed_closure_objs_lemma2  (g:heap{Seq.length (objects2 0UL g) > 0}) 
                                              (g':heap{Seq.length (objects2 0UL g') > 0}) 
                                              (f:seq Usize.t {(forall x. Seq.mem x f ==> Usize.v x >= 0 /\ Usize.v x < heap_size) /\
                                                               (forall x. Seq.mem x f ==> Usize.v x % Usize.v mword == 0) /\
@@ -319,7 +513,7 @@ match length f'' with
 
 
 
-let test_objects (g:heap{well_formed_heap2 g})
+(*let test_objects (g:heap{well_formed_heap2 g})
                  (h_index:hp_addr{is_valid_header1 h_index g}) =
   assert  (Seq.length (objects2 0UL g) > 0  /\
                                           (check_all_block_fields_within_limit2 g (get_allocated_block_addresses g)) /\
@@ -355,7 +549,7 @@ let test_objects (g:heap{well_formed_heap2 g})
       
                  )
             ));
-  admit()
+  admit()*)
 
 let field_reads_equal_lemma (g:heap{well_formed_heap2 g})
                             (g':heap)

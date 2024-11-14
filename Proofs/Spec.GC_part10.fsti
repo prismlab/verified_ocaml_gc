@@ -921,7 +921,7 @@ let fieldPush_spec_body_successor_push_body_equivalence_lemma3 (g:heap{well_form
                                                   
                                              (forall x. Seq.mem x st ==> ~(Seq.mem x vl)) /\
                                              (forall x. Seq.mem x vl ==> ~(Seq.mem x st))))
-                                        (ensures (fst (fieldPush_spec_body g st h_index wz i) == st)) = ()
+                                        (ensures (fst (fieldPush_spec_body1 g st h_index wz i) == st)) = ()
                                                   
 #restart-solver
 

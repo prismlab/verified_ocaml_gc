@@ -238,6 +238,8 @@ let seq_lemmas_non_empty (g:heap{well_formed_heap2 g})
               (ensures Seq.length st > 0) =
 ()
 
+#restart-solver
+
 let seq_lemmas_non_empty_snoc (g:heap{well_formed_heap2 g})
                      (st: seq Usize.t {stack_props_func g st})
 
@@ -255,11 +257,12 @@ lemma_mem_snoc st (f_address x);
 
 #reset-options "--z3rlimit 50 --max_fuel 0 --max_ifuel 0 --using_facts_from '* -FStar.Seq'"
 
-#restart-solver
-#restart-solver
-#reset-options "--z3rlimit 5000 --query_stats"
+
 #restart-solver
 
+#restart-solver
+
+#restart-solver
 let push_to_stack2  (g:heap{well_formed_heap2 g})
                     (st: seq Usize.t {stack_props_func g st})
 
@@ -452,6 +455,8 @@ let valid_succ_color_lemma1 (g:heap{well_formed_heap2 g})
 
 #restart-solver
 
+#reset-options "--z3rlimit 50 --max_fuel 0 --max_ifuel 0 --using_facts_from '* -FStar.Seq'"
+
 let push_to_stack2_heap_state_lemma  (g:heap{well_formed_heap2 g})
                                      (st: seq Usize.t{stack_props_func g st})
 
@@ -476,6 +481,10 @@ let push_to_stack2_field_size_lemma (g:heap{well_formed_heap2 g})
                                                (getWosize (read_word (snd (push_to_stack2 g st x)) y)))) = ()
 
 #restart-solver
+
+#restart-solver
+
+#reset-options "--z3rlimit 500"
 
 let push_to_stack2_lemma (g:heap{well_formed_heap2 g})
                                      (st: seq Usize.t{stack_props_func g st})
@@ -525,9 +534,13 @@ else
 
 #restart-solver
 
-#reset-options "--z3rlimit 5000 --query_stats"
+//#reset-options "--z3rlimit 5000 --query_stats"
 
 #restart-solver
+
+#reset-options "--z3rlimit 50 --max_fuel 0 --max_ifuel 0 --using_facts_from '* -FStar.Seq'"
+
+#push-options "--split_queries always"
 
 
 let parent_closure_of_infix_object (g:heap{well_formed_heap2 g})
@@ -642,6 +655,7 @@ else
 #reset-options "--z3rlimit 500"
 
 #restart-solver
+(*#reset-options "--z3rlimit 50 --max_fuel 0 --max_ifuel 0 --using_facts_from '* -FStar.Seq'"
 
 let fieldPush_spec_body   (g:heap{well_formed_heap2 g})
                           (st: seq Usize.t{stack_props_func g st})
@@ -804,6 +818,9 @@ let fieldPush_spec_body   (g:heap{well_formed_heap2 g})
    (
        (st,g)
    )
+*)
+
+#reset-options "--z3rlimit 1000"
 
 let fieldPush_spec_body1  (g:heap{well_formed_heap2 g})
                           (st: seq Usize.t{stack_props_func g st})

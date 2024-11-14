@@ -33,6 +33,10 @@ module D = DFS2
 
 #reset-options "--z3rlimit 100"
 
+#reset-options "--z3rlimit 100 --max_fuel 1 --max_ifuel 1 --using_facts_from '* -FStar.Seq'"
+
+#push-options "--split_queries always"
+
 let mark5_body_black_nodes_lemma (g:heap{well_formed_heap2 g}) 
                                  (st: seq Usize.t {stack_props_func g st /\ Seq.length st > 0})
                                     
