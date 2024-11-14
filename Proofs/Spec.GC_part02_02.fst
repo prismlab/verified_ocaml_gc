@@ -25,7 +25,7 @@ let wosize_plus_times_mword_multiple_of_mword (wz:wosize)
 #restart-solver
 #restart-solver
 
-#reset-options "--query_stats --z3rlimit 50000"
+#reset-options "--z3rlimit 5000 --ext context_pruning"
 
 let objects2_cons_lemma1 h_index g h_index_new =
  let wz =  getWosize (read_word g h_index) in
