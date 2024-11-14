@@ -30,6 +30,10 @@ let objects_fields_lemma1 (g:heap(*{well_formed_heap2 g}*))
                    : Lemma
                     (ensures (Usize.v (Usize.add x (Usize.mul j mword)) <> Usize.v i)) = ()
                     
+#restart-solver
+
+#reset-options "--z3rlimit 100 --query_stats"
+                    
 let objects_fields_lemma1_all1 (g:heap(*{well_formed_heap2 g}*))
                                (x:hp_addr{(*is_valid_header x g /\*) Seq.mem x (objects2 0UL g) /\ color_of_object1 x g == blue})
                                (i:hp_addr{Usize.v i == Usize.v x + Usize.v mword}) 
