@@ -144,7 +144,9 @@ let rec objects2_equal_lemma5 g g' h_index =
 
        G.is_vertex_set_lemma2 f;
        ()*)
-       admit()
+       objects2_singleton_lemma h_index g;
+       objects2_singleton_lemma h_index g';
+       ()
     )
     else
     (
@@ -196,7 +198,66 @@ let rec objects2_equal_lemma5 g g' h_index =
 
 #restart-solver
 
-let objects2_cons_lemma2 h_index g = ()
+let objects2_cons_lemma2 h_index g = 
+ let wz =  getWosize (read_word g h_index) in
+ objects2_wosize_lemma h_index g;
+ if Usize.v wz = 0 then
+(
+  ()
+)
+else
+( 
+   let h_index_new =  Usize.add h_index (Usize.mul (Usize.add wz 1UL) mword) in
+
+ 
+ if Usize.v h_index_new <= heap_size then //valid heap condition
+  (
+    if Usize.v h_index_new = heap_size then // h_index_new == heap_size --> The last block is h_index, So just create a singleton with h_index and return.
+    (
+       assert (Usize.v h_index_new == heap_size);
+       let f = Seq.create 1 h_index in
+       objects2_singleton_lemma h_index g;
+       ()
+    )
+    else
+    (
+
+      assert (Usize.v h_index_new < heap_size); // h_index_new < heap_size, still more blocks to explore, hence recurse.
+      wosize_plus_times_mword_multiple_of_mword wz;
+      sum_of_multiple_of_mword_is_multiple_of_mword h_index (Usize.mul (Usize.add wz 1UL) mword);
+      assert (Usize.v h_index_new % Usize.v mword == 0);
+      assert (is_hp_addr h_index_new);
+      let f' =  objects2 h_index_new g in
+      let f_index_new =  Usize.add h_index_new mword in
+      objects2_mem_lemma1 h_index_new g;
+      if length f' = 0 ||  (Usize.v f_index_new = heap_size) then
+      (
+        assert (Seq.length f' > 0 /\ (Usize.v h_index_new < heap_size) ==> Seq.mem h_index_new f');
+        assert (Seq.length f' == 0);
+        
+        objects2_empty_lemma h_index g;
+        
+        ()
+      )
+       else
+       (
+         lemma_tl h_index f';
+         let f'' = cons h_index f' in
+         assert (Seq.length f'' > 0 /\ (Usize.v h_index_new < heap_size) ==> Seq.mem h_index_new f'');
+         G.is_vertex_set_cons h_index f';
+         //assert (Seq.length f'' > 0 /\ (Usize.v h_index_new < heap_size) ==> Seq.mem h_index_new f'');
+         let objs = objects2 h_index g in
+          objects2_non_empty_lemma h_index g;
+          ()
+       )
+    )
+  )
+  else
+  (
+    ()
+  )
+)
+
 
 let objects2_length_lemma3 g h_index h_index_new =
   let wz =  getWosize (read_word g h_index) in
@@ -209,12 +270,7 @@ let objects2_length_lemma3 g h_index h_index_new =
   (
     if Usize.v h_index_new = heap_size then // h_index_new == heap_size --> The last block is h_index, So just create a singleton with h_index and return.
     (
-       assert (Usize.v h_index_new == heap_size);
-       let f = Seq.create 1 h_index in
-
-       G.is_vertex_set_lemma2 f;
-       assert (Seq.length f > 0 /\ (Usize.v h_index_new < heap_size) ==> Seq.mem h_index_new f);
-       assert (forall x. Seq.mem x (objects2 h_index g) <==> x == h_index \/ (Seq.mem x (objects2 h_index_new g)));
+       objects2_singleton_lemma h_index g;
        ()
     )
     else
@@ -225,37 +281,26 @@ let objects2_length_lemma3 g h_index h_index_new =
       assert (Usize.v h_index_new % Usize.v mword == 0);
       assert (is_hp_addr h_index_new);
       let f' =  objects2 h_index_new g in
+      let f_index_new =  Usize.add h_index_new mword in
       objects2_mem_lemma1 h_index_new g;
-      if length f' = 0 then
+      if length f' = 0 ||  (Usize.v f_index_new = heap_size) then
       (
-        assert (Seq.length f' > 0 /\ (Usize.v h_index_new < heap_size) ==> Seq.mem h_index_new f');
-
+         objects2_empty_lemma h_index g;
         ()
 
       )
        else
        (
-         lemma_tl h_index f';
-         let f'' = cons h_index f' in
-         assert (Seq.length f'' > 0 /\ (Usize.v h_index_new < heap_size) ==> Seq.mem h_index_new f'');
-         G.is_vertex_set_cons h_index f';
-         assert (Seq.length f'' > 0 /\ (Usize.v h_index_new < heap_size) ==> Seq.mem h_index_new f'');
-         assert (Seq.length (objects2 h_index g) > 0 /\
-                        Usize.v h_index_new < heap_size ==>
-                         (objects2 h_index g) == Seq.cons h_index (objects2 h_index_new g));
-         assert (forall x. Seq.mem x (objects2 h_index g) <==> x == h_index \/ (Seq.mem x (objects2 h_index_new g)));
-         assert (Seq.length f' > 0);
+         objects2_non_empty_lemma h_index g;
          ()
        )
     )
   )
   else
   (
-    assert (Usize.v h_index_new > heap_size); //h_index_new is greater than heap_size means the last object size exceeds the heap.
-    let f' = Seq.empty in
-    assert (Seq.length f' > 0 /\ (Usize.v h_index_new < heap_size) ==> Seq.mem h_index_new f');
-    assert (forall x. Seq.mem x (objects2 h_index g) <==> x == h_index \/ (Seq.mem x (objects2 h_index_new g)));
     ()
   )
+
+
 
 
