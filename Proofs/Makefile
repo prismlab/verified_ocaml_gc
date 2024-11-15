@@ -12,7 +12,7 @@ SOURCE_FSTI = Spec.Graph3.fsti Spec.GC_part01.fsti \
   Spec.GC_part06.fsti Spec.GC_part07.fsti Spec.GC_part08.fsti \
   Spec.GC_part09.fsti Spec.GC_part10.fsti Spec.GC_part11.fsti \
   Spec.GC_part12.fsti Spec.GC_part13.fsti Spec.GC_part14.fsti \
-  Spec.GC_part15.fsti Spec.GC_infix_closure_ver3.fsti
+  Spec.GC_part15.fsti Spec.GC_part16.fsti
   
 
 SOURCE_FST = Spec.Graph3.fst DFS2.fst #Spec.GC_infix_closure_ver3.fst

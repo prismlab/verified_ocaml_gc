@@ -76,7 +76,7 @@ let colorHeader3_blue_object_colored_blue_lemma1  (v_id:hp_addr)
 
 #restart-solver
 
-#reset-options "--split_queries always --z3rlimit 1000"
+#reset-options "--z3rlimit 1000"
 
 let write_word_to_blue_object_field_lemma3 (g:heap{write_word_to_blue_object_field_lemma_props1 g /\
                                                    Seq.length (objects2 0UL g) > 0})
@@ -248,7 +248,9 @@ let sweep_body_with_free_list_well_formedness_parts_lemma1
    ()
  )
 
-#reset-options "--z3rlimit 100 --max_fuel 1 --max_ifuel 1 --using_facts_from '* -FStar.Seq'"
+#reset-options "--z3rlimit 1000 --max_fuel 1 --max_ifuel 1 --using_facts_from '* -FStar.Seq'"
+
+#restart-solver
 
 let rec sweep_with_free_list3_well_formedness_part_lemma1
                               (g:heap{noGreyObjects g /\ (Seq.length (objects2 0UL g) > 0)})
@@ -597,7 +599,7 @@ let sweep_body_with_free_list_and_coalescing (g:heap{noGreyObjects g /\ (Seq.len
 #push-options "--split_queries always"
 
 
-let rec sweep_with_free_list_coalescing (g:heap{noGreyObjects g /\ (Seq.length (objects2 0UL g) > 0)})
+(*let rec sweep_with_free_list_coalescing (g:heap{noGreyObjects g /\ (Seq.length (objects2 0UL g) > 0)})
 
                               (f_index:hp_addr{Usize.v f_index >= Usize.v mword /\ Seq.mem (hd_address f_index) (objects2 0UL g)(*/\
                                              (Seq.length (objects2 (hd_address f_index) g) > 0)*)
@@ -663,4 +665,4 @@ let rec sweep_with_free_list_coalescing (g:heap{noGreyObjects g /\ (Seq.length (
    let g'',fp'' = sweep_with_free_list_coalescing g' f_index_new fp' in
    (g'',fp'')
  )
-
+*)
