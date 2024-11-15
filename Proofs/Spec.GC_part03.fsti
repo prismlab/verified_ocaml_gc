@@ -46,6 +46,8 @@ assert (is_valid_header1 v_id g');
 
 #restart-solver
 
+#reset-options "--z3rlimit 50"
+
 let h_index_field_index_mword_multiple_lemma (g:heap{well_formed_heap2 g})
                                              (h_index: hp_addr{is_valid_header1 h_index g /\ Seq.mem h_index (get_allocated_block_addresses g)})
                                              (wz: wosize{((wz == getWosize (read_word g h_index)) /\ is_fields_within_limit1 h_index wz /\

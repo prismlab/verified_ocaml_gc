@@ -15,8 +15,7 @@ SOURCE_FSTI = Spec.Graph3.fsti Spec.GC_part01.fsti \
   Spec.GC_part15.fsti Spec.GC_infix_closure_ver3.fsti
   
 
-SOURCE_FST = Spec.Graph3.fst DFS2.fst Spec.GC_part01.fst Spec.GC_part02_01.fst \
-						 Spec.GC_part02_02.fst #Spec.GC_infix_closure_ver3.fst
+SOURCE_FST = Spec.Graph3.fst DFS2.fst #Spec.GC_infix_closure_ver3.fst
 
 CHECKED_LAX = $(addprefix cache.boot/,$(SOURCE_FSTI:.fsti=.fsti.checked.lax)) \
           		$(addprefix cache.boot/,$(SOURCE_FST:.fst=.fst.checked.lax))

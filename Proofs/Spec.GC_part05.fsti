@@ -35,7 +35,7 @@ module D = DFS2
 
 #reset-options "--z3rlimit 100 --max_fuel 1 --max_ifuel 1 --using_facts_from '* -FStar.Seq'"
 
-#push-options "--split_queries always"
+//#push-options "--split_queries always"
 
 let mark5_body_black_nodes_lemma (g:heap{well_formed_heap2 g}) 
                                  (st: seq Usize.t {stack_props_func g st /\ Seq.length st > 0})
@@ -179,7 +179,7 @@ assert (~(G.is_emptySet st));
 
 #reset-options "--z3rlimit 1000"
 
-#push-options "--split_queries always"
+//#push-options "--split_queries always"
 
 let rec mark5 (g:heap{well_formed_heap2 g}) 
               (st: seq Usize.t {stack_props_func g st })
@@ -380,6 +380,10 @@ let fieldPush_fieldPush_spec_body_lemma1 (g:heap{well_formed_heap2 g})
                          (ensures g == snd (fieldPush_spec1 g st h_index wz i) /\
                                   st == fst (fieldPush_spec1 g st h_index wz i)) = ()  
 
+#restart-solver
+
+#reset-options "--query_stats --z3rlimit 100 --using_facts_from '* -FStar.Seq'"
+
 let slice_coloring_lemma1 (g:heap{well_formed_heap2 g}) 
                           (g':heap{well_formed_heap2 g'}) 
                           (v_id: hp_addr{is_valid_header1 v_id g /\
@@ -405,6 +409,10 @@ let slice_coloring_lemma1 (g:heap{well_formed_heap2 g})
 #restart-solver
 
 #restart-solver
+
+#reset-options
+
+#reset-options "--query_stats --split_queries always"
 
 let mark5_body_fieldPush_lemma (g:heap{well_formed_heap2 g}) 
                                (st: seq Usize.t {stack_props_func g st /\ Seq.length st > 0  })
