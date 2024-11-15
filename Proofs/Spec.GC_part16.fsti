@@ -2,7 +2,7 @@
 /// GC with closure and infix tag checks
 /// ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-module Spec.GC_infix_closure_ver3
+module Spec.GC_part16
 
 include Spec.GC_part15
 
