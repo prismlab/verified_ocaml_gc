@@ -487,8 +487,6 @@ let mark_mark_body_lemma1 (g:heap{well_formed_heap2 g})
 
 #reset-options "--z3rlimit 1000"
 
-#push-options "--split_queries always"
-
 #restart-solver
 
 /// ---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -704,6 +702,8 @@ let cons_property_lemma5 (g:heap{well_formed_heap2 g})
 
 #restart-solver
 
+#push-options "--split_queries always"
+
 let rec create_edge_pairs_for_h_index (g:heap{well_formed_heap2 g}) 
 
                                       (h_index:hp_addr{is_valid_header1 h_index g})
@@ -855,6 +855,9 @@ if Usize.v i = Usize.v wz + 1 then
         e'
       )
     )
+
+
+#pop-options
 
 #restart-solver
 

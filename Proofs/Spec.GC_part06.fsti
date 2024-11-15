@@ -895,6 +895,8 @@ let cons_length_lemma (s:seq Usize.t)
 
 #restart-solver
 
+#reset-options ""
+
 let graph_successors_length_lemma (g: heap {well_formed_heap2 g})
                                   (h_index:hp_addr{is_valid_header1 h_index g})
                                 : Lemma
