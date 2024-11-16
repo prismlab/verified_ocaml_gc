@@ -94,9 +94,16 @@ https://github.com/FStarLang/fstar-vscode-assistant
 
 ## Verify the code
 
-In your editor of choice (Emacs or VSCode), open the **Impl.GC_infix_closure_ver3.fst** file. Place the cursor at the end of the file. Then, press `Ctrl .` in VSCode or `Ctrl-c Ctrl-Ret` in Emacs. This will typecheck all the files involved because this is the extractable Low\* file and will need all other proofs to typecheck. This will take a *few hours* to complete.
+In your editor of choice (Emacs or VSCode), open the
+**Impl.GC_infix_closure_ver3.fst** file. Place the cursor at the end of the
+file. Then, press `Ctrl .` in VSCode or `Ctrl-c Ctrl-Ret` in Emacs. This will
+typecheck all the files involved because this is the extractable Low\* file and
+will need all other proofs to typecheck. This will take a *few hours* to
+complete.
 
-**Important note:** It is well known [^1][^2] that the F* proofs are unstable due to the non-determinism introduced by the SMT solver. Hence, it is very likely that 
+**Important note:** It is well known [^1][^2] that the F* proofs are unstable
+due to the non-determinism introduced by the SMT solver. Hence, it is very
+likely that the type checking may fail.
 
 [^1]: https://github.com/FStarLang/FStar/wiki/rlimits%3A-Machine-Independent-Resource-Limits-for-Deterministic-Execution
 [^2]: https://github.com/FStarLang/FStar/wiki/Robust%2C-replayable-proofs-using-unsat-cores%2C-%28aka%2C-hints%2C-or-how-to-replay-verification-in-milliseconds-instead-of-minutes%29
