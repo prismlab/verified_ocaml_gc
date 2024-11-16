@@ -94,12 +94,22 @@ https://github.com/FStarLang/fstar-vscode-assistant
 
 ## Verify the code
 
+### Editor
+
 In your editor of choice (Emacs or VSCode), open the
 **Impl.GC_infix_closure_ver3.fst** file. Place the cursor at the end of the
 file. Then, press `Ctrl .` in VSCode or `Ctrl-c Ctrl-Ret` in Emacs. This will
 typecheck all the files involved because this is the extractable Low\* file and
-will need all other proofs to typecheck. This will take a *few hours* to
-complete.
+will need all other proofs to typecheck. 
+
+### Commandline
+
+```bash
+$ cd Proofs
+$ make
+```
+
+Type checking will take a **few hours** to complete.
 
 **Important note:** It is well known [^1][^2] that the F* proofs are unstable
 due to the non-determinism introduced by the SMT solver. Hence, it is very
@@ -118,7 +128,7 @@ included.
 ```sh
 $ ./diff-proofs-and-extractable-verified-code.sh
 ```
-  
+
 ## Extraction Instructions
 
 - Switch to the target directory using `cd ExtractableVerifiedCode`.
