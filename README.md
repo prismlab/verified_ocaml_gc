@@ -5,13 +5,15 @@ Garbage Collector for OCaml". This document explains the installation of tools
 required for verifying and integrating the F\*/Low\* GC with the OCaml runtime
 and then running the benchmarks.
 
+- [GitHub Repository](https://github.com/prismlab/verified_ocaml_gc)
+
 ## Tools required
 
 - Git
 - [Opam](https://opam.ocaml.org/doc/Install.html) for F\*/Low\*
 - [Rust toolchain](https://www.rust-lang.org/tools/install)
 - [Hyperfine](https://github.com/sharkdp/hyperfine) for running benchmarks.
-- [difftastic](https://github.com/Wilfred/difftastic) visualise the diffs better.
+- [difftastic](https://github.com/Wilfred/difftastic) visualize the diffs better.
 - Have a global installation of a stable version of
   [bdwgc](https://github.com/ivmai/bdwgc). Instructions available at:
   https://github.com/ivmai/bdwgc?tab=readme-ov-file#building-and-installing).
