@@ -713,13 +713,13 @@ let closinfo_val_impl g f_addr =
   assert (S.is_valid_header hdr_f_addr (B.as_seq h0 g));
   let wz = wosize_of_block hdr_f_addr g in
   assert (Usize.v wz >= 2);
-  let offst1 = Usize.mul 1UL S.mword in
+  let offst1 = S.mword in
   let s1 = Usize.add f_addr offst1 in
   //assert (S.is_hp_addr s);
   assert (Usize.v s1 < S.heap_size);
   S.max_wosize_times_mword_multiple_of_mword 1UL;
-  S.sum_of_multiple_of_mword_is_multiple_of_mword f_addr (Usize.mul 1UL S.mword);
-  assert (Usize.v (Usize.add f_addr (Usize.mul 1UL S.mword)) % Usize.v S.mword == 0);
+  S.sum_of_multiple_of_mword_is_multiple_of_mword f_addr (S.mword);
+  assert (Usize.v (Usize.add f_addr (S.mword)) % Usize.v S.mword == 0);
   assert (Usize.v s1 % Usize.v S.mword == 0);
   assert (S.is_hp_addr s1);
   let clos_info = read_word_from_byte_buffer g s1 in

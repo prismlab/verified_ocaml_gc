@@ -23,7 +23,13 @@ all: checked_lax checked_full
 warmup_lax:
 	while [ ! -f cache.boot/DFS2.fst.checked.lax ]; do \
 		$(FSTAR) --lax DFS2.fst; \
-	done
+	done; \
+	while [ ! -f cache.boot/Spec.Loops.fst.checked.lax ]; do \
+		$(FSTAR) --lax Spec.Loops.fst; \
+	done; \
+	while [ ! -f cache.boot/C.Loops.fst.checked.lax ]; do \
+		$(FSTAR) --lax C.Loops.fst; \
+	done 
 
 warmup_full:
 	while [ ! -f cache.boot/Spec.Graph3.fsti.checked ]; do \
@@ -31,7 +37,13 @@ warmup_full:
 	done; \
 	while [ ! -f cache.boot/DFS2.fst.checked ]; do \
 		$(FSTAR) DFS2.fst; \
-	done
+	done; \
+	while [ ! -f cache.boot/Spec.Loops.fst.checked ]; do \
+		$(FSTAR) Spec.Loops.fst; \
+	done; \
+	while [ ! -f cache.boot/C.Loops.fst.checked ]; do \
+		$(FSTAR) C.Loops.fst; \
+	done 
 
 checked_lax: warmup_lax $(CHECKED_LAX) $(CHECKED_LAX)
 

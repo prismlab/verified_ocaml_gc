@@ -11,6 +11,8 @@ open FStar.FunctionalExtensionality
 //Machine integer
 module Usize = FStar.UInt64
 
+let heap_size = admit ()
+
 let max_wosize_lemma () =
    assert (Usize.v (Usize.shift_left 1UL 54ul) == pow2 54 % pow2 64);
    Math.Lemmas.pow2_lt_compat 64 54;
@@ -2334,7 +2336,7 @@ let hdr_infix_parent g h_index wz i =
 
 let closinfo_val_from_closure_object_lemma g f_addr g' =
  let hdr_f_addr = hd_address f_addr in
- let offst1 = Usize.mul 1UL mword in
+ let offst1 = mword in
  let wz = wosize_of_object1 hdr_f_addr g in
  assert (is_fields_within_limit1 hdr_f_addr wz);
  let s1 = Usize.add f_addr offst1 in

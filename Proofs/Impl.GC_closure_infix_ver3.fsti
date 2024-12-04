@@ -558,7 +558,7 @@ val closinfo_val_impl: (g:heap)->
             )
             (fun m0 r m1 -> B.live m1 g /\
                          B.modifies (B.loc_none) m0 m1 (*/\
-                         (S.is_hp_addr (Usize.add f_addr (Usize.mul 1UL S.mword)))*) /\
+                         (S.is_hp_addr (Usize.add f_addr (S.mword)))*) /\
                          (r == S.closinfo_val_from_closure_object (*closinfo_val1*) (B.as_seq m0 g) f_addr)
             )
 
@@ -574,7 +574,7 @@ val start_env_clos_info: (g:heap)->
             )
             (fun m0 r m1 -> B.live m1 g /\
                          B.modifies (B.loc_none) m0 m1 (*/\
-                         (S.is_hp_addr (Usize.add f_addr (Usize.mul 1UL S.mword)))*) /\
+                         (S.is_hp_addr (Usize.add f_addr (S.mword)))*) /\
                          (r == S.start_env_clos_info (B.as_seq m0 g) f_addr)
             )
 
