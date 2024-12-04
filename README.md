@@ -122,9 +122,9 @@ likely that the type checking may fail.
 [^1]: https://github.com/FStarLang/FStar/wiki/rlimits%3A-Machine-Independent-Resource-Limits-for-Deterministic-Execution
 [^2]: https://github.com/FStarLang/FStar/wiki/Robust%2C-replayable-proofs-using-unsat-cores%2C-%28aka%2C-hints%2C-or-how-to-replay-verification-in-milliseconds-instead-of-minutes%29
 
-## ExtractableVerifiedCode
+## Extracting the C code
 
-This directory contains everything that the `Proofs` contains but in a slightly
+This directory `ExtractableVerifiedCode` contains everything that the `Proofs` contains but in a slightly
 different structure, suitable for extraction. You can verify that they are
 indeed the same by running the script(which diffs these files) that we have
 included.
@@ -166,7 +166,12 @@ $ FSTAR_HOME=$(opam var prefix)/.opam-switch/build/fstar.<fstar-version>/ \
 > time (which would be a lot without it). Since, the files are same and
 > you can verify that they typecheck in `Proofs` directory.
 
-## ExtractedCodeIntegratedWithRuntime
+## OCaml compiler with verified GC 
+
+The directory `ExtractedCodeIntegratedWithRuntime` contains a number of OCaml
+compilers, including the one with the verified GC integrated. The directory 
+also contains the benchmarks used in the paper, and scripts to build and run the
+benchmarks.
 
 ### Directories and Files
 
@@ -192,7 +197,7 @@ $ FSTAR_HOME=$(opam var prefix)/.opam-switch/build/fstar.<fstar-version>/ \
 $ cd ExtractedCodeIntegratedWithRuntime
 $ make all #Build all the runtimes (unchanged, veried-gc and bdwgc)
 ```
-### Navigating tests directory
+### Benchmarking the code
 
 > Many of these are taken from [sandmark](https://github.com/ocaml-bench/sandmark)
 
