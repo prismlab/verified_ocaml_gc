@@ -7,7 +7,9 @@ and then running the benchmarks.
 
 - [GitHub Repository](https://github.com/prismlab/verified_ocaml_gc)
 
-## Tools required
+## Setup Instructions
+
+### Tools required
 
 - Git
 - [Opam](https://opam.ocaml.org/doc/Install.html) for F\*/Low\*
@@ -22,7 +24,7 @@ and then running the benchmarks.
   `ExtractedCodeIntegratedWithRuntime` directory, which is explained later below
   as well.
 
-## Setup FStar
+### Setup FStar
 
 ``` sh
 $ opam switch create fstar-fresh 4.14.0
@@ -71,32 +73,32 @@ KaRaMeL version: 87384b244a98a0c41a2e14c65b872d885af7c8df
 be exactly the same)**
 
 
-## Editor Setup
+### Editor Setup
 
 - Setup Visual studio code setup for development and type checking
 https://github.com/FStarLang/fstar-vscode-assistant
 - (Alternative) Use [fstar-mode.el](https://github.com/FStarLang/fstar-mode.el)
   if you prefer Emacs
 
-# GC Specification and Proofs
+## GC Specification and Proofs
 
 - This directory contains all the proof files (.fst and .fsti files). They can
   be readily checked in VS Code/Emacs.
 
-## Specification Files
+### Specification Files
 - **Spec.GC_infix_closure_ver3.fsti** - Bridge GC spec between graph world and low-level GC code.
 - **Spec.GC_infix_closure_ver3.fst** - Corresponding implementation file.
 - **Spec.Graph3.fsti** - Graph interface.
 - **Spec.Graph3.fst** - Graph implementation.
 - **DFS.fst** - Depth First Search.
 
-## Implementation File
+### Implementation File
 - **Impl.GC_infix_closure_ver3.fsti** - Low-level GC code interface.
 - **Impl.GC_infix_closure_ver3.fst** - Low-level GC code implementation.
 
-## Verify the code
+### Verify the code
 
-### Editor
+#### Editor
 
 In your editor of choice (Emacs or VSCode), open the
 **Impl.GC_infix_closure_ver3.fst** file. Place the cursor at the end of the
@@ -104,7 +106,7 @@ file. Then, press `Ctrl .` in VSCode or `Ctrl-c Ctrl-Ret` in Emacs. This will
 typecheck all the files involved because this is the extractable Low\* file and
 will need all other proofs to typecheck. 
 
-### Commandline
+#### Commandline
 
 ```bash
 $ cd Proofs
@@ -120,7 +122,7 @@ likely that the type checking may fail.
 [^1]: https://github.com/FStarLang/FStar/wiki/rlimits%3A-Machine-Independent-Resource-Limits-for-Deterministic-Execution
 [^2]: https://github.com/FStarLang/FStar/wiki/Robust%2C-replayable-proofs-using-unsat-cores%2C-%28aka%2C-hints%2C-or-how-to-replay-verification-in-milliseconds-instead-of-minutes%29
 
-# ExtractableVerifiedCode
+## ExtractableVerifiedCode
 
 This directory contains everything that the `Proofs` contains but in a slightly
 different structure, suitable for extraction. You can verify that they are
@@ -131,7 +133,7 @@ included.
 $ ./diff-proofs-and-extractable-verified-code.sh
 ```
 
-## Extraction Instructions
+### Extraction Instructions
 
 - Switch to the target directory using `cd ExtractableVerifiedCode`.
 - Make sure you are still in the same opam switch we created at the start
@@ -164,9 +166,9 @@ $ FSTAR_HOME=$(opam var prefix)/.opam-switch/build/fstar.<fstar-version>/ \
 > time (which would be a lot without it). Since, the files are same and
 > you can verify that they typecheck in `Proofs` directory.
 
-# ExtractedCodeIntegratedWithRuntime
+## ExtractedCodeIntegratedWithRuntime
 
-## Directories and Files
+### Directories and Files
 
 * `ocaml-4.14-unchanged` -- The unchanged OCaml 4.14 compiler. Used for
   compiling OCaml programs.
@@ -184,13 +186,13 @@ $ FSTAR_HOME=$(opam var prefix)/.opam-switch/build/fstar.<fstar-version>/ \
   `runtime` called `verified_gc`, which has other code(verified + patch code)
   and we talk more about them in this README.
 
-## Build
+### Build
 
 ```bash
 $ cd ExtractedCodeIntegratedWithRuntime
 $ make all #Build all the runtimes (unchanged, veried-gc and bdwgc)
 ```
-## Navigating tests directory
+### Navigating tests directory
 
 > Many of these are taken from [sandmark](https://github.com/ocaml-bench/sandmark)
 
@@ -210,7 +212,7 @@ We have a bunch of make targets set up in the `Makefile` in `tests` directory.
 - Target named `ydump` is present which is also from
   [sandmark](https://github.com/ocaml-bench/sandmark/tree/main/benchmarks/yojson).
 
-## Misc Information
+### Misc Information
 
 - The `allocator`'s source code is located at
   `ExtractedCodeIntegratedWithRuntime/ocaml-4.14-verified-gc/runtime/verified_gc/allocator/`
@@ -220,7 +222,7 @@ We have a bunch of make targets set up in the `Makefile` in `tests` directory.
   solely with that much heap and we will be OOM if we can't find any space(after
   a verified GC). This can be seen in the `Makefile` in `tests` directory.
 
-## Generated Code to Integrated code mapping and seeing the differences
+### Generated Code to Integrated code mapping and seeing the differences
 
 We needed to write some patches to integrate with the runtime. You can see the
 modifications to the verified code by running the following script. 
