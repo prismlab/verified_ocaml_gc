@@ -117,7 +117,7 @@ Type checking will take a **few hours** to complete.
 
 **Important note:** It is well known [^1][^2] that the F* proofs are unstable
 due to the non-determinism introduced by the SMT solver. Hence, it is very
-likely that the type checking may fail.
+likely that the type checking may fail to complete. We expect more engineering work will make the proofs robust across different machines. The `proof` directory includes `hints/` directory with hints file generated for the fstar files which are only generated when the code type checks. 
 
 [^1]: https://github.com/FStarLang/FStar/wiki/rlimits%3A-Machine-Independent-Resource-Limits-for-Deterministic-Execution
 [^2]: https://github.com/FStarLang/FStar/wiki/Robust%2C-replayable-proofs-using-unsat-cores%2C-%28aka%2C-hints%2C-or-how-to-replay-verification-in-milliseconds-instead-of-minutes%29
