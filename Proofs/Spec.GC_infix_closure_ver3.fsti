@@ -114,6 +114,7 @@ utop # Obj.size (Obj.repr g);;
 
 *)
 
+(*What is quake test?*)
 let is_heap_size_multiple_of_mwords ()
           : Tot (b:bool{b == true <==> heap_size % (Usize.v mword) == 0})=
   if (heap_size % (Usize.v mword) = 0) then true
