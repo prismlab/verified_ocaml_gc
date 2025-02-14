@@ -2395,6 +2395,16 @@ let succ_index_fn1 (g:heap{Seq.length (objects2 0UL g) > 0})
 
 #push-options "--split_queries always"
 
+let stack_mem_lemma (g:heap{well_formed_heap2 g})
+                    (st: seq Usize.t{stack_props_func g st})
+                    (hdr_id: hp_addr{is_valid_header1 hdr_id g /\
+                                     ~(isGrayObject1 hdr_id g)})
+          : Lemma
+            (ensures (~(Seq.mem (f_address hdr_id) st))) =
+ assert (forall x. Seq.mem x st ==> isGrayObject1 (hd_address x) g);
+ assert (~(Seq.mem (f_address hdr_id) st));
+ ()
+
 let darken_helper(g:heap{well_formed_heap2 g})
                  (st: seq Usize.t{stack_props_func g st})
                  (hdr_id: hp_addr{is_valid_header1 hdr_id g /\
