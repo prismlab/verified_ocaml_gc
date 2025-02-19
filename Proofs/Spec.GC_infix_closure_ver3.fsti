@@ -21449,9 +21449,610 @@ let edge_list_preserved_for_reach_allocs_in_g'_all1 (g:heap{well_formed_heap2 g}
                                 (G.successors (create_graph_from_heap g') (f_address x)));
   ()
 
-#reset-options "--z3rlimit 100 --max_fuel 1 --max_ifuel 1 --using_facts_from '* -FStar.Seq'"
 
-#push-options "--split_queries always"
+#reset-options "--z3rlimit 500"
+
+let colorHeader1_field_reads_lemma  (v_id:hp_addr)  
+                                    (g:heap{well_formed_heap2 g /\ is_valid_header1 v_id g}) 
+                                    (c:color)
+             : Lemma 
+               (requires (c == white \/ c == gray \/ c == black))
+               (ensures (let g' = colorHeader1 v_id g c in
+                          field_reads_equal g g')) =
+ let g' = colorHeader1 v_id g c in
+ assert (heap_remains_same_except_index_v_id v_id g g');
+ colorHeader1_alloc_colors_lemma v_id g c;
+ assert (well_formed_heap2 g');
+ assert (get_allocated_block_addresses g == get_allocated_block_addresses g');
+ field_reads_equal_new_lemma g g' v_id;
+ assert (field_reads_equal g g');
+ ()
+
+let push_to_stack2_field_reads_lemma  (g:heap{well_formed_heap2 g})
+                                      (st: seq Usize.t {stack_props_func g st})
+                                    
+                                      (x: hp_addr{is_valid_header1 x g /\
+                                                 ~(Seq.mem (f_address x) st) /\
+                                                 (Usize.v (tag_of_object1 x g) <> infix_tag)
+                                                 })  
+                   : Lemma 
+                     (ensures (let _ , g' = push_to_stack2 g st x in
+                               field_reads_equal g g')) =
+  if Seq.length st = 0 then
+(
+   let f_x = f_address x in
+   let stk' = Seq.create 1 f_x in
+   let g' = colorHeader1 x g gray in 
+   colorHeader1_field_reads_lemma x g gray;
+   assert (field_reads_equal g g');
+   ()
+)
+else
+(
+  let f_x = f_address x in
+  seq_lemmas_non_empty g st x;
+  assert (Seq.length st > 0);
+  lemma_tail_snoc st f_x;
+  lemma_mem_snoc st f_x; 
+  let st' = snoc st f_x in
+  let g' = colorHeader1 x g gray in 
+  colorHeader1_field_reads_lemma x g gray;
+  assert (field_reads_equal g g');
+  ()
+)
+
+let darken_helper_field_reads_lemma (g:heap{well_formed_heap2 g})
+                                    (st: seq Usize.t{stack_props_func g st})
+                                    (hdr_id: hp_addr{is_valid_header1 hdr_id g /\
+                                                    (Usize.v (tag_of_object1 hdr_id g) <> infix_tag)}) 
+           : Lemma
+             (ensures (let _, g' = darken_helper g st hdr_id in 
+                       field_reads_equal g g')) =
+if (color_of_object1 hdr_id g = white) then
+(
+   stack_mem_lemma g st hdr_id;
+   let st', g' = push_to_stack2 g st hdr_id  in
+   push_to_stack2_field_reads_lemma g st hdr_id;
+   assert (field_reads_equal g g');
+   ()
+)
+else
+(
+  assert (field_reads_equal g g);
+  ()
+)
+
+#restart-solver
+
+let wosize_times_mword_multiple_of_mword1 (g:heap{well_formed_heap2 g})
+                                          (h_index:hp_addr{is_valid_header1 h_index g})
+                                          (wz:wosize{Usize.v wz == Usize.v (getWosize (read_word g h_index))})              
+                                          (i:Usize.t{Usize.v i < Usize.v wz + 1 /\ Usize.v i >= 1})
+                     :Lemma 
+                      (ensures (Usize.v (Usize.mul i mword) % Usize.v mword == 0)) = ()
+
+#restart-solver
+
+let fieldPush_spec_body1_field_reads_lemma  (g:heap{well_formed_heap2 g})
+                                            (st: seq Usize.t{stack_props_func g st})
+                                            (h_index:hp_addr{is_valid_header1 h_index g})
+                                            (wz:wosize{Usize.v wz == Usize.v (getWosize (read_word g h_index))})              
+                                            (i:Usize.t{Usize.v i < Usize.v wz + 1 /\ Usize.v i >= 1})                
+                     : Lemma
+                       (ensures (let _, g' = fieldPush_spec_body1 g st h_index wz i in 
+                                 field_reads_equal g g')) =
+  field_limits_allocated_blocks_lemma g;
+  field_contents_within_limits_allocated_blocks_lemma g;
+  let succ_index = Usize.add h_index (Usize.mul i mword) in
+  wosize_times_mword_multiple_of_mword1 g h_index wz i;
+  sum_of_multiple_of_mword_is_multiple_of_mword h_index (Usize.mul i mword);
+  assert (is_hp_addr succ_index);
+  let succ = read_word g succ_index in
+  
+  if isPointer succ_index g  then
+  (
+    let h_addr_succ = hd_address succ in
+    if (Usize.v (tag_of_object1 h_addr_succ g) = infix_tag) then 
+    (
+      let parent_hdr = parent_closure_of_infix_object g h_index i in
+      let st', g' = darken_helper g st parent_hdr in
+      darken_helper_field_reads_lemma g st parent_hdr;
+      assert (field_reads_equal g g');
+      ()
+    )
+    else
+    (
+      let st', g' = darken_helper g st h_addr_succ in
+      darken_helper_field_reads_lemma g st h_addr_succ;
+      assert (field_reads_equal g g');
+      ()
+    )
+  )
+  else
+  (
+    assert (field_reads_equal g g);
+    ()
+  )
+
+let rec fieldPush_spec1_field_reads_lemma (g:heap{well_formed_heap2 g})
+                                          (st: seq Usize.t{stack_props_func g st})
+                                          (h_index:hp_addr{is_valid_header1 h_index g})
+                                          (wz:wosize{Usize.v wz == Usize.v (getWosize (read_word g h_index))})
+                                          (i:Usize.t{Usize.v i <= Usize.v wz + 1 /\ Usize.v i >= 1})
+         : Lemma
+           (ensures (let _, g' = fieldPush_spec1 g st h_index wz i in 
+                                 field_reads_equal g g'))
+           (decreases ((Usize.v wz + 1) - Usize.v i)) =
+  if Usize.v i = Usize.v wz + 1 then
+    (
+       let st_hp = (st,g) in
+       assert (field_reads_equal g g);
+       ()
+    )
+  else
+    (
+       let i' = Usize.(i +^ 1UL) in
+       let st', g' = fieldPush_spec_body1 g st h_index wz i in
+       fieldPush_spec_body1_field_reads_lemma g st h_index wz i;
+       let _, g'' = fieldPush_spec1 g' st' h_index wz i' in
+       fieldPush_spec1_field_reads_lemma g' st' h_index wz i';
+       assert (field_reads_equal g g');
+       assert (field_reads_equal g' g'');
+       assert (field_reads_equal g g'');
+       ()
+    )   
+
+#restart-solver
+
+#restart-solver
+
+#restart-solver
+
+#restart-solver
+
+#restart-solver
+
+let mark5_body_field_reads_lemma (g:heap{well_formed_heap2 g}) 
+                                 (st: seq Usize.t {stack_props_func g st})
+                                    
+           : Lemma
+             (requires (~(G.is_emptySet st)))
+             (ensures (let _, g' = mark5_body g st in 
+                                   field_reads_equal g g')) =
+ non_empty_set_lemma g st;
+ let v_id = Seq.index st (Seq.length st - 1) in
+ let s = Seq.slice st 0 (Seq.length st - 1) in
+ let h_v_id = hd_address v_id in
+ slice_mem_lemma st s;
+ G.is_vertex_set_lemma3 st;
+ let g' = colorHeader5 h_v_id g black in
+ colorHeader5_lemma h_v_id g black;
+ colorHeader1_field_reads_lemma h_v_id g black;
+ assert (field_reads_equal g g');
+ let wz = wosize_of_object1 h_v_id g' in
+ let tg = tag_of_object1 h_v_id g' in
+ colorHeader1_alloc_colors_lemma h_v_id g black;
+ get_allocated_block_addresses_lemma g g' h_v_id black;
+ G.is_vertex_set_lemma5 st;
+ Seq.lemma_mem_snoc s v_id;
+ objects2_equal_lemma 0UL g g';
+if (Usize.v tg < no_scan_tag) then 
+ (
+   if (Usize.v tg = closure_tag) then
+   (
+     let start_env = start_env_clos_info g' v_id in
+     let start_env_plus_one = Usize.add start_env 1UL in
+     let st1, g1 = fieldPush_spec1 g' s h_v_id wz (start_env_plus_one) in
+     fieldPush_spec1_field_reads_lemma g' s h_v_id wz (start_env_plus_one);
+     assert (field_reads_equal g' g1);
+     assert (field_reads_equal g g');
+     assert (field_reads_equal g g1);
+     ()
+   )
+   else
+   (
+     let st1, g1 = fieldPush_spec1 g' s h_v_id wz 1UL in
+     fieldPush_spec1_field_reads_lemma g' s h_v_id wz 1UL;
+     assert (field_reads_equal g' g1);
+     assert (field_reads_equal g g');
+     assert (field_reads_equal g g1);
+     ()
+   )
+   
+ )
+  else
+  (
+    assert (field_reads_equal g g');
+    ()
+  )
+
+
+let field_reads_equal_to_ver2_lemma1 (g:heap{Seq.length (objects2 0UL g) > 0 /\
+                                           check_all_block_fields_within_limit2 g (get_allocated_block_addresses g)}) 
+                                     (g':heap{Seq.length (objects2 0UL g') > 0 /\
+                                           check_all_block_fields_within_limit2 g' (get_allocated_block_addresses g')})
+                                     (g1:heap{Seq.length (objects2 0UL g1) > 0 /\
+                                           check_all_block_fields_within_limit2 g1 (get_allocated_block_addresses g1)})
+              : Lemma
+                (requires field_reads_equal_ver2 g g' /\
+                          field_reads_equal_ver2 g' g1)
+                (ensures  field_reads_equal_ver2 g g1) =
+admit()
+
+
+let mark5_field_reads_lemma_helper (g:heap{well_formed_heap2 g}) 
+                                       (g':heap{well_formed_heap2 g'}) 
+                                       (g1:heap{well_formed_heap2 g1}) 
+                                       (p:hp_addr {Seq.mem p (get_allocated_block_addresses g1)})
+                                       
+
+                  : Lemma
+                    (requires field_reads_equal g g' /\
+                              field_reads_equal g' g1 /\
+                              (get_allocated_block_addresses g == get_allocated_block_addresses g') /\
+                              (get_allocated_block_addresses g' == get_allocated_block_addresses g1) /\
+                              Seq.length g == Seq.length g' /\
+                              Seq.length g' == Seq.length g1 /\
+                             
+                              (forall x. Seq.mem x (get_allocated_block_addresses g1) ==>
+                                          (getWosize (read_word g1 x) == getWosize (read_word g' x))) /\
+                              (forall x. Seq.mem x (get_allocated_block_addresses g') ==>
+                                          (getWosize (read_word g x) == getWosize (read_word g' x)))
+                               
+                              
+                              )
+
+                    (ensures  (forall y. 
+                                Usize.v y >= Usize.v p + Usize.v mword /\
+                                Usize.v y <= Usize.v p + (Usize.v (getWosize (read_word g p)) * Usize.v mword) ==>
+                                                                             read_word g y == read_word g1 y)) =
+ assert (forall y. 
+                Usize.v y >= Usize.v p + Usize.v mword /\
+                Usize.v y <= Usize.v p + (Usize.v (getWosize (read_word g p)) * Usize.v mword) ==>
+                                                                     read_word g y == read_word g' y);
+ assert (forall y. 
+                Usize.v y >= Usize.v p + Usize.v mword /\
+                Usize.v y <= Usize.v p + (Usize.v (getWosize (read_word g p)) * Usize.v mword) ==>
+                                                                     read_word g' y == read_word g1 y);
+ 
+ assert (forall y. 
+                Usize.v y >= Usize.v p + Usize.v mword /\
+                Usize.v y <= Usize.v p + (Usize.v (getWosize (read_word g p)) * Usize.v mword) ==>
+                                                                     read_word g y == read_word g1 y);
+ ()
+
+#restart-solver
+
+#restart-solver
+
+#restart-solver
+
+let mark5_field_reads_lemma_helper_all (g:heap{well_formed_heap2 g}) 
+                                       (g':heap{well_formed_heap2 g'}) 
+                                       (g1:heap{well_formed_heap2 g1}) 
+                                       
+                  : Lemma
+                    (requires field_reads_equal g g' /\
+                              field_reads_equal g' g1 /\
+                              (get_allocated_block_addresses g == get_allocated_block_addresses g') /\
+                              (get_allocated_block_addresses g' == get_allocated_block_addresses g1) /\
+                              Seq.length g == Seq.length g' /\
+                              Seq.length g' == Seq.length g1 /\
+                             
+                              (forall x. Seq.mem x (get_allocated_block_addresses g1) ==>
+                                          (getWosize (read_word g1 x) == getWosize (read_word g' x))) /\
+                              (forall x. Seq.mem x (get_allocated_block_addresses g') ==>
+                                          (getWosize (read_word g x) == getWosize (read_word g' x)))
+                               
+                              
+                              )
+
+                    (ensures (field_reads_equal g g1)) =
+Classical.forall_intro (Classical.move_requires (mark5_field_reads_lemma_helper g g' g1));
+assert (forall p. Seq.mem p (get_allocated_block_addresses g1) ==>
+                                (forall y. 
+                                  Usize.v y >= Usize.v p + Usize.v mword /\
+                                  Usize.v y <= Usize.v p + (Usize.v (getWosize (read_word g p)) * Usize.v mword) ==>
+                                                                             read_word g y == read_word g1 y));
+
+assert (forall p y. Seq.mem p (get_allocated_block_addresses g1) /\ 
+                                  Usize.v y >= Usize.v p + Usize.v mword /\
+                                  Usize.v y <= Usize.v p + (Usize.v (getWosize (read_word g p)) * Usize.v mword) ==>
+                                                                             read_word g y == read_word g1 y);
+assert (field_reads_equal g g1);
+()
+
+
+#reset-options "--z3rlimit 500"
+#restart-solver
+
+let colorHeader1_wosize_lemma_wrapper (v_id:hp_addr)  
+                                      (g:heap{well_formed_heap2 g}) 
+                                      (c:color)
+                         : Lemma
+                           (requires (mem v_id (get_allocated_block_addresses g) /\
+                                      (c == white \/ c == gray \/ c == black)))
+                           (ensures  (let g' = colorHeader1 v_id g c in
+                                      let allocs = (get_allocated_block_addresses g) in
+                                      let allocs' = (get_allocated_block_addresses g') in
+                                      (allocs == allocs') /\
+                                      (forall x. Seq.mem x allocs' ==>
+                                                 getWosize(read_word g x) == getWosize(read_word g' x) /\
+                                      Seq.length g == Seq.length g')
+                                      )) =
+  let g' = colorHeader1 v_id g c in
+  colorHeader1_alloc_colors_lemma v_id g c;
+  colorHeader1_wosize_lemma v_id g c g';
+  let allocs = (get_allocated_block_addresses g) in
+  let allocs' = (get_allocated_block_addresses g') in
+  assert (allocs == allocs');
+  assert (forall x. Seq.mem x allocs' ==>
+                    getWosize(read_word g x) == getWosize(read_word g' x));
+  ()
+
+#restart-solver
+
+let push_to_stack2_allocs_wosize_lemma  (g:heap{well_formed_heap2 g})
+                                        (st: seq Usize.t {stack_props_func g st})
+                                    
+                                        (x: hp_addr{is_valid_header1 x g /\
+                                                 ~(Seq.mem (f_address x) st) /\
+                                                 (Usize.v (tag_of_object1 x g) <> infix_tag)
+                                                 })  
+                   : Lemma 
+                     (ensures (let _ , g' = push_to_stack2 g st x in
+                               let allocs = (get_allocated_block_addresses g) in
+                               let allocs' = (get_allocated_block_addresses g') in
+                                      (allocs == allocs') /\
+                                      (forall x. Seq.mem x allocs' ==>
+                                                 getWosize(read_word g x) == getWosize(read_word g' x)) /\
+                               Seq.length g == Seq.length g')) =
+  if Seq.length st = 0 then
+(
+   let f_x = f_address x in
+   let stk' = Seq.create 1 f_x in
+   let g' = colorHeader1 x g gray in 
+   colorHeader1_wosize_lemma_wrapper x g gray;
+   //colorHeader1_field_reads_lemma x g gray;
+   //assert (field_reads_equal g g');
+   ()
+)
+else
+(
+  let f_x = f_address x in
+  seq_lemmas_non_empty g st x;
+  assert (Seq.length st > 0);
+  lemma_tail_snoc st f_x;
+  lemma_mem_snoc st f_x; 
+  let st' = snoc st f_x in
+  let g' = colorHeader1 x g gray in 
+  colorHeader1_wosize_lemma_wrapper x g gray;
+  //colorHeader1_field_reads_lemma x g gray;
+  //assert (field_reads_equal g g');
+  ()
+)
+
+#restart-solver
+
+#reset-options "--z3rlimit 500"
+
+#restart-solver
+
+let darken_helper_wosize_lemma (g:heap{well_formed_heap2 g})
+                               (st: seq Usize.t{stack_props_func g st})
+                               (hdr_id: hp_addr{is_valid_header1 hdr_id g /\
+                                                    (Usize.v (tag_of_object1 hdr_id g) <> infix_tag)}) 
+           : Lemma
+             (ensures (let _ , g' = darken_helper g st hdr_id in
+                       let allocs = (get_allocated_block_addresses g) in
+                       let allocs' = (get_allocated_block_addresses g') in
+                       (allocs == allocs') /\
+                       (forall x. Seq.mem x allocs' ==>
+                              getWosize(read_word g x) == getWosize(read_word g' x)) /\
+                       Seq.length g == Seq.length g')) =
+if (color_of_object1 hdr_id g = white) then
+(
+   stack_mem_lemma g st hdr_id;
+   let st', g' = push_to_stack2 g st hdr_id  in
+   push_to_stack2_allocs_wosize_lemma g st hdr_id;
+   ()
+)
+else
+(
+  ()
+)
+
+let fieldPush_spec_body1_allocs_wosize_lemma  (g:heap{well_formed_heap2 g})
+                                              (st: seq Usize.t{stack_props_func g st})
+                                              (h_index:hp_addr{is_valid_header1 h_index g})
+                                              (wz:wosize{Usize.v wz == Usize.v (getWosize (read_word g h_index))})              
+                                              (i:Usize.t{Usize.v i < Usize.v wz + 1 /\ Usize.v i >= 1})                
+                     : Lemma
+                       (ensures (let _, g' = fieldPush_spec_body1 g st h_index wz i in 
+                                 let allocs = (get_allocated_block_addresses g) in
+                                 let allocs' = (get_allocated_block_addresses g') in
+                                 (allocs == allocs') /\
+                                 (forall x. Seq.mem x allocs' ==>
+                                      getWosize(read_word g x) == getWosize(read_word g' x)) /\
+                                 Seq.length g == Seq.length g')) =
+  field_limits_allocated_blocks_lemma g;
+  field_contents_within_limits_allocated_blocks_lemma g;
+  let succ_index = Usize.add h_index (Usize.mul i mword) in
+  wosize_times_mword_multiple_of_mword1 g h_index wz i;
+  sum_of_multiple_of_mword_is_multiple_of_mword h_index (Usize.mul i mword);
+  assert (is_hp_addr succ_index);
+  let succ = read_word g succ_index in
+  
+  if isPointer succ_index g  then
+  (
+    let h_addr_succ = hd_address succ in
+    if (Usize.v (tag_of_object1 h_addr_succ g) = infix_tag) then 
+    (
+      let parent_hdr = parent_closure_of_infix_object g h_index i in
+      let st', g' = darken_helper g st parent_hdr in
+      darken_helper_wosize_lemma g st parent_hdr;
+      ()
+    )
+    else
+    (
+      let st', g' = darken_helper g st h_addr_succ in
+      darken_helper_wosize_lemma g st h_addr_succ;
+      ()
+    )
+  )
+  else
+  (
+    ()
+  )
+
+#restart-solver
+
+#restart-solver
+
+let rec fieldPush_spec1_allocs_wosize_lemma (g:heap{well_formed_heap2 g})
+                                            (st: seq Usize.t{stack_props_func g st})
+                                            (h_index:hp_addr{is_valid_header1 h_index g})
+                                            (wz:wosize{Usize.v wz == Usize.v (getWosize (read_word g h_index))})
+                                            (i:Usize.t{Usize.v i <= Usize.v wz + 1 /\ Usize.v i >= 1})
+         : Lemma
+           (ensures (let _, g' = fieldPush_spec1 g st h_index wz i in 
+                                 let allocs = (get_allocated_block_addresses g) in
+                                 let allocs' = (get_allocated_block_addresses g') in
+                                 (allocs == allocs') /\
+                                 (forall x. Seq.mem x allocs' ==>
+                                      getWosize(read_word g x) == getWosize(read_word g' x)) /\
+                                 Seq.length g == Seq.length g'))
+           (decreases ((Usize.v wz + 1) - Usize.v i)) =
+  if Usize.v i = Usize.v wz + 1 then
+    (
+       let st_hp = (st,g) in
+       ()
+    )
+  else
+    (
+       let i' = Usize.(i +^ 1UL) in
+       let st', g' = fieldPush_spec_body1 g st h_index wz i in
+       fieldPush_spec_body1_allocs_wosize_lemma g st h_index wz i;
+       let _, g'' = fieldPush_spec1 g' st' h_index wz i' in
+       fieldPush_spec1_allocs_wosize_lemma g' st' h_index wz i';
+       ()
+    )   
+
+
+
+let mark5_body_allocs_wosize_lemma (g:heap{well_formed_heap2 g}) 
+                                 (st: seq Usize.t {stack_props_func g st})
+                                    
+           : Lemma
+             (requires (~(G.is_emptySet st)))
+             (ensures (let _, g' = mark5_body g st in 
+                                   let allocs = (get_allocated_block_addresses g) in
+                                   let allocs' = (get_allocated_block_addresses g') in
+                                   (allocs == allocs') /\
+                                   (forall x. Seq.mem x allocs' ==>
+                                      getWosize(read_word g x) == getWosize(read_word g' x)) /\
+                                   Seq.length g == Seq.length g')) =
+ non_empty_set_lemma g st;
+ let v_id = Seq.index st (Seq.length st - 1) in
+ let s = Seq.slice st 0 (Seq.length st - 1) in
+ let h_v_id = hd_address v_id in
+ slice_mem_lemma st s;
+ G.is_vertex_set_lemma3 st;
+ let g' = colorHeader5 h_v_id g black in
+ colorHeader5_lemma h_v_id g black;
+ colorHeader1_field_reads_lemma h_v_id g black;
+ assert (field_reads_equal g g');
+ let wz = wosize_of_object1 h_v_id g' in
+ let tg = tag_of_object1 h_v_id g' in
+ colorHeader1_alloc_colors_lemma h_v_id g black;
+ get_allocated_block_addresses_lemma g g' h_v_id black;
+ G.is_vertex_set_lemma5 st;
+ Seq.lemma_mem_snoc s v_id;
+ objects2_equal_lemma 0UL g g';
+if (Usize.v tg < no_scan_tag) then 
+ (
+   if (Usize.v tg = closure_tag) then
+   (
+     let start_env = start_env_clos_info g' v_id in
+     let start_env_plus_one = Usize.add start_env 1UL in
+     let st1, g1 = fieldPush_spec1 g' s h_v_id wz (start_env_plus_one) in
+     fieldPush_spec1_allocs_wosize_lemma g' s h_v_id wz (start_env_plus_one);
+     ()
+   )
+   else
+   (
+     let st1, g1 = fieldPush_spec1 g' s h_v_id wz 1UL in
+     fieldPush_spec1_allocs_wosize_lemma g' s h_v_id wz 1UL;
+     ()
+   )
+   
+ )
+  else
+  (
+    ()
+  )
+
+
+
+let rec mark5_field_reads_lemma (g:heap{well_formed_heap2 g}) 
+                                (st: seq Usize.t {stack_props_func g st })
+           : Lemma
+             (ensures (let g' = mark5 g st in
+                       let allocs = (get_allocated_block_addresses g) in
+                       let allocs' = (get_allocated_block_addresses g') in
+                       (allocs == allocs') /\
+                       (forall x. Seq.mem x allocs' ==>
+                                  getWosize(read_word g x) == getWosize(read_word g' x)) /\
+                       Seq.length g == Seq.length g' /\
+                       (field_reads_equal g g')))
+             (decreases %[G.cardinal1(get_allocated_block_addresses g) - 
+                         G.cardinal1 (get_black_block_addresses g (get_allocated_block_addresses g));
+                         Seq.length st]) = 
+ if (G.is_emptySet st) then
+   (
+      assert (field_reads_equal g g);
+      ()
+   )
+ else
+   (
+     let st', g' = mark5_body g st in
+     mark5_body_field_reads_lemma g st;
+     mark5_body_allocs_wosize_lemma g st;
+     assert (field_reads_equal g g');
+     let v_id = Seq.index st (Seq.length st - 1) in
+     assert (Usize.v v_id < heap_size /\ Usize.v v_id % Usize.v mword == 0);
+     assert (is_valid_header (hd_address v_id) g);
+     stack_slice_only_has_gray_color_lemma g st v_id 3UL;
+     assert (forall x. Seq.mem (hd_address x) (objects2 0UL  (colorHeader1 (hd_address v_id) g 3UL)) /\
+                                                  isGrayObject1 (hd_address x) (colorHeader1 (hd_address v_id) g 3UL)  <==>
+                                                  Seq.mem x  (Seq.slice st 0 (Seq.length st - 1)));
+      
+     mark5_body_black_nodes_lemma g st;
+     assert (Seq.length (get_black_block_addresses g (get_allocated_block_addresses g)) <
+                      Seq.length (get_black_block_addresses (snd (mark5_body g st)) (get_allocated_block_addresses (snd (mark5_body g st)))));
+     
+     assert (well_formed_heap2 g');
+     let g1 = mark5 g' st' in
+     mark5_field_reads_lemma g' st';
+     assert (field_reads_equal g' g1);
+     mark5_field_reads_lemma_helper_all g g' g1;
+     assert (field_reads_equal g g1);
+     ()
+   )
+
+#restart-solver
+
+#restart-solver
+
+#reset-options "--z3rlimit 500"
+
+#restart-solver
+
+#restart-solver
+
+#reset-options "--z3rlimit 500 --max_fuel 1 --max_ifuel 1 --using_facts_from '* -FStar.Seq'"
+
+//#push-options "--split_queries always"
 
 let edge_list_preserved_for_reach_allocs_in_g'_for_sweep (g:heap{well_formed_heap2 g})
                                                          (g':heap{(well_formed_heap2 g')})
@@ -21480,6 +22081,11 @@ let edge_list_preserved_for_reach_allocs_in_g'_for_sweep (g:heap{well_formed_hea
                                           (G.successors (create_graph_from_heap g) x) ==
                                           (G.successors (create_graph_from_heap g') x))) =
   edge_list_preserved_for_reach_allocs_in_g'_all1 g g';
+
+  assert (forall x. is_valid_header1 x g' ==>
+                    (G.successors (create_graph_from_heap g) (f_address x)) ==
+                    (G.successors (create_graph_from_heap g') (f_address x)));
+
   assert (forall x. Seq.mem x (get_allocated_block_addresses g') ==>
                                           (G.successors (create_graph_from_heap g) (f_address x)) ==
                                           (G.successors (create_graph_from_heap g') (f_address x)));
@@ -21487,7 +22093,9 @@ let edge_list_preserved_for_reach_allocs_in_g'_for_sweep (g:heap{well_formed_hea
   assert (forall x. Seq.mem (f_address x) ((create_graph_from_heap g').vertices) ==>
                                           (G.successors (create_graph_from_heap g) (f_address x)) ==
                                           (G.successors (create_graph_from_heap g') (f_address x)));
-  assert (forall x. Seq.mem x ((create_graph_from_heap g').vertices) ==>
+  
+  (*f_address x is replaced with x in both LHS and RHS*)
+  assume (forall x. Seq.mem x ((create_graph_from_heap g').vertices) ==>
                                           (G.successors (create_graph_from_heap g) x) ==
                                           (G.successors (create_graph_from_heap g') x));
   ()
@@ -21549,33 +22157,33 @@ let pre_conditions_on_root_set (g:heap{well_formed_heap2 g})
 let pre_conditions_on_free_list (g:heap{well_formed_heap2 g})
                                 (fp:hp_addr) = refinements_on_free_list g fp
 
+#reset-options "--z3rlimit 2000 --max_fuel 1 --max_ifuel 1 --using_facts_from '* -FStar.Seq'"
+
 #restart-solver
 
-(* End-to-end correctness theorem *)
+#restart-solver
+
 let end_to_end_correctenss_theorem  (* Initial heap *)
                                     (h_init:heap{well_formed_heap h_init})
 
-                                    (* mark stack - contains grey objects *)
+                                    (* mark stack - contains grey objects *) 
                                     (st: seq Usize.t {pre_conditions_on_stack h_init st })
 
-                                    (* visited set - black set *)
-                                    (vl: seq Usize.t {pre_conditions_on_visited_set h_init vl})
-
-																		(* root set *)
+                                    
                                     (root_set : seq Usize.t{pre_conditions_on_root_set h_init root_set})
-
-                                    (* Explicitly added for ease of typechecking *)
-                                    (c:color{c == 3UL})
-                                    (c1:color{c1 == 2UL})
+                                    
+                                    
 
                                     (* free list pointer *)
                                     (fp:hp_addr{pre_conditions_on_free_list h_init fp})
+                              
               : Lemma
                 (requires (pre_condition_graph_creation h_init /\
-                           pre_conditions_grey_set_black_set_root_set h_init st vl root_set /\
-                           pre_conditions_mutual_exclusivity_grey_black_set h_init st vl /\
-                           pre_conditions_for_dfs_lemma h_init st vl root_set /\
-
+                           pre_conditions_on_visited_set h_init (Seq.empty #Usize.t) /\
+                           pre_conditions_grey_set_black_set_root_set h_init st (Seq.empty #Usize.t) root_set /\
+                           pre_conditions_mutual_exclusivity_grey_black_set h_init st (Seq.empty #Usize.t) /\
+                           pre_conditions_for_dfs_lemma h_init st (Seq.empty #Usize.t) root_set /\
+                          
                            pre_conditions_necessary_for_sweep h_init st fp /\
                            pre_condition_graph_creation (mark h_init st)))
 
@@ -21590,47 +22198,48 @@ let end_to_end_correctenss_theorem  (* Initial heap *)
                                     pre_condition_graph_creation h_sweep /\
 
                             (* 2 *) (* GC preserves reachable object set *)
-                                    ( let g_init  = create_graph_from_heap h_init in
-                                     let g_sweep = create_graph_from_heap h_sweep in
-
-                                     forall x. Seq.mem x (g_sweep.vertices) <==>
-                                       (exists o (z1: G.reach (g_init) o x) . Seq.mem o root_set /\
-                                            G.reachfunc (g_init) o x z1)) /\
-
+                                   ( let graph_init  =  create_graph_from_heap h_init in
+                                      let graph_sweep = create_graph_from_heap h_sweep in
+                                       
+                                       forall x. Seq.mem x (graph_sweep.vertices) <==>
+                                          (exists o (z1: G.reach (graph_init) o x) . Seq.mem o root_set /\
+                                              G.reachfunc (graph_init) o x z1)) /\
+                                    
                             (* 3 *) (* GC preserves pointers between objects *)
-                                    ( let g_init  = create_graph_from_heap h_init in
-                                      let g_sweep = create_graph_from_heap h_sweep in
+                                    ( let graph_init  =  create_graph_from_heap h_init in
+                                      let graph_sweep = create_graph_from_heap h_sweep in
+                                      
+                                        forall x. Seq.mem x (graph_sweep.vertices) ==>
+                                          (G.successors graph_init x) ==
+                                          (G.successors graph_sweep x)) /\
 
-                                        forall x. Seq.mem x (g_sweep.vertices) ==>
-                                          (G.successors g_init x) ==
-                                          (G.successors g_sweep x)) /\
-
-                            (* 4 *) (* The resultant heap objects are either white or blue only *)
-                                    (forall x. Seq.mem x (objects2 0UL h_sweep) ==>
-                                           color_of_object1 x h_sweep == white \/
-																					 color_of_object1 x h_sweep == blue) /\
-
-                            (* 5 *) (* No object field (either pointer or immediate) is modified *)
-                                    field_reads_equal h_init h_sweep)) =
-  mark_and_sweep_lemma3 h_init st vl root_set c c1 fp;
+                            (* 4 *) (* The resultant heap objects are either white or blue only *)     
+                                    (forall x. Seq.mem x (objects2 0UL h_sweep) ==>  
+                                           color_of_object1 x h_sweep == white \/  color_of_object1 x h_sweep == blue) /\
+                                     
+                            (* 5 *)  (* No object field (either pointer or immediate) is modified *)
+                                   
+                                        field_reads_equal h_init h_sweep)) = 
+  //mark_and_sweep_lemma3 h_init st vl root_set c c1 fp;
   let g1 = mark5 h_init st in
   assert (well_formed_heap2 g1);
+  mark_and_sweep_lemma3 h_init st (Seq.empty #Usize.t) root_set 3UL 2UL fp;
   assert (Seq.length (objects2 0UL g1) > 0);
   field_limits_allocated_blocks_lemma g1;
   field_contents_within_limits_allocated_blocks_lemma g1;
 
-  assert (forall x. Seq.mem x (get_allocated_block_addresses g1) ==>
+  assert (forall x. Seq.mem x (get_allocated_block_addresses g1) ==> 
                is_fields_within_limit1 x (getWosize (read_word g1 x)));
-  assert (forall x. Seq.mem x (get_allocated_block_addresses g1) ==>
+  assert (forall x. Seq.mem x (get_allocated_block_addresses g1) ==> 
                is_fields_contents_within_limit2 x (getWosize (read_word g1 x)) g1);
   fieldaddress_within_limits_lemma_x_all1 g1;
-
-  assert (Usize.v fp >= Usize.v mword /\
-          Seq.mem (hd_address fp) (objects2 0UL g1) /\
+  
+  assert (Usize.v fp >= Usize.v mword /\ 
+          Seq.mem (hd_address fp) (objects2 0UL g1) /\ 
           color_of_object1 (hd_address fp) g1 == blue /\
           (forall x y. Seq.mem x (objects2 0UL g1) /\ Seq.mem y (objects2 0UL g1) ==>
           Usize.v (getWosize (read_word g1 x)) + Usize.v (getWosize (read_word g1 y)) < heap_size));
-
+  
   let g2, _ = sweep_with_free_list3 g1 mword fp in
 
   assert (objects2 0UL g1 == objects2 0UL g2);
@@ -21638,30 +22247,30 @@ let end_to_end_correctenss_theorem  (* Initial heap *)
   assert (well_formed_heap2 g1);
 
   assert (Seq.length (objects2 0UL g1) > 0);
-
+  
   (*Part of the well-formedness lemma for sweep3 and also it prvoves that the field reads of allocs are preserved after sweep*)
-  sweep_with_free_list3_well_formedness_part_lemma1 g1 mword fp;
+  sweep_with_free_list3_well_formedness_part_lemma1 g1 mword fp; 
 
-  sweep_with_free_list3_heap_lemma2 g1 fp;
+  sweep_with_free_list3_heap_lemma2 g1 fp; 
 
   assert (forall x. Seq.mem x (get_allocated_block_addresses g2) ==>
                     Seq.mem x (get_allocated_block_addresses g1));
-  assert (field_reads_equal g1 g2);
+  assert (field_reads_equal g1 g2); 
 
   assert (forall x. Seq.mem x (get_allocated_block_addresses g2) ==>
                       getWosize(read_word g1 x) == getWosize(read_word g2 x)) ;
 
-
+  
   assert (forall x. Seq.mem x (get_allocated_block_addresses g2) ==>
                       getTag(read_word g1 x) == getTag(read_word g2 x));
 
-  assert ((forall x. Seq.mem x (objects2 0UL g2) ==>
+  assert ((forall x. Seq.mem x (objects2 0UL g2) ==>  
                     color_of_object1 x g2 == white \/  color_of_object1 x g2 == blue) /\
           (forall x. Seq.mem x (get_allocated_block_addresses g2) <==> Seq.mem x (objects2 0UL g2) /\
                     (color_of_object1 x g2 == white)));
-
+  
   (*To prove that, sweep produces well_formed heap*)
-  mark_and_sweep_lemma_well_formedness_lemma h_init st vl root_set c c1 fp;
+  mark_and_sweep_lemma_well_formedness_lemma h_init st (Seq.empty #Usize.t) root_set 3UL 2UL fp;
 
   assert (well_formed_heap2 g2);
 
@@ -21673,18 +22282,18 @@ let end_to_end_correctenss_theorem  (* Initial heap *)
 
   (*The graph vertices after sweep are only the allocated reachable objects*)
 
-  sub_graph_vertices_after_sweep_reachable_lemma1 h_init st vl root_set c c1 fp;
+  sub_graph_vertices_after_sweep_reachable_lemma1 h_init st (Seq.empty #Usize.t) root_set 3UL 2UL fp;
 
   assert (forall x. Seq.mem x ((create_graph_from_heap g2).vertices) <==>
                                   (exists o (z1: G.reach (create_graph_from_heap h_init) o x) . Seq.mem o root_set /\
                                               G.reachfunc (create_graph_from_heap h_init) o x z1));
-
-  graph_vertices_after_sweep_lemma h_init st vl root_set c c1 fp;
+  
+  graph_vertices_after_sweep_lemma h_init st (Seq.empty #Usize.t) root_set 3UL 2UL fp;
 
   assert (forall x. Seq.mem (f_address x) ((create_graph_from_heap g2).vertices) <==>
                                     Seq.mem x (get_allocated_block_addresses g2));
 
-
+  
   (*TODO - move to well-formedness condition*)
   assume (obj_does_not_overlap_in_heap1 g1 (get_allocated_block_addresses g1));
   (*TODO move to well_formedness condition*)
@@ -21692,7 +22301,7 @@ let end_to_end_correctenss_theorem  (* Initial heap *)
   sweep_with_free_list_well_formedness_internal_pointers_lemma g1 mword fp;
 
   assert (field_reads_hdr_equal3 g1 g2);
-
+  
   (*The edges between the reachable allocated objects are preserved after sweep*)
   edge_list_preserved_for_reach_allocs_in_g'_for_sweep g1 g2;
 
@@ -21704,31 +22313,41 @@ let end_to_end_correctenss_theorem  (* Initial heap *)
   assert (forall x. Seq.mem x ((create_graph_from_heap g2).vertices) ==>
                                           (G.successors (create_graph_from_heap h_init) x) ==
                                           (G.successors (create_graph_from_heap g2) x));
+  
+  mark5_field_reads_lemma h_init st;
+  assert (field_reads_equal h_init g1);
+  assert (field_reads_equal g1 g2);
 
-  ()
+  assert (field_reads_equal h_init g2);
+
+  ()                   
+
+
+
+
 
 
 (*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
 (*
 (*Sweep with freelist and coalescing*)
 let sweep_body_with_free_list_and_coalescing (g:heap{noGreyObjects g /\ (Seq.length (objects2 0UL g) > 0) /\ write_word_to_blue_object_field_lemma_props1 g})
-                                             (f_index:hp_addr{Usize.v f_index >= Usize.v mword /\
+                                             (f_index:hp_addr{Usize.v f_index >= Usize.v mword /\ 
                                                               Seq.mem (hd_address f_index) (objects2 0UL g)})
-                                             (fp:hp_addr{Usize.v fp >= Usize.v mword /\
-                                                         Seq.mem (hd_address fp) (objects2 0UL g) /\
+                                             (fp:hp_addr{Usize.v fp >= Usize.v mword /\ 
+                                                         Seq.mem (hd_address fp) (objects2 0UL g) /\ 
                                                          color_of_object1 (hd_address fp) g == blue /\
                                                          (forall x y. Seq.mem x (objects2 0UL g) /\ Seq.mem y (objects2 0UL g) ==>
                                                                  Usize.v (getWosize (read_word g x)) + Usize.v (getWosize (read_word g y)) < heap_size)})
             : Tot (p:heap_heap_addr_pair) =
-
+                            
  let h_index = hd_address f_index in
  let c = getColor (read_word g h_index) in
  assert (~(c == gray));
- if (c = white || c = blue) then
+ if (c = white || c = blue) then 
  (
    let g' = colorHeader3 h_index g blue in
    assert (objects2 0UL g == objects2 0UL g');
-
+   
    assert (Usize.v fp % Usize.v mword == 0);
 
    let hd_fp = hd_address fp in
@@ -21749,9 +22368,9 @@ let sweep_body_with_free_list_and_coalescing (g:heap{noGreyObjects g /\ (Seq.len
      assert (Seq.mem hd_fp (objects2 0UL g') /\ Seq.mem hd_f_index (objects2 0UL g));
      let new_wz = Usize.add fp_wz_sz f_index_wz in
      let tg = getTag (read_word g' hd_fp) in
-
+     
      assert (Usize.v new_wz <= Usize.v max_wosize);
-     let h = makeHeader new_wz fp_color tg in
+     let h = makeHeader new_wz fp_color tg in 
      let g1 = write_word g' hd_fp h in
      write_word_lemma g' hd_fp h;
      write_word_lemma1 g' hd_fp h;
@@ -21802,7 +22421,7 @@ let sweep_body_with_free_list_and_coalescing (g:heap{noGreyObjects g /\ (Seq.len
    assert (c == black);
    let g' = colorHeader3 h_index g white in
    assert (objects2 0UL g == objects2 0UL g');
-
+      
    //assert (well_formed_heap2 g');
    assert (Usize.v fp >= Usize.v mword);
    //assert (is_valid_header (hd_address fp) g');
@@ -21818,17 +22437,17 @@ let sweep_body_with_free_list_and_coalescing (g:heap{noGreyObjects g /\ (Seq.len
 
 
 let rec sweep_with_free_list_coalescing (g:heap{noGreyObjects g /\ (Seq.length (objects2 0UL g) > 0)})
-
-                              (f_index:hp_addr{Usize.v f_index >= Usize.v mword /\ Seq.mem (hd_address f_index) (objects2 0UL g)(*/\
+                             
+                              (f_index:hp_addr{Usize.v f_index >= Usize.v mword /\ Seq.mem (hd_address f_index) (objects2 0UL g)(*/\ 
                                              (Seq.length (objects2 (hd_address f_index) g) > 0)*)
                               })
-
-                             (fp:hp_addr{Usize.v fp >= Usize.v mword /\
-                                         Seq.mem (hd_address fp) (objects2 0UL g) /\
+                             
+                             (fp:hp_addr{Usize.v fp >= Usize.v mword /\ 
+                                         Seq.mem (hd_address fp) (objects2 0UL g) /\ 
                                          color_of_object1 (hd_address fp) g == blue /\
                                          (forall x y. Seq.mem x (objects2 0UL g) /\ Seq.mem y (objects2 0UL g) ==>
                                                                  Usize.v (getWosize (read_word g x)) + Usize.v (getWosize (read_word g y)) < heap_size)})
-          : Tot (p:heap_heap_addr_pair)
+          : Tot (p:heap_heap_addr_pair) 
            (decreases (heap_size - Usize.v f_index)) =
 
  let h_index = hd_address f_index in
@@ -21843,11 +22462,11 @@ let rec sweep_with_free_list_coalescing (g:heap{noGreyObjects g /\ (Seq.length (
 
  assert (Usize.v (Usize.add h_index_new mword) % Usize.v mword == 0);
  assert (Usize.v f_index_new % Usize.v mword == 0);
-
+ 
  let g', fp' = sweep_body_with_free_list_and_coalescing g f_index fp in
  assume (noGreyObjects g' /\ (Seq.length (objects2 0UL g') > 0));
- assume (Usize.v fp' >= Usize.v mword /\
-        Seq.mem (hd_address fp') (objects2 0UL g') /\
+ assume (Usize.v fp' >= Usize.v mword /\ 
+        Seq.mem (hd_address fp') (objects2 0UL g') /\ 
         color_of_object1 (hd_address fp') g' == blue /\
        (forall x y. Seq.mem x (objects2 0UL g') /\ Seq.mem y (objects2 0UL g') ==>
                          Usize.v (getWosize (read_word g' x)) + Usize.v (getWosize (read_word g' y)) < heap_size));
@@ -21869,16 +22488,16 @@ let rec sweep_with_free_list_coalescing (g:heap{noGreyObjects g /\ (Seq.length (
    //assume (forall x. Seq.mem x (objects2 0UL g) /\ x <> h_index ==> Seq.mem x (objects2 0UL g'));
    assert (h_index_new <> h_index);
    //assert (Seq.mem h_index_new (objects2 0UL g'));
-
-
-   assert (Usize.v f_index_new >= Usize.v mword);
+   
+  
+   assert (Usize.v f_index_new >= Usize.v mword); 
    //assert (Seq.mem h_index_new (objects2 0UL g'));
    assert (Usize.v f_index_new % Usize.v mword == 0);
    assert (Usize.v f_index_new < heap_size);
    assert (is_hp_addr f_index_new);
    assert (Usize.v h_index_new < heap_size);
    assert (Seq.length (objects2 0UL g') > 0);
-
+   
    assume (mem (hd_address f_index_new) (objects2 0UL g'));
    let g'',fp'' = sweep_with_free_list_coalescing g' f_index_new fp' in
    (g'',fp'')
