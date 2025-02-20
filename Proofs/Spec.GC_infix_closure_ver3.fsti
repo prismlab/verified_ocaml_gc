@@ -22163,17 +22163,14 @@ let pre_conditions_on_free_list (g:heap{well_formed_heap2 g})
 
 #restart-solver
 
-let end_to_end_correctenss_theorem  (* Initial heap *)
+let end_to_end_correctness_theorem  (* Initial heap *)
                                     (h_init:heap{well_formed_heap h_init})
 
                                     (* mark stack - contains grey objects *) 
                                     (st: seq Usize.t {pre_conditions_on_stack h_init st })
-
                                     
                                     (root_set : seq Usize.t{pre_conditions_on_root_set h_init root_set})
                                     
-                                    
-
                                     (* free list pointer *)
                                     (fp:hp_addr{pre_conditions_on_free_list h_init fp})
                               
@@ -22189,37 +22186,35 @@ let end_to_end_correctenss_theorem  (* Initial heap *)
 
                 (ensures   ( (* heap after mark *)
                              let h_mark = mark5 h_init st in
-
                              (* heap after sweep *)
                              let h_sweep = fst (sweep h_mark mword fp) in
+                             (* graph at init *)
+                             let g_init  =  create_graph_from_heap h_init in
+                             (* graph after sweep *)
+                             let g_sweep = create_graph_from_heap h_sweep in
+ 
 
                             (* 1 *) (* GC preserves well-formedness of the heap *)
                                     well_formed_heap h_sweep /\
                                     pre_condition_graph_creation h_sweep /\
 
                             (* 2 *) (* GC preserves reachable object set *)
-                                   ( let graph_init  =  create_graph_from_heap h_init in
-                                      let graph_sweep = create_graph_from_heap h_sweep in
-                                       
-                                       forall x. Seq.mem x (graph_sweep.vertices) <==>
-                                          (exists o (z1: G.reach (graph_init) o x) . Seq.mem o root_set /\
-                                              G.reachfunc (graph_init) o x z1)) /\
+                                    (forall x. Seq.mem x (g_sweep.vertices) <==>
+                                       (exists o (z1: G.reach (g_init) o x) . Seq.mem o root_set /\
+                                          G.reachfunc (g_init) o x z1)) /\
                                     
                             (* 3 *) (* GC preserves pointers between objects *)
-                                    ( let graph_init  =  create_graph_from_heap h_init in
-                                      let graph_sweep = create_graph_from_heap h_sweep in
-                                      
-                                        forall x. Seq.mem x (graph_sweep.vertices) ==>
-                                          (G.successors graph_init x) ==
-                                          (G.successors graph_sweep x)) /\
+                                    (forall x. Seq.mem x (g_sweep.vertices) ==>
+                                       (G.successors g_init x) ==
+                                       (G.successors g_sweep x)) /\
 
                             (* 4 *) (* The resultant heap objects are either white or blue only *)     
                                     (forall x. Seq.mem x (objects2 0UL h_sweep) ==>  
-                                           color_of_object1 x h_sweep == white \/  color_of_object1 x h_sweep == blue) /\
+                                       color_of_object1 x h_sweep == white \/  
+                                       color_of_object1 x h_sweep == blue) /\
                                      
-                            (* 5 *)  (* No object field (either pointer or immediate) is modified *)
-                                   
-                                        field_reads_equal h_init h_sweep)) = 
+                            (* 5 *) (* No object field (either pointer or immediate) is modified *)
+                                    field_reads_equal h_init h_sweep)) = 
   //mark_and_sweep_lemma3 h_init st vl root_set c c1 fp;
   let g1 = mark5 h_init st in
   assert (well_formed_heap2 g1);
