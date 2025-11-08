@@ -1,7 +1,7 @@
 # Verified OCaml GC
 
 This is an artifact submitted along with the paper ["A Mechanically Verified
-Garbage Collector for OCaml"](https://link.springer.com/article/10.1007/s10817-025-09721-0). The paper has since been accepted for publication in the Journal of Automated Reasoning, Volume 69, Article Number 11 (2025). This document explains the installation of tools
+Garbage Collector for OCaml"](https://link.springer.com/article/10.1007/s10817-025-09721-0). The paper has since been accepted for publication in the [Journal of Automated Reasoning, Volume 69, Article Number 11 (2025)](https://link.springer.com/article/10.1007/s10817-025-09721-0). This document explains the installation of tools
 required for verifying and integrating the F\*/Low\* GC with the OCaml runtime
 and then running the benchmarks.
 
